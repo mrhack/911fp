@@ -42,29 +42,28 @@
     var initEffect = function( $dom ) {
         var cfg = toJson( $dom.attr( attrName ) );
 
-        var timer = setTimeout( function(){
+        var pos = $dom.show().offset();
+        $.extend( pos , {
+            width : $dom.width(),
+            height : $dom.height()
+        } , true );
 
-            var pos = $dom.show().offset();
-            $.extend( pos , {
-                width : $dom.width(),
-                height : $dom.height()
-            } , true );
-
-            // prepare animate config
-            if( cfg.effect && effectHook[cfg.effect] ) {
-                cfg.start = effectHook[cfg.effect]( pos );
-            } else if ( cfg.start ) {
-                var tmp = cfg.start.split(',');
-                cfg.start = {
-                    left: parseInt( tmp[ 0 ] ),
-                    top : parseInt( tmp[ 1 ] )
-                }
+        // prepare animate config
+        if( cfg.effect && effectHook[cfg.effect] ) {
+            cfg.from = effectHook[cfg.effect]( pos );
+        } else if ( cfg.from ) {
+            var tmp = cfg.from.split(',');
+            cfg.from = {
+                left: parseInt( tmp[ 0 ] ),
+                top : parseInt( tmp[ 1 ] )
             }
-            // run animate
-            $dom.css( cfg.start || { opacity: 0 } );
-            $.extend( pos , { opacity:1 } , true );
-            $dom.animate( pos , parseInt( cfg.duration ) || 500 , cfg.easing );
-        } , cfg.delay || 0 );
+        }
+
+        // run animate
+        $dom.css( cfg.from || { opacity: 0 } );
+        $.extend( pos , { opacity:1 } , true );
+        $dom.delay( cfg.delay || 0 )
+            .animate( pos , parseInt( cfg.duration ) || 500 , cfg.easing );
     }
     $.fn.effect = function(){
 

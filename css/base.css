@@ -1,5 +1,7 @@
 /* reset css */
-html, body, ul, li, ol, dl, dd, dt, p, h1, h2, h3, h4, h5, h6, form, fieldset, legend, img {
+html, body, p, h1, h2, h3, h4, h5, h6,
+ul, li, ol, dl, dd, dt,
+form, fieldset, legend, img {
     margin  : 0;
     padding : 0;
 }
@@ -9,13 +11,13 @@ address, caption, cite, code, dfn, th, var,i,em {
     font-weight : normal;
 }
 em, i { font-weight : normal; }
-table         { border-collapse : collapse; }
-fieldset, img { border : 0; }
+table         { border-collapse : collapse;  border-spacing: 0;}
+fieldset, img { border : none; }
 ul, ol        { list-style : none; }
 select, input { vertical-align : middle; outline : none; }
 h1, h2, h3, h4, h5, strong, em { font-weight : normal; }
 select, input, textarea {
-    font-size   : 12px;
+    font-size   : 100%;
     margin      : 0;
     padding     : 0;
     outline     : none;
@@ -31,7 +33,15 @@ body {
     color : #000;
     font  : 12px/20px arial, sans-serif;
 }
-
+a:link, a:visited {
+  text-decoration: none;
+}
+a:link, a:visited {
+  text-decoration: none;
+}
+a {
+  color: inherit;
+}
 .clearfix {
     *zoom : 1;
 }
@@ -46,6 +56,9 @@ body {
 [jq-effect]{
     position: absolute;
     display:none;
+}
+body{
+  font: 14px/20px 黑体,arial,sans-serif;
 }
 .car{
   top : 200px;
@@ -63,13 +76,116 @@ body {
   top:350px;left: 150px;
 }
 
-.nav{top:227px;left:400px;height: 30px;background:blue;}
+.nav{top:227px;left:400px;height: 24px;border-bottom: 10px solid #777;border-left: 10px solid transparent; width: 2000px;}
+.nav .tit{cursor:pointer; height: 100%;margin-left: 30px; line-height: 24px;float:left; color:#aaa; padding: 0 10px;}
+.nav .tit span{display:none;}
+.nav .tit:hover{color: white;background:#777;}
+.nav .tit:hover span{display:inline;}
 .nav2{
   top:277px;left: 350px;
+  border-bottom-color: #23326b;
+}
+.nav2 .tit:hover{
+  background:#23326b;
 }
 .nav3{
   top:327px;left: 300px;
+  border-bottom-color: #abb538;
+}
+.nav3 .tit:hover{
+  background:#abb538;
 }
 .nav4{
   top:377px;left: 250px;
+  border-bottom-color: #f0202e;
 }
+.nav4 .tit:hover{
+  background:#f0202e;
+}
+
+/* logo */
+.logo-wrap{
+  position: absolute;
+  width : 567px;
+}
+.logo-c{
+  background: #f3f3f3;
+  padding : 10px;
+}
+.logo-c h2{
+  font-weight: bold;
+  font-size: 18px;
+}
+.logo-c p{
+  margin: 10px 0 ;
+}
+
+/* menu */
+.menus{
+  position: fixed;
+  left : 0;
+  width: 40px;
+  top: 50%;
+  margin-top: -130px;
+}
+.menus .menu-item{
+  position: relative;
+  cursor: pointer;
+  display: block;
+  height : 60px;
+  background: #777;
+  left: -20px ;
+  margin-bottom: 5px;
+  -moz-transition: left 200ms ease  ;
+  -webkit-transition: left 200ms ease  ;
+  -o-transition: left 200ms ease  ;
+  transition: left 200ms ease  ;
+}
+/*TODO animate*/
+.menus .menu-item:hover{
+  left : 0;
+  -moz-transition: left 200ms ease  ;
+  -webkit-transition: left 200ms ease  ;
+  -o-transition: left 200ms ease  ;
+  transition: left 200ms ease  ;
+}
+.menus a.selected{
+  left : 0;
+}
+.menus .menu2{
+  background: #23326b;
+}
+.menus .menu3{
+  background: #abb538;
+}
+.menus .menu4{
+  background: #f0202e;
+}
+
+/* share_btn begin*/
+.share_btn{background:url(../images/share_button.png); width:45px; height:42px; zoom:1; position:fixed; bottom:31px; left:31px; z-index:111;cursor:pointer;}
+.share_btn:hover{background:url(../images/share_button.png) 0 -42px;}
+.share_btn:hover .share_li{display:block;}
+.share_li{ width:142px; position:absolute; bottom: 42px;left:0; padding:0; display:none; color:#333333}
+
+.share_li h3{ padding-left:10px;height:40px; line-height:40px; background:url(../images/share_bg.png); }
+.share_li a { padding-left: 50px;line-height: 34px; height:35px; display:block; }
+.share_li a:hover{background-color:#fff !important;}
+.share_li a.a1{ background:url(../images/a1.png) no-repeat;}
+.share_li a.a2{ background:url(../images/a2.png) no-repeat;}
+.share_li a.a3{ background:url(../images/a3.png) no-repeat;}
+.share_li a.a4{ background:url(../images/a4.png) no-repeat;}
+.share_li a.a5{ background:url(../images/a5.png) no-repeat;}
+.share_li a.a6{ background:url(../images/a6.png) no-repeat;}
+.share_li a.a7{ background:url(../images/a7.png) no-repeat;}
+.share_li a.a8{ background:url(../images/a8.png) no-repeat;}
+.share_li a.a9{ background:url(../images/a9.png) no-repeat;}
+
+.share2{ background-position:-45px 0; left:80px;}
+.share2:hover{ background:url(../images/share_button.png) -45px -42px;}
+.share_li a.a10{ background:url(../images/a10.png) no-repeat;}
+.share_li a.a11{ background:url(../images/a11.png) no-repeat;}
+
+.share3{background-position:-90px 0; left:130px;}
+.en .share3 {background:url(../images/share_button_en.png) -90px 0;}
+.share3:hover {background-position:-90px -42px; width: 105px;}
