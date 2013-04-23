@@ -11,9 +11,9 @@
  </head>
  <body>
     <div class="main">
-      <section>
+      <section style="display:none;">
         <!-- logs -->
-        <div class="logo-wrap" jq-effect="delay:700;duration:500;effect:fadeRight;easing:easeInOutCubic">
+        <div id="logo-wrap" class="logo-wrap" jq-effect="delay:700;duration:500;effect:fadeRight;easing:easeInOutCubic">
           <img src="" />
           <div class="logo-c">
             <h2>2013保时捷极致体验</h2>
@@ -23,10 +23,10 @@
         </div>
         <!-- cars -->
         <div id="car-wrap">
-          <div class="car car1" jq-effect="delay:500;duration:500;from:-200;easing:easeInOutCubic" >CAR1</div>
-          <div class="car car2" jq-effect="delay:1000;duration:600;from:-200;easing:easeInOutCubic" >CAR2</div>
-          <div class="car car3" jq-effect="delay:700;duration:700;from:-200;easing:easeInOutCubic">CAR3</div>
-          <div class="car car4" jq-effect="delay:1200;duration:800;from:-200;easing:easeInOutCubic">CAR4</div>
+          <div class="car car1" jq-effect="delay:500;duration:500;from:120%r;easing:easeInOutCubic" >CAR1</div>
+          <div class="car car2" jq-effect="delay:1000;duration:600;from:120%r;easing:easeInOutCubic" >CAR2</div>
+          <div class="car car3" jq-effect="delay:700;duration:700;from:120%r;easing:easeInOutCubic">CAR3</div>
+          <div class="car car4" jq-effect="delay:1200;duration:800;from:120%r;easing:easeInOutCubic">CAR4</div>
         </div>
         <!-- navs -->
         <div id="car-nav">
@@ -44,27 +44,45 @@
           </div>
         </div>
       </section>
-      <section>
-        <div class="mod">
+      <section style="display:none;">
+        <div class="mod act-mod">
           <div class="mod-h">
-            <ul>
-              <li>上海（5月20日）</li>
-              <li>北京（5月20日）</li>
+            <ul class="tabs-h clearfix">
+              <li class="tab-h tab-h-actived">上海（5月20日）</li>
+              <li class="tab-h">北京（5月20日）</li>
             </ul>
           </div>
           <div class="mod-b">
-            <ul>
-              <li>
+            <ul class="tabs-b">
+              <li class="tab-b tab-b-actived clearfix">
+                <ul class="act-list">
+                  <li><em>12:30</em>保时捷极致体验活动开放</li>
+                  <li><em>12:30</em>保时捷极致体验活动开放</li>
+                  <li><em>12:30</em>保时捷极致体验活动开放</li>
+                </ul>
+                <div class="act-map">
+                  <img src=""/>
+                  <div>查看大图</div>
+                </div>
+                <button class="btn sign-btn">在线报名</button>
               </li>
-              <li>
+              <li class="tab-b">
               </li>
             </ul>
           </div>
           <div class="mod-f"></div>
         </div>
       </section>
-      <section></section>
-      <section></section>
+      <section>
+        <div id="photo-list" class="photo-list">
+          <img src="photo/Day1.jpg" title="这到底为什么"/>
+          <img src="photo/Day2.jpg" title="因为失恋的人太多"/>
+          <img src="photo/Day3.jpg" title="伤心的人越来越多"/>
+          <img src="photo/Day4.jpg" title="难过的时候没有安慰我"/>
+          <img src="photo/Day5.jpg" title="听着度过"/>
+          <img src="photo/Day6.jpg" title="寂寞的时候可以听情歌"/>
+        </div>
+      </section>
     </div>
     <div id="menus" class="menus">
       <a class="menu-item menu1"></a>

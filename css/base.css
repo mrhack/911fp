@@ -53,6 +53,8 @@ a {
 }
 
 /* app css */
+html,body{height:100%;}
+.main{height:100%;position: relative;overflow:hidden;}
 [jq-effect]{
     position: absolute;
     display:none;
@@ -62,41 +64,42 @@ body{
 }
 .car{
   top : 200px;
-  left : 300px;
+  right : 45%;
+  height : 50px;
   font-size: 50px;
   background: red;
 }
 .car2{
-  top:250px;left: 250px;
+  top:250px;right : 50%;
 }
 .car3{
-  top:300px;left: 200px;
+  top:300px;right : 55%;
 }
 .car4{
-  top:350px;left: 150px;
+  top:350px;right : 60%;
 }
 
-.nav{top:227px;left:400px;height: 24px;border-bottom: 10px solid #777;border-left: 10px solid transparent; width: 2000px;}
+.nav{top:227px;left:55%;height: 24px;border-bottom: 10px solid #777;border-left: 10px solid transparent; width: 2000px;}
 .nav .tit{cursor:pointer; height: 100%;margin-left: 30px; line-height: 24px;float:left; color:#aaa; padding: 0 10px;}
 .nav .tit span{display:none;}
 .nav .tit:hover{color: white;background:#777;}
 .nav .tit:hover span{display:inline;}
 .nav2{
-  top:277px;left: 350px;
+  top:277px;left:50%;
   border-bottom-color: #23326b;
 }
 .nav2 .tit:hover{
   background:#23326b;
 }
 .nav3{
-  top:327px;left: 300px;
+  top:327px;left:45%;
   border-bottom-color: #abb538;
 }
 .nav3 .tit:hover{
   background:#abb538;
 }
 .nav4{
-  top:377px;left: 250px;
+  top:377px;left:40%;
   border-bottom-color: #f0202e;
 }
 .nav4 .tit:hover{
@@ -106,7 +109,8 @@ body{
 /* logo */
 .logo-wrap{
   position: absolute;
-  width : 567px;
+  width: 460px;
+  left: 30%;
 }
 .logo-c{
   background: #f3f3f3;
@@ -162,6 +166,81 @@ body{
   background: #f0202e;
 }
 
+/* tabs-h */
+.tabs-h{
+  background: #aaa;
+  font-weight: bold;
+  font-size: 16px;
+  color : gray;
+  height : 40px;
+  line-height: 40px;
+}
+.tab-h{
+  float: left;
+  padding: 0 10px;
+  border-right: 1px solid gray;
+  cursor: pointer;
+}
+.tab-h-actived{
+  color : black;
+}
+.tab-b{
+  padding: 20px;
+  display: none;
+  border-radius: 0 0 2px 2px;
+  background: white;
+  position: relative;
+}
+.tab-b-actived{
+  display: block;
+}
+
+/* mod constructor */
+.act-mod{
+  width: 70%;
+  margin: 100px auto;
+  border: 1px solid #999;
+  background: #ccc;
+  padding: 4px;
+  border-radius: 3px;
+  /*position: absolute;*/
+  top: 100px;
+}
+
+/* mod content */
+.act-list{
+  color: #555;
+  float: left;
+}
+.act-list li{
+  line-height: 35px;
+}
+.act-list em{
+  color: red;
+  padding: 2px 5px;
+  border: 1px solid #bbb;
+  margin-right: 5px;
+  border-radius: 4px;
+}
+.act-map{
+  float: right;
+  margin: 10px 0;
+  width: 200px;
+  height: 200px;
+  border: 1px solid #aaa;
+  background: #ccc;
+  top: 30px;
+  right: 20px;
+}
+.sign-btn{
+  position: absolute;
+  bottom: 20px;
+}
+
+/* photo-list */
+#photo-list img{
+  display: none;
+}
 /* share_btn begin*/
 .share_btn{background:url(../images/share_button.png); width:45px; height:42px; zoom:1; position:fixed; bottom:31px; left:31px; z-index:111;cursor:pointer;}
 .share_btn:hover{background:url(../images/share_button.png) 0 -42px;}
