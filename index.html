@@ -10,23 +10,38 @@
   <link href="./css/base.css" rel="stylesheet" type="text/css" />
  </head>
  <body>
+    <header>
+      <nav>
+        <a class="menu menu-home menu-sel">首页</a>
+        <span class="sep">|</span>
+        <a class="menu menu-sel">日程安排</a>
+        <span class="sep">|</span>
+        <a class="menu">活动环节</a>
+        <span class="sep">|</span>
+        <a class="menu">精彩图库</a>
+        <span class="sep">|</span>
+        <a class="menu menu-sign menu-sel">在线报名</a>
+      </nav>
+      <img class="logo" src="./images/logo.png" >
+    </header>
     <div class="main">
       <section style="display:none;">
         <!-- logs -->
         <div id="logo-wrap" class="logo-wrap" jq-effect="delay:700;duration:500;effect:fadeRight;easing:easeInOutCubic">
-          <img src="" />
           <div class="logo-c">
             <h2>2013保时捷极致体验</h2>
-            <p>保时捷“极致体验”活动将于2013年6月14日到6月16日在上海国际赛车场隆重举行，欢迎您届时莅临，亲身感受多款保时捷跑车的极致驾乘体，并参与多项精彩限位开关的主题活动，您亦可趁此机会，领略保时捷独特的跑车文化，体会卓越作家的志风范。</p>
-            <button>在线报名&raquo;</button>
+            <p class="summery">用速度点燃你的激情，用梦想点亮你的生活！</p>
+            <p class="desc">保时捷极至体验，再次来到中国，带来全方位的保时捷品牌展示。在这里，你可以感受保时捷的历史与辉煌， 近距离品鉴包括保时捷 356 在内的经典车型，抢先领略全新一代 Panamera 与 911 GT3 的领世风采，感受保时捷对跑车未来的激情演绎；您更可参与多项互动游戏，赢取试乘诸多新款保时捷车型的机会，体验风驰电掣的纵横驰骋。</p>
+            <p><a class="event" href=""> 上海站 6 月 13-16 日 </a> 上海新能源主题公园</p>
+            <p class="logo-base"><a class="event" href=""> 北京站 6 月 28-30 日 </a> 北京金港国际赛车场</p>
           </div>
         </div>
         <!-- cars -->
         <div id="car-wrap">
-          <div class="car car1" jq-effect="delay:500;duration:500;from:120%r;easing:easeInOutCubic" >CAR1</div>
-          <div class="car car2" jq-effect="delay:1000;duration:600;from:120%r;easing:easeInOutCubic" >CAR2</div>
-          <div class="car car3" jq-effect="delay:700;duration:700;from:120%r;easing:easeInOutCubic">CAR3</div>
-          <div class="car car4" jq-effect="delay:1200;duration:800;from:120%r;easing:easeInOutCubic">CAR4</div>
+          <div class="car car1" jq-effect="delay:500;duration:500;from:120%r;easing:easeInOutCubic" ></div>
+          <div class="car car2" jq-effect="delay:1000;duration:600;from:120%r;easing:easeInOutCubic" ></div>
+          <div class="car car3" jq-effect="delay:700;duration:700;from:120%r;easing:easeInOutCubic"></div>
+          <div class="car car4" jq-effect="delay:1200;duration:800;from:120%r;easing:easeInOutCubic"></div>
         </div>
         <!-- navs -->
         <div id="car-nav">
@@ -44,8 +59,57 @@
           </div>
         </div>
       </section>
+      <section class="daily-section" style="display:none;">
+        <div class="daily-tit">
+          <a href="javascript:;" class="return">返回</a>
+          <a href="javascript:;" class="selected" style="margin-right:12px;">2062上海新能源主题公园</a>
+          <a href="javascript:;">北京金港国际赛车场</a>
+        </div>
+        <div class="daily-con">
+          <div id="G_map-container">
+
+          </div>
+        </div>
+      </section>
+      <section class="daily-section" style="display:none;">
+        <div class="daily-tit">
+          <a href="javascript:;" class="selected" style="margin-right:12px;">上 海</a>
+          <a href="javascript:;">北 京</a>
+        </div>
+        <div class="daily-con">
+          <img src="./photo/act-bg.jpg" name="" />
+          <area></area>
+          <div class="tip-wrap">
+            <div class="tip-con">
+              <div style="width:326px;">
+                <img src="./photo/tip-img.png" />
+                <h2>保时捷博物馆</h2>
+                <p>2007年建成的新博物馆位于祖文豪森的保时捷广场，旨在展示保时捷的历史和品牌魅力。在过去60年的发展中，每一款保时捷车型都继承传统，延续纯正跑车基因。 “极至体验”活动从斯图加特保时捷博物馆中精挑细选出一系列经典历史车型，并与其后代车型并肩展示。今年我们还将特别推出全系911历史车型，以独特的角度为您呈现这款传奇跑车的历史沿革。现场还将派发保时捷在线博物馆“入场券”，让您随时徜徉于保时捷的历史长河之中。</p>
+              </div>
+            </div>
+            <div class="tip-angle"></div>
+          </div>
+        </div>
+      </section>
+      <section class="photo-section">
+        <p>在此您可浏览 2012年保时捷"极至体验"的精选照片，以供您了解活动内容。我们期待在今年的活动中与您分享更多精彩难忘的瞬间！</p>
+        <div id="G_photo-wrap"></div>
+        <div id="G_photo-list" class="photo-list">
+          <div>
+            <img src="photo/Day1.jpg" title="这到底为什么"/>
+            <img src="photo/Day2.jpg" title="因为失恋的人太多"/>
+            <img src="photo/Day3.jpg" title="伤心的人越来越多"/>
+            <img src="photo/Day4.jpg" title="难过的时候没有安慰我"/>
+            <img src="photo/Day5.jpg" title="听着度过"/>
+            <img src="photo/Day6.jpg" title="寂寞的时候可以听情歌"/>
+          </div>
+        </div>
+        <div id="G_photo-btn" class="">
+
+        </div>
+      </section>
       <section style="display:none;">
-        <div class="mod act-mod">
+                <div class="mod act-mod">
           <div class="mod-h">
             <ul class="tabs-h clearfix">
               <li class="tab-h tab-h-actived">上海（5月20日）</li>
@@ -73,46 +137,37 @@
           <div class="mod-f"></div>
         </div>
       </section>
-      <section>
-        <div id="photo-list" class="photo-list">
-          <img src="photo/Day1.jpg" title="这到底为什么"/>
-          <img src="photo/Day2.jpg" title="因为失恋的人太多"/>
-          <img src="photo/Day3.jpg" title="伤心的人越来越多"/>
-          <img src="photo/Day4.jpg" title="难过的时候没有安慰我"/>
-          <img src="photo/Day5.jpg" title="听着度过"/>
-          <img src="photo/Day6.jpg" title="寂寞的时候可以听情歌"/>
-        </div>
-      </section>
     </div>
-    <div id="menus" class="menus">
-      <a class="menu-item menu1"></a>
-      <a class="menu-item menu2"></a>
-      <a class="menu-item menu3"></a>
-      <a class="menu-item menu4"></a>
-    </div>
-    <div class="share-btns" id="share-btns">
-      <div class="share1 share_btn">
-        <div class="share_li">
-          <h3>推荐  </h3>
-          <a class="a1" id="sharefriend" href="sharefriend.html"><span>电子邮件</span></a>
-          <a class="a2" href="javascript:sharethis('http://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=#URL#&amp;amp;title=#TITLE#','qqspace',1);"><span>QQ 空间</span></a>
-          <a class="a3" href="javascript:sharethis('http://v.t.sina.com.cn/share/share.php?title=%2523#TITLE#%2523&amp;amp;url=#URL#','sina',1);"><span>新浪微博</span></a>
-          <a class="a4" href="javascript:sharethis('http://v.t.qq.com/share/share.php?title=#TITLE#&amp;amp;url=#URL#','tecent',1);"><span>腾讯微博</span></a>
-          <a class="a5" href="javascript:sharethis('http://share.renren.com/share/buttonshare.do?link=#URL#&amp;amp;title=#TITLE#','renren',1);"><span>人人</span></a>
-          <a class="a6" href="javascript:sharethis('http://www.kaixin001.com/repaste/share.php?rtitle=#TITLE#&amp;amp;rurl=#URL#&amp;amp;rcontent=#TITLE#','kaixin',1);"><span>开心网</span></a>
-          <a class="a7" href="javascript:sharethis('http://t.sohu.com/third/post.jsp?&amp;url=#URL#&amp;title=#TITLE#','sohu',1);"><span>搜狐微博</span></a>
-          <a class="a8" href="javascript:sharethis('http://cang.baidu.com/do/add?it=#TITLE#&amp;amp;iu=#URL#&amp;amp;fr=ien#nw=1','baidu',1);"><span>百度</span></a>
-          <a class="a9" href="javascript:sharethis('http://shuqian.qq.com/post?jumpback=1&amp;amp;title=#TITLE#&amp;amp;uri=#URL#','qq',1);"><span>QQ 书签</span></a>
-        </div>
+    <footer>
+      <div class="copyright">
+        <div class="copy-name">保时捷中国<em class="angle"></em></div>
+        <div>&copy;2013 <a href="">保时捷中国</a><a href="">法律公告</a></div>
       </div>
-      <div class="share2 share_btn">
-        <div class="share_li">
-           <h3>成为我们的粉丝</h3>
-          <a class="a10" target="_blank" href="https://plus.google.com/+Porsche/posts">Google+</a>
-          <a class="a11" target="_blank" href="http://pinterest.com/porsche/"><span>品趣志</span></a>
+      <div class="share-btns" id="share-btns" style="display:none;">
+        <div class="share1 share_btn">
+          <div class="share_li">
+            <h3>推荐  </h3>
+            <a class="a1" id="sharefriend" href="sharefriend.html"><span>电子邮件</span></a>
+            <a class="a2" href="javascript:sharethis('http://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=#URL#&amp;amp;title=#TITLE#','qqspace',1);"><span>QQ 空间</span></a>
+            <a class="a3" href="javascript:sharethis('http://v.t.sina.com.cn/share/share.php?title=%2523#TITLE#%2523&amp;amp;url=#URL#','sina',1);"><span>新浪微博</span></a>
+            <a class="a4" href="javascript:sharethis('http://v.t.qq.com/share/share.php?title=#TITLE#&amp;amp;url=#URL#','tecent',1);"><span>腾讯微博</span></a>
+            <a class="a5" href="javascript:sharethis('http://share.renren.com/share/buttonshare.do?link=#URL#&amp;amp;title=#TITLE#','renren',1);"><span>人人</span></a>
+            <a class="a6" href="javascript:sharethis('http://www.kaixin001.com/repaste/share.php?rtitle=#TITLE#&amp;amp;rurl=#URL#&amp;amp;rcontent=#TITLE#','kaixin',1);"><span>开心网</span></a>
+            <a class="a7" href="javascript:sharethis('http://t.sohu.com/third/post.jsp?&amp;url=#URL#&amp;title=#TITLE#','sohu',1);"><span>搜狐微博</span></a>
+            <a class="a8" href="javascript:sharethis('http://cang.baidu.com/do/add?it=#TITLE#&amp;amp;iu=#URL#&amp;amp;fr=ien#nw=1','baidu',1);"><span>百度</span></a>
+            <a class="a9" href="javascript:sharethis('http://shuqian.qq.com/post?jumpback=1&amp;amp;title=#TITLE#&amp;amp;uri=#URL#','qq',1);"><span>QQ 书签</span></a>
+          </div>
         </div>
+        <div class="share2 share_btn">
+          <div class="share_li">
+             <h3>成为我们的粉丝</h3>
+            <a class="a10" target="_blank" href="https://plus.google.com/+Porsche/posts">Google+</a>
+            <a class="a11" target="_blank" href="http://pinterest.com/porsche/"><span>品趣志</span></a>
+          </div>
+        </div>
+        <a class="share3 share_btn" target="_blank" href="http://e.weibo.com/porschechina"></a>
       </div>
-      <a class="share3 share_btn" target="_blank" href="http://e.weibo.com/porschechina"></a>
-    </div>
+    </footer>
+    <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
  </body>
 </html>

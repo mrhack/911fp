@@ -47,4 +47,33 @@ define(function(require, exports, module) {
             var w = $(this).width();
         });
     });
+
+
+    // init map
+    $(function(){
+        var $mapWrap = $('#G_map-container');
+        $('.render-map').click(function(){
+            var lnglat = $(this).attr('lnglat');
+            var map = new google.maps.Map( $mapWrap[0] , {
+                zoom : 3,
+                streetViewControl: false,
+                scaleControl: true,
+                mapTypeId: google.maps.MapTypeId.ROADMAP
+            });
+            var marker = new google.maps.Marker({
+                map: map,
+                draggable: true
+            });
+            var geocoder = new google.maps.Geocoder();
+            var address = "xxxxxxxx";
+            geocoder.geocode( { 'address': address}, function (results, status) {
+                if (status == google.maps.GeocoderStatus.OK) {
+                    var bounds = results[0].geometry.viewport;
+                    map.fitBounds(bounds);
+                    marker.setPosition(results[0].geometry.location);
+                    marker.setTitle(address);
+                } else alert(lang.searchError);
+            });
+        });
+    });
 });
