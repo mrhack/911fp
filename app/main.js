@@ -149,7 +149,7 @@ define(function(require, exports, module) {
                 map.setMapTypeId('map_style');
             }
 
-            var lnglats = lnglat.split(',');
+
             var point = new google.maps.LatLng(parseFloat(lnglats[0]),parseFloat(lnglats[1]));
             if( !marker ) {
                 marker = new google.maps.Marker({
@@ -236,9 +236,10 @@ define(function(require, exports, module) {
      // for photos.html
     $(function(){
         var $listWrap = $('#G_photo-list');
+        if( !$listWrap.length ) return;
         var $listInner = $('#G_photo-list').children();
         var $imgWrap = $('#G_photo-wrap');
-        var $imgInner = $('#G_photo-wrap').children();
+        var $imgInner = $('#G_photo-wrap-inner');
         var $currImg = $imgInner.find('img');
 
         // all images
@@ -298,7 +299,6 @@ define(function(require, exports, module) {
                             $currImg.remove();
                             $currImg = $newImg;
                             $newImg = null;
-
                             cb && cb();
                         });
 
@@ -318,12 +318,12 @@ define(function(require, exports, module) {
 
             $newImg.attr( 'src' , src );
         }
-        var preload = function( $currImg ){
+        var preload = function( $t ){
             // preload next two image
             var _tmpImg1 = document.createElement('img');
             var _tmpImg2 = document.createElement('img');
-            _tmpImg1.src = $currImg.next().attr('src').replace(/small/ , 'big');
-            _tmpImg2.src = $currImg.next().next().attr('src').replace(/small/ , 'big');
+            _tmpImg1.src = $t.next().attr('src').replace(/small/ , 'big');
+            _tmpImg2.src = $t.next().next().attr('src').replace(/small/ , 'big');
         }
         // TODO delete var animate
         var goToIndex    = function ( index ) {
