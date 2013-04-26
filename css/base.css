@@ -56,6 +56,8 @@ a {
     clear   : both;
     height  : 0;
 }
+.fr {float:right;}
+.fl {float:left;}
 
 /* app css */
 
@@ -65,8 +67,8 @@ header{position:relative;height:140px;border-bottom: 1px solid #ed1b23;}
 header .logo{bottom:10px;position:absolute;}
 header nav{bottom:10px;right:0;position:absolute;background:url('../images/menu-bg.png') no-repeat;color:#909090;
 height:31px;width:427px;float:right;line-height: 31px;}
-header nav .menu{float:left; padding: 0 14px; cursor: pointer;}
-header nav .menu-home{padding-left:20px;}
+header nav .menu{float:left; padding: 0 16px; cursor: pointer;}
+header nav .menu-home{padding-left:27px;}
 header nav .menu-sel{
   color: white;
   background: url('../images/menu-sel.png') repeat-x 0 ;
@@ -78,7 +80,11 @@ header nav a.menu-sign.menu-sel{
   background: url('../images/menu-sel1.png') no-repeat right;
 }
 
-header nav .sep{float:left;}
+header nav .sep{float: left;
+width: 1px;
+height: 15px;
+background: #A8A8A8;
+margin-top: 8px;}
 
 
 
@@ -204,24 +210,24 @@ header nav .sep{float:left;}
   width: 49.8888%;
   float: left;
   cursor: pointer;
-  text-indent: 2em;
 }
 .daily-times-h li a{
   font-size: 16px;
   line-height: 120%;
   padding-left: 20px;
   padding-bottom: 2px;
-  margin-left: -1em;
-  margin-right: 130px;
   background: url('../images/location.png') no-repeat;
 }
 .daily-times-h .bj-loc{
   text-align: right;
 }
-.daily-times-h .bj-loc a{
-  margin-right: 2em;
-  margin-left: 140px;
+.daily-times-h .bj-loc span{
+  margin-left: 40px;
 }
+.daily-times-h .bj-loc a{
+  margin-right: 40px;
+}
+
 .sh-selected .sh-loc{
   background: #ed1b23;
   cursor: default;
@@ -308,8 +314,7 @@ header nav .sep{float:left;}
   padding: 5px;
 }
 #G_map-container{
-  height: 380px;
-  background: red;
+  height: 480px;
 }
 
 /* --------------------------------------------- tip-wrap */
@@ -389,6 +394,8 @@ header nav .sep{float:left;}
 }
 .photo-list{
    float:left;
+   width: 768px;
+   overflow: hidden;
 }
 .photo-list img,
 .photo-btns a,
@@ -403,6 +410,7 @@ header nav .sep{float:left;}
   line-height: 52px;
 }
 .photo-list img{
+  display: none;
   border: 1px solid white;
   cursor: pointer;
 }
@@ -466,6 +474,7 @@ header nav .sep{float:left;}
 /* footer css */
 footer{height:50px;background:#e8e8e8;}
 footer .copyright{color:#a3a3a3;float:left;margin-top:5px;}
+footer .copyright a{margin-right:10px;}
 footer .angle{vertical-align:super;margin-left:10px;
   font-size:0px;line-height:0px;border:6px solid transparent;border-left-color:#737373;}
 footer .footer-inner{

@@ -65,17 +65,64 @@ define(function(require, exports, module) {
         var selectedClass = 'selected';
         var $mapWrap = $('#G_map-container');
 
+        if( !$mapWrap.length ) return;
+
         var map = null;
+        var styles = [
+          {
+            stylers: [
+              { hue: "#000" },
+              { saturation: -100 }
+            ]
+          },{
+            featureType: "road",
+            elementType: "geometry",
+            stylers: [
+              { lightness: 50 },
+              { visibility: "simplified" }
+            ]
+          },{
+            featureType: "road",
+            elementType: "labels",
+            stylers: [
+              { visibility: "on" }
+            ]
+          }
+        ];
+        // Create a map object, and include the MapTypeId to add
+        // to the map type control.
+        var mapOptions = {
+          zoom: 17,
+          center: new google.maps.LatLng(31.213368,121.506979),
+          mapTypeControlOptions: {
+            mapTypeIds: [google.maps.MapTypeId.ROADMAP, 'map_style']
+          }
+        };
+        var marker;
         var renderMap = function( lnglat ){
             if( !map ){
-                map = new google.maps.Map( $mapWrap[0] , {
-                    zoom : 3,
-                    streetViewControl: false,
-                    scaleControl: true,
-                    mapTypeId: google.maps.MapTypeId.ROADMAP
-                });
+                // Create a new StyledMapType object, passing it the array of styles,
+                // as well as the name to be displayed on the map type control.
+                var styledMap = new google.maps.StyledMapType(styles,{name: "Styled Map"});
+                map = new google.maps.Map($mapWrap[0],mapOptions);
+                //Associate the styled map with the MapTypeId and set it to display.
+                map.mapTypes.set('map_style', styledMap);
+                map.setMapTypeId('map_style');
             }
-            // TODO....
+
+            var lnglats = lnglat.split(',');
+            var point = new google.maps.LatLng(parseFloat(lnglats[0]),parseFloat(lnglats[1]));
+            if( !marker ) {
+                marker = new google.maps.Marker({
+                    position: point,
+                    map: map,
+                    title: 'Strictly'
+                });
+            } else {
+                marker.setOptions( { position: point } );
+            }
+
+            map.setCenter( point );
         }
         $actWrap.find('.daily-times-h li')
             .click(function(){
@@ -137,9 +184,15 @@ define(function(require, exports, module) {
      // for photos.html
      $(function(){
         var $listWrap = $('#G_photo-list');
+        var $listInner = $('#G_photo-list').children();
         var $showImg = $('#G_photo-wrap img');
 
+        // all images
         var $lists = $listWrap.find('img');
+
+
+        $listInner.width( $lists.length * ( 54 + 10 ) );
+        $lists.show();
         // btns
         var $btnWrap = $('#G_photo-btns');
         var $prev = $btnWrap.find('.photo-prev')
@@ -151,7 +204,9 @@ define(function(require, exports, module) {
                 goToIndex( $listWrap.find('.selected').index() + 1 );
             });
         var $curr = $btnWrap.find('.photo-curr');
-        var goToIndex    = function ( index) {
+        var marginLeft = 0;
+        var wrapWidth = $listWrap.width();
+        var goToIndex    = function ( index ) {
             index = ( index + $lists.length ) % $lists.length;
             var $currImg = $lists
                 .removeClass('selected')
@@ -163,6 +218,19 @@ define(function(require, exports, module) {
             $curr.html( index + 1 );
             // TODO... change prev and next status
 
+            // if overflowed
+            // scroll to right ===>
+            if( ( index + 1 ) * 64 <= Math.abs( marginLeft ) ){
+                marginLeft = Math.max ( index  * 64 - wrapWidth , 0 );
+                console.log( marginLeft );
+                $listInner.animate( { marginLeft: -marginLeft });
+            } else
+            // scroll to left <===
+            if( ( index + 1 ) * 64 > Math.abs( marginLeft ) + wrapWidth ){
+                marginLeft = index * 64;
+                console.log( marginLeft );
+                $listInner.animate( { marginLeft: -marginLeft });
+            }
         }
         $listWrap.delegate('img' , 'click' , function(){
             var index = $(this).index();
@@ -219,3 +287,11 @@ define(function(require, exports, module) {
      });
    });
 });
+function sharethis(e, t, n, r, i, s, o, u) {
+    var a = "",
+        f = document.location.toString(),
+        l = "";
+    r = typeof r == "undefined" || r == null ? "" : r, u = typeof u == "undefined" || u == null ? !0 : u, i = "" + (typeof i != "undefined" && i != null ? i : $('meta[property="og:title"]').attr("content")), i = i != "undefined" ? i : document.title, s = "" + (typeof s != "undefined" && s != null ? s : $('meta[property="og:description"]').attr("content")), s = s != "undefined" ? s : "", o = "" + (typeof o != "undefined" && o != null ? o : $('meta[property="og:image"]').attr("content")), o = o != "undefined" ? o : "", o.indexOf("#CONFIGSTRING#") >= 0 && (o = o.replace("#CONFIGSTRING#", caymanConfig.getConfigString())), f = f.replace(/[\?|&]ws=[^&]*/g, ""), f = f.replace(/[\?|&]pc=[^&]*/g, ""), f = f.replace(/[\?|&]deeplink=[^&]*/g, ""), f = f.replace(/[\?|&]uc=[^&]*/g, ""),  l = f + (f.indexOf(!1) ? "?" : "&") + "c=0" + r, n != "undefinded" && (l = l + "&pc=" + n), a = e;
+    if (t = "facebook") a = a.replace(/&#91;/mg, "["), a = a.replace(/&#93;/mg, "]");
+    u ? (a = a.replace("#TITLE#", encodeURIComponent(i)), a = a.replace("#TEXT#", encodeURIComponent(s)), a = a.replace("#MEDIA#", encodeURIComponent(o)), a = a.replace("#URL#", encodeURIComponent(l))) : (a = e.replace("#TITLE#", i), a = a.replace("#TEXT#", encodeURIComponent(s)), a = a.replace("#MEDIA#", o), a = a.replace("#URL#", l)),  window.open(a, "share")
+}
