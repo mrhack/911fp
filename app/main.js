@@ -325,8 +325,9 @@ define(function(require, exports, module) {
             _tmpImg1.src = $currImg.next().attr('src').replace(/small/ , 'big');
             _tmpImg2.src = $currImg.next().next().attr('src').replace(/small/ , 'big');
         }
+        // TODO delete var animate
         var goToIndex    = function ( index ) {
-            if( animate || slideAnimate ) return;
+            if( slideAnimate ) return;
             index = ( index + $lists.length ) % $lists.length;
             var currIndex = $lists.filter('.selected').index();
             var $currImg = $lists
@@ -352,7 +353,7 @@ define(function(require, exports, module) {
             if( ( index + 1 ) * 64 <= Math.abs( marginLeft ) ){
                 animate = true;
                 marginLeft = Math.max ( ( index + 1 ) * 64 - wrapWidth , 0 );
-                $listInner.animate( { marginLeft: -marginLeft } , '' , function(){
+                $listInner.stop(true , false).animate( { marginLeft: -marginLeft } , '' , function(){
                     animate = false;
                 });
             } else
@@ -360,7 +361,7 @@ define(function(require, exports, module) {
             if( ( index + 1 ) * 64 > Math.abs( marginLeft ) + wrapWidth ){
                 animate = true;
                 marginLeft = index * 64;
-                $listInner.animate( { marginLeft: -marginLeft } , '' , function(){
+                $listInner.stop(true , false).animate( { marginLeft: -marginLeft } , '' , function(){
                     animate = false;
                 });
             }
