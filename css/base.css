@@ -38,14 +38,18 @@ body {
     overflow-x: hidden;
 }
 
-a:link, a:visited {
+a:link, a:visited , a:hover , a:active {
   text-decoration: none;
+  color: inherit;
 }
-a:link, a:visited {
-  text-decoration: none;
+
+
+a:focus {
+    outline : none;
 }
 a {
   color: inherit;
+  *color: #909090;
 }
 .clearfix {
     *zoom : 1;
@@ -439,6 +443,8 @@ margin-top: 8px;}
   margin-right: 0;
 }
 .photo-btns em{
+  *zoom : 1;
+  *margin-top: 15px;
   font-size: 0;
   line-height: 0;
   vertical-align: super;
@@ -487,6 +493,8 @@ footer{height:50px;background:#e8e8e8;}
 footer .copyright{color:#a3a3a3;float:left;margin-top:5px;}
 footer .copyright a{margin-right:10px;}
 footer .angle{vertical-align:super;margin-left:10px;
+  *zoom: 1;
+  *vertical-align:baseline;
   font-size:0px;line-height:0px;border:6px solid transparent;border-left-color:#737373;}
 footer .footer-inner{
   width: 1040px;
