@@ -211,6 +211,9 @@ margin-top: 8px;}
   float: left;
   cursor: pointer;
 }
+.daily-times-h li:hover{
+  background: red;
+}
 .daily-times-h li a{
   font-size: 16px;
   line-height: 120%;
@@ -391,6 +394,15 @@ margin-top: 8px;}
 .photo-wrap{
   margin-top: 15px;
   text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.photo-wrap img{
+  width : 1040px;
+  float : left;
+}
+#G_photo-wrap-inner{
+  width: 200%;
 }
 .photo-list{
    float:left;

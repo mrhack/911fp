@@ -51,9 +51,26 @@ define(function(require, exports, module) {
             // fade out logo
             $('#logo-wrap').fadeOut();
         });
-        */
+
         $(window).resize(function(){
             var w = $(this).width();
+        });
+        */
+        // render for footer
+
+
+        $(window).resize(function(){
+            var scrollTop = $(window).scrollTop();
+            if( scrollTop > 0 ){
+                $('footer').css({
+                    position: 'fixed',
+                    bottom  : 0,
+                    width   : '100%'
+                })
+            }
+        })
+        .load( function() {
+            $(window).trigger('resize');
         });
     });
 
@@ -166,11 +183,24 @@ define(function(require, exports, module) {
 
     });
 
+    // for act.html
+    $(function(){
+        var $tip = $('#G_tip-wrap');
+        if( !$tip.length ) return;
+        $('#actbg').hover(function(){
+            $tip.stop( true , false ).fadeIn();
+        } , function(){
+            $tip.stop( true , false ).fadeOut();
+        });
+    });
+
      // for photos.html
-     $(function(){
+    $(function(){
         var $listWrap = $('#G_photo-list');
         var $listInner = $('#G_photo-list').children();
-        var $showImg = $('#G_photo-wrap img');
+        var $imgWrap = $('#G_photo-wrap');
+        var $imgInner = $('#G_photo-wrap').children();
+        var $currImg = $imgInner.find('img');
 
         // all images
         var $lists = $listWrap.find('img');
@@ -192,32 +222,56 @@ define(function(require, exports, module) {
         var marginLeft = 0;
         var wrapWidth = $listWrap.width();
         var animate = false;
+        var slideAnimate = false;
+        var $newImg = null;
+        var sildeImage = function( src , turnLeft , cb){
+            $newImg = $('<img />')[ turnLeft ? 'appendTo' : 'prependTo' ]( $imgInner )
+                .attr( 'src' , src );
+
+            $imgInner.css('marginLeft' , turnLeft ? 0 : -1040 )
+                .animate( {
+                    marginLeft: turnLeft ? - 1040 : 0
+                } , '' , function(){
+                    $imgInner.css( 'marginLeft' , 0 );
+                    $currImg.remove();
+                    $currImg = $newImg;
+                    $newImg = null;
+
+                    cb && cb();
+                });
+        }
         var goToIndex    = function ( index ) {
-            if( animate ) return;
+            if( animate || slideAnimate ) return;
             index = ( index + $lists.length ) % $lists.length;
+            var currIndex = $lists.filter('.selected').index();
             var $currImg = $lists
                 .removeClass('selected')
                 .eq( index )
                 .addClass('selected');
 
-            $showImg.attr('src' , $currImg.attr('src'));
+            // slide image left
+            slideAnimate = true;
+            sildeImage( $currImg.attr('src') , currIndex < index  , function(){
+                slideAnimate = false;
+            });
 
             $curr.html( index + 1 );
             // TODO... change prev and next status
 
             // if overflowed
             // scroll to right ===>
+
             if( ( index + 1 ) * 64 <= Math.abs( marginLeft ) ){
-                marginLeft = Math.max ( ( index + 1 ) * 64 - wrapWidth , 0 );
                 animate = true;
+                marginLeft = Math.max ( ( index + 1 ) * 64 - wrapWidth , 0 );
                 $listInner.animate( { marginLeft: -marginLeft } , '' , function(){
                     animate = false;
                 });
             } else
             // scroll to left <===
             if( ( index + 1 ) * 64 > Math.abs( marginLeft ) + wrapWidth ){
-                marginLeft = index * 64;
                 animate = true;
+                marginLeft = index * 64;
                 $listInner.animate( { marginLeft: -marginLeft } , '' , function(){
                     animate = false;
                 });
