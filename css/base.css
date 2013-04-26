@@ -62,7 +62,7 @@ a {
 }
 .fr {float:right;}
 .fl {float:left;}
-
+.loading{background: #000 url(../images/loading.gif) no-repeat center center;z-index: 1000;}
 /* app css */
 
 
@@ -396,6 +396,7 @@ margin-top: 8px;}
 }
 .photo-wrap{
   margin-top: 15px;
+  height: 692px;
   text-align: center;
   position: relative;
   overflow: hidden;

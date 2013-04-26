@@ -61,7 +61,7 @@ define(function(require, exports, module) {
 
 
     });
-    // fix footer
+    // fix footer ,if space is enough , set footer position fixed to bottom
     var $footer     = $('footer').css('opacity' , 0 );
     $(window).resize(function(){
         var scrollHeight = $(document).height();
@@ -228,24 +228,61 @@ define(function(require, exports, module) {
         var animate = false;
         var slideAnimate = false;
         var $newImg = null;
-        var sildeImage = function( src , turnLeft , cb){
-
-            src = src.replace(/small/ , 'big');
-            $newImg = $('<img />')[ turnLeft ? 'appendTo' : 'prependTo' ]( $imgInner )
-                .attr( 'src' , src );
-
-            $imgInner.css('marginLeft' , turnLeft ? 0 : -1040 )
-                .animate( {
-                    marginLeft: turnLeft ? - 1040 : 0
-                } , '' , function(){
-                    $imgInner.css( 'marginLeft' , 0 );
-                    $currImg.remove();
-                    $currImg = $newImg;
-                    $newImg = null;
-
-                    cb && cb();
+        var wrapLength = $imgWrap.width();
+        var createLoading = function( $wrap ){
+            var position = $wrap.css('position');
+            var fixPos = {relative:1,absolute:1,fixed:1};
+            if( !fixPos[ position ] ){
+                $wrap.css('position' , 'relative');
+            }
+            return $('<div class="loading"></div>')
+                .appendTo( $wrap )
+                .css({
+                    opacity : 0.5,
+                    position: 'absolute',
+                    top     : 0,
+                    left    : 0,
+                    width   : $wrap.width(),
+                    height   : $wrap.height()
                 });
         }
+        var sildeImage = function( src , turnLeft , cb){
+
+            var time = new Date();
+            var $loading = null;
+            var loaded = false;
+            src = src.replace(/small/ , 'big');
+            $newImg = $('<img />')[ turnLeft ? 'appendTo' : 'prependTo' ]( $imgInner )
+                .load( function(){
+                    $imgInner.css('marginLeft' , turnLeft ? 0 : - wrapLength )
+                        .animate( {
+                            marginLeft: turnLeft ? - wrapLength : 0
+                        } , '' , function(){
+                            $imgInner.css( 'marginLeft' , 0 );
+                            $currImg.remove();
+                            $currImg = $newImg;
+                            $newImg = null;
+
+                            cb && cb();
+                        });
+
+                    loaded = true;
+                    $loading && $loading.remove();
+                });
+
+            // 200 ms to wait for image load
+            setTimeout( function(){
+                if( !loaded ){
+                    // create loading
+                    $loading = $imgWrap.find('.loading');
+                    $loading = $loading.length ? $loading
+                        : createLoading( $imgWrap );
+                }
+            } , 100 );
+
+            $newImg.attr( 'src' , src );
+        }
+
         var goToIndex    = function ( index ) {
             if( animate || slideAnimate ) return;
             index = ( index + $lists.length ) % $lists.length;
@@ -260,6 +297,13 @@ define(function(require, exports, module) {
             sildeImage( $currImg.attr('src') , currIndex < index  , function(){
                 slideAnimate = false;
             });
+
+            // preload next two image
+            var _tmpImg1 = document.createElement('img');
+            var _tmpImg2 = document.createElement('img');
+            _tmpImg1.src = $currImg.next().attr('src').replace(/small/ , 'big');
+            _tmpImg2.src = $currImg.next().next().attr('src').replace(/small/ , 'big');
+
 
             $curr.html( index + 1 );
             // TODO... change prev and next status
