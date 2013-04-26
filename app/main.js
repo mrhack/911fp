@@ -221,7 +221,7 @@ define(function(require, exports, module) {
             // if overflowed
             // scroll to right ===>
             if( ( index + 1 ) * 64 <= Math.abs( marginLeft ) ){
-                marginLeft = Math.max ( index  * 64 - wrapWidth , 0 );
+                marginLeft = Math.max ( ( index + 1 ) * 64 - wrapWidth , 0 );
                 console.log( marginLeft );
                 $listInner.animate( { marginLeft: -marginLeft });
             } else
