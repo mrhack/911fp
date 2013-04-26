@@ -59,21 +59,25 @@ define(function(require, exports, module) {
         // render for footer
 
 
-        $(window).resize(function(){
-            var scrollTop = $(window).scrollTop();
-            if( scrollTop > 0 ){
-                $('footer').css({
-                    position: 'fixed',
-                    bottom  : 0,
-                    width   : '100%'
-                })
-            }
-        })
-        .load( function() {
-            $(window).trigger('resize');
-        });
-    });
 
+    });
+    // fix footer
+    var $footer     = $('footer').css('opacity' , 0 );
+    $(window).resize(function(){
+        var scrollHeight = $(document).height();
+        var wHeight     = $(window).height();
+        if( scrollHeight <= wHeight ){
+            $footer.css({
+                position: 'fixed',
+                bottom  : 0,
+                width   : '100%'
+            });
+        }
+        $footer.css('opacity' , 1 ).fadeIn();
+    })
+    .load( function() {
+        $(window).trigger('resize');
+    });
 
     // for daily.html
     $(function(){
@@ -225,6 +229,8 @@ define(function(require, exports, module) {
         var slideAnimate = false;
         var $newImg = null;
         var sildeImage = function( src , turnLeft , cb){
+
+            src = src.replace(/small/ , 'big');
             $newImg = $('<img />')[ turnLeft ? 'appendTo' : 'prependTo' ]( $imgInner )
                 .attr( 'src' , src );
 
