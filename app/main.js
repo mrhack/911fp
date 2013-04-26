@@ -128,6 +128,13 @@ define(function(require, exports, module) {
             .click(function(){
                 $actWrap.attr('class' , $(this).attr('for'));
             });
+
+        // first focus to bj
+        if ( location.hash == '#bg-act' ){
+            $actWrap.find('.daily-times-h li')
+                .eq(1)
+                .trigger('click');
+        }
         // acts to map
         $actWrap.find('.daily-times-h a').click(function(){
             // hide current wrap
@@ -156,29 +163,7 @@ define(function(require, exports, module) {
             $actWrap.show();
             $actMap.hide();
         })
-        $('.render-map').click(function(){
-            var lnglat = $(this).attr('lnglat');
-            var map = new google.maps.Map( $mapWrap[0] , {
-                zoom : 3,
-                streetViewControl: false,
-                scaleControl: true,
-                mapTypeId: google.maps.MapTypeId.ROADMAP
-            });
-            var marker = new google.maps.Marker({
-                map: map,
-                draggable: true
-            });
-            var geocoder = new google.maps.Geocoder();
-            var address = "xxxxxxxx";
-            geocoder.geocode( { 'address': address}, function (results, status) {
-                if (status == google.maps.GeocoderStatus.OK) {
-                    var bounds = results[0].geometry.viewport;
-                    map.fitBounds(bounds);
-                    marker.setPosition(results[0].geometry.location);
-                    marker.setTitle(address);
-                } else alert(lang.searchError);
-            });
-        });
+
     });
 
      // for photos.html
@@ -206,7 +191,9 @@ define(function(require, exports, module) {
         var $curr = $btnWrap.find('.photo-curr');
         var marginLeft = 0;
         var wrapWidth = $listWrap.width();
+        var animate = false;
         var goToIndex    = function ( index ) {
+            if( animate ) return;
             index = ( index + $lists.length ) % $lists.length;
             var $currImg = $lists
                 .removeClass('selected')
@@ -222,14 +209,18 @@ define(function(require, exports, module) {
             // scroll to right ===>
             if( ( index + 1 ) * 64 <= Math.abs( marginLeft ) ){
                 marginLeft = Math.max ( ( index + 1 ) * 64 - wrapWidth , 0 );
-                console.log( marginLeft );
-                $listInner.animate( { marginLeft: -marginLeft });
+                animate = true;
+                $listInner.animate( { marginLeft: -marginLeft } , '' , function(){
+                    animate = false;
+                });
             } else
             // scroll to left <===
             if( ( index + 1 ) * 64 > Math.abs( marginLeft ) + wrapWidth ){
                 marginLeft = index * 64;
-                console.log( marginLeft );
-                $listInner.animate( { marginLeft: -marginLeft });
+                animate = true;
+                $listInner.animate( { marginLeft: -marginLeft } , '' , function(){
+                    animate = false;
+                });
             }
         }
         $listWrap.delegate('img' , 'click' , function(){
