@@ -2,7 +2,7 @@
 <html>
  <head>
   <meta charset="utf-8"/>
-  <title> 首页 </title>
+  <title> 精彩图库 </title>
   <script type="text/javascript"
     src="./lib/sea/sea-debug.js"
     data-config="../../app/config"
@@ -13,51 +13,43 @@
     <div class="wrap">
       <header>
         <nav>
-          <a class="menu menu-home menu-sel" href="./index.html">首页</a>
+          <a class="menu menu-home" href="./index.html">首页</a>
           <span class="sep">|</span>
           <a class="menu" href="./daily.html">日程安排</a>
           <span class="sep">|</span>
           <a class="menu" href="./act.html">活动环节</a>
           <span class="sep">|</span>
-          <a class="menu" href="./photos.html">精彩图库</a>
+          <a class="menu menu-sel" href="./photos.html">精彩图库</a>
           <span class="sep">|</span>
           <a class="menu menu-sign" href="./sign.html">在线报名</a>
         </nav>
         <img class="logo" src="./images/logo.png" >
       </header>
       <div class="main">
-        <section>
-          <!-- logs -->
-          <div id="logo-wrap" class="logo-wrap" jq-effect="delay:700;duration:500;effect:fadeRight;easing:easeInOutCubic">
-            <div class="logo-c">
-              <h2>2013保时捷极致体验</h2>
-              <p class="summery">用速度点燃你的激情，用梦想点亮你的生活！</p>
-              <p class="desc">保时捷极至体验，再次来到中国，带来全方位的保时捷品牌展示。在这里，你可以感受保时捷的历史与辉煌， 近距离品鉴包括保时捷 356 在内的经典车型，抢先领略全新一代 Panamera 与 911 GT3 的领世风采，感受保时捷对跑车未来的激情演绎；您更可参与多项互动游戏，赢取试乘诸多新款保时捷车型的机会，体验风驰电掣的纵横驰骋。</p>
-              <p><a class="event" href=""> 上海站 6 月 13-16 日 </a> 上海新能源主题公园</p>
-              <p class="logo-base"><a class="event" href=""> 北京站 6 月 28-30 日 </a> 北京金港国际赛车场</p>
+        <section class="photo-section">
+          <p>在此您可浏览 2012年保时捷"极至体验"的精选照片，以供您了解活动内容。我们期待在今年的活动中与您分享更多精彩难忘的瞬间！</p>
+          <div id="G_photo-wrap" class="photo-wrap"><img src="./photo/Day1.jpg" /></div>
+          <div class="photo-bottom clearfix">
+            <div id="G_photo-list" class="photo-list clearfix">
+              <div>
+                <img class="selected" src="photo/Day1.jpg" title="这到底为什么"/>
+                <img src="photo/Day2.jpg" title="因为失恋的人太多"/>
+                <img src="photo/Day3.jpg" title="伤心的人越来越多"/>
+                <img src="photo/Day4.jpg" title="难过的时候没有安慰我"/>
+                <img src="photo/Day5.jpg" title="听着度过"/>
+                <img src="photo/Day6.jpg" title="寂寞的时候可以听情歌"/>
+              </div>
+            </div>
+            <div id="G_photo-btns" class="photo-btns clearfix">
+              <a href="javascript:;" class="photo-prev">
+                <em></em>
+              </a>
+              <span class="photo-curr">1</span>
+              <a href="javascript:;" class="photo-next">
+                <em></em>
+              </a>
             </div>
           </div>
-          <!-- cars -->
-          <div class="car-wrap">
-            <div class="cars">
-              <div class="car car1" jq-effect="delay:500;duration:500;from:120%r;easing:easeInOutCubic" ></div>
-              <div class="car car2" jq-effect="delay:1000;duration:600;from:120%r;easing:easeInOutCubic" ></div>
-              <div class="car car3" jq-effect="delay:700;duration:700;from:120%r;easing:easeInOutCubic"></div>
-              <div class="car car4" jq-effect="delay:1200;duration:800;from:120%r;easing:easeInOutCubic"></div>
-            </div>
-            <div class="navs">
-              <div class="nav nav1" jq-effect="delay:1200;duration:200;effect:fadeLeft">
-              </div>
-              <div class="nav nav2" jq-effect="delay:1200;duration:400;effect:fadeLeft">
-              </div>
-              <div class="nav nav3" jq-effect="delay:1200;duration:600;effect:fadeLeft">
-              </div>
-              <div class="nav nav4" jq-effect="delay:1200;duration:800;effect:fadeLeft">
-              </div>
-            </div>
-          </div>
-          <!-- navs -->
-
         </section>
       </div>
     </div>

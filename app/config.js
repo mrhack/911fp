@@ -12,6 +12,14 @@ seajs.config({
         src: '../../src/jquery-plugin/easing/jquery.easing.1.3',
         deps: ['jquery']
     }
+    ,'jquery.uniform' : {
+        src: '../../src/jquery-plugin/form/jquery.uniform.min',
+        deps: ['jquery']
+    }
+    ,'jquery.validate' : {
+        src: '../../src/jquery-plugin/validate/jquery.validate',
+        deps: ['jquery']
+    }
     ,'jquery.ani' : {
         src: '../../src/jquery-plugin/ani/ani',
         deps: ['jquery.easing']

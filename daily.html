@@ -2,7 +2,7 @@
 <html>
  <head>
   <meta charset="utf-8"/>
-  <title> 首页 </title>
+  <title> 日程安排 </title>
   <script type="text/javascript"
     src="./lib/sea/sea-debug.js"
     data-config="../../app/config"
@@ -13,9 +13,9 @@
     <div class="wrap">
       <header>
         <nav>
-          <a class="menu menu-home menu-sel" href="./index.html">首页</a>
+          <a class="menu menu-home" href="./index.html">首页</a>
           <span class="sep">|</span>
-          <a class="menu" href="./daily.html">日程安排</a>
+          <a class="menu menu-sel" href="./daily.html">日程安排</a>
           <span class="sep">|</span>
           <a class="menu" href="./act.html">活动环节</a>
           <span class="sep">|</span>
@@ -26,38 +26,51 @@
         <img class="logo" src="./images/logo.png" >
       </header>
       <div class="main">
-        <section>
-          <!-- logs -->
-          <div id="logo-wrap" class="logo-wrap" jq-effect="delay:700;duration:500;effect:fadeRight;easing:easeInOutCubic">
-            <div class="logo-c">
-              <h2>2013保时捷极致体验</h2>
-              <p class="summery">用速度点燃你的激情，用梦想点亮你的生活！</p>
-              <p class="desc">保时捷极至体验，再次来到中国，带来全方位的保时捷品牌展示。在这里，你可以感受保时捷的历史与辉煌， 近距离品鉴包括保时捷 356 在内的经典车型，抢先领略全新一代 Panamera 与 911 GT3 的领世风采，感受保时捷对跑车未来的激情演绎；您更可参与多项互动游戏，赢取试乘诸多新款保时捷车型的机会，体验风驰电掣的纵横驰骋。</p>
-              <p><a class="event" href=""> 上海站 6 月 13-16 日 </a> 上海新能源主题公园</p>
-              <p class="logo-base"><a class="event" href=""> 北京站 6 月 28-30 日 </a> 北京金港国际赛车场</p>
-            </div>
-          </div>
-          <!-- cars -->
-          <div class="car-wrap">
-            <div class="cars">
-              <div class="car car1" jq-effect="delay:500;duration:500;from:120%r;easing:easeInOutCubic" ></div>
-              <div class="car car2" jq-effect="delay:1000;duration:600;from:120%r;easing:easeInOutCubic" ></div>
-              <div class="car car3" jq-effect="delay:700;duration:700;from:120%r;easing:easeInOutCubic"></div>
-              <div class="car car4" jq-effect="delay:1200;duration:800;from:120%r;easing:easeInOutCubic"></div>
-            </div>
-            <div class="navs">
-              <div class="nav nav1" jq-effect="delay:1200;duration:200;effect:fadeLeft">
-              </div>
-              <div class="nav nav2" jq-effect="delay:1200;duration:400;effect:fadeLeft">
-              </div>
-              <div class="nav nav3" jq-effect="delay:1200;duration:600;effect:fadeLeft">
-              </div>
-              <div class="nav nav4" jq-effect="delay:1200;duration:800;effect:fadeLeft">
-              </div>
-            </div>
-          </div>
-          <!-- navs -->
+        <section class="daily-section">
+          <!-- daily acts -->
+          <div id="G_daily-acts" class="sh-selected">
+            <ul class="daily-times-h">
+              <li class="sh-loc" for="sh-selected"><a for="sh-map" href="javascript:;">活动地点</a>上海( 6 月 16 日 )</li>
+              <li class="bj-loc" for="bj-selected">北京( 6 月 30 日 )<a for="bj-map" href="javascript:;">活动地点</a></li>
+            </ul>
+            <div class="daily-times-b">
+              <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                <tbody>
+                  <tr><td class="sh-act"></td><td class="mid">09:30</td><td class="bj-act">“保时捷极至体验”活动开放</td></tr>
 
+                  <tr><td class="sh-act"></td><td class="mid">11:00</td><td class="bj-act">“赛道表演圈”体验</td></tr>
+
+                  <tr><td class="sh-act">保时捷极至体验”活动开放</td><td class="mid">12:30</td><td class="bj-act"></td></tr>
+
+                  <tr><td class="sh-act"></td><td class="mid">13:00</td><td class="bj-act">“重力体验” 环节</td></tr>
+
+                  <tr><td class="sh-act">古董车和亚洲保时捷卡雷拉杯赛车游行</td><td class="mid">13:30</td><td class="bj-act">古董车和亚洲保时捷卡雷拉杯赛车游行</td></tr>
+
+                  <tr><td class="sh-act">亚洲保时捷卡雷拉杯车手签名</td><td class="mid">14:00</td><td class="bj-act">亚洲保时捷卡雷拉杯车手签名</td></tr>
+
+                  <tr><td class="sh-act">“赛道表演圈”体验</td><td class="mid">14:30</td><td class="bj-act">“赛道表演圈”体验</td></tr>
+
+                  <tr><td class="sh-act"></td><td class="mid">15:00</td><td class="bj-act">“重力体验” 环节</td></tr>
+
+                  <tr class="last"><td class="sh-act">活动结束</td><td class="mid">18:00</td><td class="bj-act">活动结束</td></tr>
+                </tbody>
+              </table>
+            </div>
+
+            <a class="sign-btn" href="./sign.html">在线报名 &raquo;</a>
+          </div>
+          <!-- daily map -->
+          <div id="G_daily-map" style="display:none;">
+            <div class="daily-tit">
+              <a href="javascript:;" class="return" id="G_return">返回</a>
+              <a href="javascript:;" class="sh-map selected" lnglat="xxxx" style="margin-right:12px;">2062上海新能源主题公园</a>
+              <a href="javascript:;" class="bj-map" lnglat="xxxx">北京金港国际赛车场</a>
+            </div>
+            <div class="daily-con">
+              <div id="G_map-container">
+              </div>
+            </div>
+          </div>
         </section>
       </div>
     </div>
@@ -92,5 +105,6 @@
         </div>
       </div>
     </footer>
+    <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
  </body>
 </html>

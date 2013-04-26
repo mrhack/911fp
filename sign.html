@@ -1,0 +1,151 @@
+<!DOCTYPE HTML>
+<html>
+ <head>
+  <meta charset="utf-8"/>
+  <title> 在线报名 </title>
+  <script type="text/javascript"
+    src="./lib/sea/sea-debug.js"
+    data-config="../../app/config"
+    data-main="../../app/main"></script>
+  <link href="./css/base.css" rel="stylesheet" type="text/css" />
+  <link rel="stylesheet" type="text/css" href="./css/uniform.default.css">
+ </head>
+ <body>
+    <div class="wrap">
+      <header>
+        <nav>
+          <a class="menu menu-home" href="./index.html">首页</a>
+          <span class="sep">|</span>
+          <a class="menu" href="./daily.html">日程安排</a>
+          <span class="sep">|</span>
+          <a class="menu" href="./act.html">活动环节</a>
+          <span class="sep">|</span>
+          <a class="menu" href="./photos.html">精彩图库</a>
+          <span class="sep">|</span>
+          <a class="menu menu-sign menu-sel" href="./sign.html">在线报名</a>
+        </nav>
+        <img class="logo" src="./images/logo.png" >
+      </header>
+      <div class="main">
+        <section class="sign-section" id="G_sign-section">
+            <h2>填写报名资料</h2>
+            <form class="sign-form" method="post" action="data/index.php/backup_form_submit">
+              <p class="form-field">
+                <label for="user_name">姓名 </label>
+                <input id="name" name="user_name" type="text">
+              </p>
+              <p class="form-field">
+                <label for="phone">电话</label>
+                <input id="phone" name="phone" type="text">
+              </p>
+              <p class="form-field">
+                <label for="email">电子邮件</label>
+                <input id="email" name="email" type="email">
+              </p>
+              <p class="form-field">
+                <label>感兴趣的车型 </label>
+                <select name="chexing" id="chexing">
+                    <option value="">请选择</option>
+                    <option value="Boxster">Boxster</option>
+                    <option value="Cayman">Cayman</option>
+                    <option value="Cayenne">Cayenne</option>
+                    <option value="911">911</option>
+                    <option value="Panamera">Panamera</option>
+                </select>
+              </p>
+              <p class="form-field">
+                <label>感兴趣的保时捷中心 </label>
+                <select name="baoshijiezhongxin" id="baoshijiezhongxin">
+                    <option value="">请选择</option>
+                    <option value="澳门保时捷中心">澳门保时捷中心</option>
+                    <option value="北京长安保时捷中心">北京长安保时捷中心</option>
+                    <option value="北京海淀保时捷中心">北京海淀保时捷中心</option>
+                    <option value="北京金港保时捷中心">北京金港保时捷中心</option>
+                    <option value="北京亦庄保时捷中心">北京亦庄保时捷中心</option>
+                    <option value="长沙保时捷中心">长沙保时捷中心</option>
+                    <option value="长春保时捷中心">长春保时捷中心</option>
+                    <option value="成都机场保时捷中心">成都机场保时捷中心</option>
+                    <option value="成都金牛保时捷中心">成都金牛保时捷中心</option>
+                    <option value="重庆人和保时捷中心">重庆人和保时捷中心</option>
+                    <option value="大连保时捷中心">大连保时捷中心</option>
+                    <option value="东莞保时捷中心">东莞保时捷中心</option>
+                    <option value="鄂尔多斯保时捷中心">鄂尔多斯保时捷中心</option>
+                    <option value="佛山南海保时捷中心">佛山南海保时捷中心</option>
+                    <option value="福州保时捷中心">福州保时捷中心</option>
+                    <option value="广州保时捷中心">广州保时捷中心</option>
+                    <option value="哈尔滨保时捷中心">哈尔滨保时捷中心</option>
+                    <option value="海口保时捷中心">海口保时捷中心</option>
+                    <option value="杭州滨江保时捷中心">杭州滨江保时捷中心</option>
+                    <option value="杭州西湖保时捷中心">杭州西湖保时捷中心</option>
+                    <option value="合肥保时捷中心">合肥保时捷中心</option>
+                    <option value="呼和浩特保时捷中心">呼和浩特保时捷中心</option>
+                    <option value="济南保时捷中心">济南保时捷中心</option>
+                    <option value="金华保时捷中心">金华保时捷中心</option>
+                    <option value="昆明保时捷中心">昆明保时捷中心</option>
+                    <option value="兰州保时捷中心">兰州保时捷中心</option>
+                    <option value="南京河西保时捷中心">南京河西保时捷中心</option>
+                    <option value="南京宁南保时捷中心">南京宁南保时捷中心</option>
+                    <option value="南宁保时捷中心">南宁保时捷中心</option>
+                    <option value="南通保时捷中心">南通保时捷中心</option>
+                    <option value="宁波保时捷中心">宁波保时捷中心</option>
+                    <option value="青岛保时捷中心">青岛保时捷中心</option>
+                    <option value="泉州保时捷中心">泉州保时捷中心</option>
+                    <option value="上海浦西保时捷中心">上海浦西保时捷中心</option>
+                    <option value="上海浦东保时捷中心">上海浦东保时捷中心</option>
+                    <option value="深圳保时捷中心">深圳保时捷中心</option>
+                    <option value="沈阳保时捷中心">沈阳保时捷中心</option>
+                    <option value="苏州保时捷中心">苏州保时捷中心</option>
+                    <option value="太原保时捷中心">太原保时捷中心</option>
+                    <option value="台州保时捷中心">台州保时捷中心</option>
+                    <option value="唐山保时捷中心">唐山保时捷中心</option>
+                    <option value="天津保时捷中心">天津保时捷中心</option>
+                    <option value="温州鹿城保时捷中心">温州鹿城保时捷中心</option>
+                    <option value="温州瓯海保时捷中心">温州瓯海保时捷中心</option>
+                    <option value="无锡保时捷中心">无锡保时捷中心</option>
+                    <option value="武汉盘龙保时捷中心">武汉盘龙保时捷中心</option>
+                    <option value="武汉光谷保时捷中心">武汉光谷保时捷中心</option>
+                    <option value="西安保时捷中心">西安保时捷中心</option>
+                    <option value="厦门鹭江保时捷中心">厦门鹭江保时捷中心</option>
+                    <option value="厦门翔安保时捷中心">厦门翔安保时捷中心</option>
+                    <option value="香港保时捷中心">香港保时捷中心</option>
+                    <option value="郑州保时捷中心">郑州保时捷中心</option>
+                </select>
+              </p>
+              <div class="form-field agree">
+                <input id="agree" type="checkbox" name="agree">
+                <a id="agree_doc" href="intro.html">我已阅读过保密政策</a>
+              </div>
+              <div class="forrm_submit form-field">
+                <input class="submit" type="submit" value="Submit">
+              </div>
+            </form>
+        </section>
+      </div>
+    </div>
+    <footer>
+      <div class="footer-inner clearfix">
+        <div class="copyright">
+          <div class="copy-name">保时捷中国<em class="angle"></em></div>
+          <div>&copy;2013 <a href="">保时捷中国</a><a href="">法律公告</a></div>
+        </div>
+        <div class="share-btns share-btns" id="share-btns">
+          <div class="share1 share_btn">
+            <div class="share_li">
+              <h3>推荐  </h3>
+              <a class="a1" id="sharefriend" href="sharefriend.html"><span>电子邮件</span></a>
+              <a class="a2" href="javascript:sharethis('http://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=#URL#&amp;amp;title=#TITLE#','qqspace',1);"><span>QQ 空间</span></a>
+              <a class="a3" href="javascript:sharethis('http://v.t.sina.com.cn/share/share.php?title=%2523#TITLE#%2523&amp;amp;url=#URL#','sina',1);"><span>新浪微博</span></a>
+              <a class="a4" href="javascript:sharethis('http://v.t.qq.com/share/share.php?title=#TITLE#&amp;amp;url=#URL#','tecent',1);"><span>腾讯微博</span></a>
+              <a class="a5" href="javascript:sharethis('http://share.renren.com/share/buttonshare.do?link=#URL#&amp;amp;title=#TITLE#','renren',1);"><span>人人</span></a>
+              <a class="a6" href="javascript:sharethis('http://www.kaixin001.com/repaste/share.php?rtitle=#TITLE#&amp;amp;rurl=#URL#&amp;amp;rcontent=#TITLE#','kaixin',1);"><span>开心网</span></a>
+              <a class="a7" href="javascript:sharethis('http://t.sohu.com/third/post.jsp?&amp;url=#URL#&amp;title=#TITLE#','sohu',1);"><span>搜狐微博</span></a>
+              <a class="a8" href="javascript:sharethis('http://cang.baidu.com/do/add?it=#TITLE#&amp;amp;iu=#URL#&amp;amp;fr=ien#nw=1','baidu',1);"><span>百度</span></a>
+              <a class="a9" href="javascript:sharethis('http://shuqian.qq.com/post?jumpback=1&amp;amp;title=#TITLE#&amp;amp;uri=#URL#','qq',1);"><span>QQ 书签</span></a>
+            </div>
+          </div>
+          <a class="share2 share_btn" href="http://e.weibo.com/porschechina"></a>
+        </div>
+      </div>
+    </footer>
+ </body>
+</html>

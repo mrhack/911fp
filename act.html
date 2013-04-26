@@ -2,7 +2,7 @@
 <html>
  <head>
   <meta charset="utf-8"/>
-  <title> 首页 </title>
+  <title> 活动环节 </title>
   <script type="text/javascript"
     src="./lib/sea/sea-debug.js"
     data-config="../../app/config"
@@ -13,11 +13,11 @@
     <div class="wrap">
       <header>
         <nav>
-          <a class="menu menu-home menu-sel" href="./index.html">首页</a>
+          <a class="menu menu-home" href="./index.html">首页</a>
           <span class="sep">|</span>
           <a class="menu" href="./daily.html">日程安排</a>
           <span class="sep">|</span>
-          <a class="menu" href="./act.html">活动环节</a>
+          <a class="menu menu-sel" href="./act.html">活动环节</a>
           <span class="sep">|</span>
           <a class="menu" href="./photos.html">精彩图库</a>
           <span class="sep">|</span>
@@ -26,38 +26,29 @@
         <img class="logo" src="./images/logo.png" >
       </header>
       <div class="main">
-        <section>
-          <!-- logs -->
-          <div id="logo-wrap" class="logo-wrap" jq-effect="delay:700;duration:500;effect:fadeRight;easing:easeInOutCubic">
-            <div class="logo-c">
-              <h2>2013保时捷极致体验</h2>
-              <p class="summery">用速度点燃你的激情，用梦想点亮你的生活！</p>
-              <p class="desc">保时捷极至体验，再次来到中国，带来全方位的保时捷品牌展示。在这里，你可以感受保时捷的历史与辉煌， 近距离品鉴包括保时捷 356 在内的经典车型，抢先领略全新一代 Panamera 与 911 GT3 的领世风采，感受保时捷对跑车未来的激情演绎；您更可参与多项互动游戏，赢取试乘诸多新款保时捷车型的机会，体验风驰电掣的纵横驰骋。</p>
-              <p><a class="event" href=""> 上海站 6 月 13-16 日 </a> 上海新能源主题公园</p>
-              <p class="logo-base"><a class="event" href=""> 北京站 6 月 28-30 日 </a> 北京金港国际赛车场</p>
-            </div>
+        <section class="daily-section">
+          <div class="daily-tit">
+            <a href="javascript:;" class="selected" style="margin-right:12px;">上 海</a>
+            <a href="javascript:;">北 京</a>
           </div>
-          <!-- cars -->
-          <div class="car-wrap">
-            <div class="cars">
-              <div class="car car1" jq-effect="delay:500;duration:500;from:120%r;easing:easeInOutCubic" ></div>
-              <div class="car car2" jq-effect="delay:1000;duration:600;from:120%r;easing:easeInOutCubic" ></div>
-              <div class="car car3" jq-effect="delay:700;duration:700;from:120%r;easing:easeInOutCubic"></div>
-              <div class="car car4" jq-effect="delay:1200;duration:800;from:120%r;easing:easeInOutCubic"></div>
-            </div>
-            <div class="navs">
-              <div class="nav nav1" jq-effect="delay:1200;duration:200;effect:fadeLeft">
-              </div>
-              <div class="nav nav2" jq-effect="delay:1200;duration:400;effect:fadeLeft">
-              </div>
-              <div class="nav nav3" jq-effect="delay:1200;duration:600;effect:fadeLeft">
-              </div>
-              <div class="nav nav4" jq-effect="delay:1200;duration:800;effect:fadeLeft">
+          <div class="daily-con">
+            <img src="./photo/act-bg.jpg" usemap="#actbg" />
+            <map name="actbg" id="actbg">
+              <area shape="polygon" coords="426,429,514,494,518,545,876,317,880,272,788,236" href="javascript:document.getElementById('G_tip-wrap').style.display='';" alt="活动环节"/>
+            </map>
+            <div class="tip-wrap" id="G_tip-wrap" style="display:none;">
+              <div class="tip-top"></div>
+              <div class="tip-middle"></div>
+              <div class="tip-bottom"></div>
+              <div class="tip-con">
+                <div style="width:326px;">
+                  <img src="./photo/tip-img.png" />
+                  <h2>保时捷博物馆</h2>
+                  <p>2007年建成的新博物馆位于祖文豪森的保时捷广场，旨在展示保时捷的历史和品牌魅力。在过去60年的发展中，每一款保时捷车型都继承传统，延续纯正跑车基因。 “极至体验”活动从斯图加特保时捷博物馆中精挑细选出一系列经典历史车型，并与其后代车型并肩展示。今年我们还将特别推出全系911历史车型，以独特的角度为您呈现这款传奇跑车的历史沿革。现场还将派发保时捷在线博物馆“入场券”，让您随时徜徉于保时捷的历史长河之中。</p>
+                </div>
               </div>
             </div>
           </div>
-          <!-- navs -->
-
         </section>
       </div>
     </div>
