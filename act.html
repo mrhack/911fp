@@ -8,6 +8,13 @@
     data-config="../../app/config"
     data-main="../../app/main"></script>
   <!--[if lt IE 9]><script>for(var a=['section','article','nav','header','footer','aside'],i=0,j=a.length;i<j;++i){document.createElement(a[i]);}</script><![endif]-->
+  <!--[if IE 6]>
+  <script type="text/javascript">
+    seajs.use('uglyFuckIe6' , function( exports ){
+      exports.fix('.tip-top , .tip-middle ,.tip-bottom')
+    });
+  </script>
+  <![endif]-->
   <link href="./css/base.css" rel="stylesheet" type="text/css" />
  </head>
  <body>
@@ -32,7 +39,7 @@
             <a href="javascript:;" class="selected" style="margin-right:12px;">上 海</a>
             <a href="javascript:;">北 京</a>
           </div>
-          <div class="daily-con">
+          <div class="daily-con" style="padding: 0;">
             <img src="./photo/act-bg.jpg" usemap="#actbg" />
             <map name="actbg" id="actbg">
               <area shape="polygon" coords="426,429,514,494,518,545,876,317,880,272,788,236" href="javascript:;" alt="活动环节"/>

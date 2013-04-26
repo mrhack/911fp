@@ -25,6 +25,11 @@ seajs.config({
         deps: ['jquery.easing']
     }
 
+    // for ie6 fix png
+    ,'uglyFuckIe6' : {
+        src: '../../src/DD_belatedPNG_0.0.8a-min',
+        exports: 'DD_belatedPNG'
+    }
     // for raphael
     ,'raphael': {
         src: '../raphael/raphael',

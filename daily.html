@@ -8,6 +8,13 @@
     data-config="../../app/config"
     data-main="../../app/main"></script>
   <!--[if lt IE 9]><script>for(var a=['section','article','nav','header','footer','aside'],i=0,j=a.length;i<j;++i){document.createElement(a[i]);}</script><![endif]-->
+  <!--[if IE 6]>
+  <script type="text/javascript">
+    seajs.use('uglyFuckIe6' , function( exports ){
+      exports.fix('.daily-times-h a');
+    });
+  </script>
+  <![endif]-->
   <link href="./css/base.css" rel="stylesheet" type="text/css" />
  </head>
  <body>
@@ -31,7 +38,7 @@
           <!-- daily acts -->
           <div id="G_daily-acts" class="sh-selected">
             <ul class="daily-times-h">
-              <li class="sh-loc" for="sh-selected"><a for="sh-map" href="javascript:;" style="margin-left:40px;">活动地点</a><span class="fr" style="margin-right:40px;">上海( 6 月 16 日 )</span></li>
+              <li class="sh-loc" for="sh-selected"><span class="fr" style="margin-right:40px;">上海( 6 月 16 日 )</span><a for="sh-map" href="javascript:;" style="margin-left:40px;">活动地点</a></li>
               <li class="bj-loc" for="bj-selected"><span class="fl">北京( 6 月 30 日 )</span><a for="bj-map" href="javascript:;">活动地点</a></li>
             </ul>
             <div class="daily-times-b">

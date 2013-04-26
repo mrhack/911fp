@@ -62,23 +62,41 @@ define(function(require, exports, module) {
 
     });
     // fix footer ,if space is enough , set footer position fixed to bottom
-    var $footer     = $('footer').css('opacity' , 0 );
-    $(window).resize(function(){
-        var scrollHeight = $(document).height();
-        var wHeight     = $(window).height();
-        if( scrollHeight <= wHeight ){
-            $footer.css({
-                position: 'fixed',
-                bottom  : 0,
-                width   : '100%'
-            });
-        }
-        $footer.css('opacity' , 1 ).fadeIn();
-    })
-    .load( function() {
-        $(window).trigger('resize');
-    });
+    // ugly ie6, real ugly
+    if( !$.browser.msie || $.browser.version > 6 ){
 
+        var $footer     = $('footer').css('opacity' , 0 );
+        $(window).resize(function(){
+            var scrollHeight = $(document).height();
+            var wHeight     = $(window).height();
+            if( scrollHeight <= wHeight ){
+                $footer.css({
+                    position: 'fixed',
+                    bottom  : 0,
+                    width   : '100%'
+                });
+            }
+            $footer.css('opacity' , 1 ).fadeIn();
+        })
+        .load( function() {
+            $(window).trigger('resize');
+        });
+    } else {
+        //fix ie6 share btn1 hover event
+        $('.share1').hover(function(){
+            $(this).css({
+                backgroundPositionY: -35
+            })
+            .children()
+            .show();
+        }, function(){
+            $(this).css({
+                backgroundPositionY: 0
+            })
+            .children()
+            .hide();
+        });
+    }
     // for daily.html
     $(function(){
         var $actWrap = $('#G_daily-acts');
@@ -190,12 +208,29 @@ define(function(require, exports, module) {
     // for act.html
     $(function(){
         var $tip = $('#G_tip-wrap');
+        var timer = null;
         if( !$tip.length ) return;
-        $('#actbg').hover(function(){
-            $tip.stop( true , false ).fadeIn();
-        } , function(){
-            $tip.stop( true , false ).fadeOut();
-        });
+        var show = function(){
+            if( $.browser.msie && $.browser.version == 6){
+                $tip.show();
+                return;
+            }
+            clearTimeout( timer );
+            timer = setTimeout(function(){
+                $tip.stop( true , false ).fadeIn();
+            } , 100);
+        }
+        var hide = function(){
+            if( $.browser.msie && $.browser.version == 6){
+                $tip.hide();
+                return;
+            }
+            clearTimeout( timer );
+            timer = setTimeout(function(){
+                $tip.stop( true , false ).fadeOut();
+            } , 100);
+        }
+        $('#actbg').add($tip).hover( show , hide);
     });
 
      // for photos.html
@@ -254,6 +289,7 @@ define(function(require, exports, module) {
             src = src.replace(/small/ , 'big');
             $newImg = $('<img />')[ turnLeft ? 'appendTo' : 'prependTo' ]( $imgInner )
                 .load( function(){
+                    if( !$newImg || $newImg.attr('src') != $(this).attr('src') ) return;
                     $imgInner.css('marginLeft' , turnLeft ? 0 : - wrapLength )
                         .animate( {
                             marginLeft: turnLeft ? - wrapLength : 0
@@ -282,7 +318,13 @@ define(function(require, exports, module) {
 
             $newImg.attr( 'src' , src );
         }
-
+        var preload = function( $currImg ){
+            // preload next two image
+            var _tmpImg1 = document.createElement('img');
+            var _tmpImg2 = document.createElement('img');
+            _tmpImg1.src = $currImg.next().attr('src').replace(/small/ , 'big');
+            _tmpImg2.src = $currImg.next().next().attr('src').replace(/small/ , 'big');
+        }
         var goToIndex    = function ( index ) {
             if( animate || slideAnimate ) return;
             index = ( index + $lists.length ) % $lists.length;
@@ -299,11 +341,7 @@ define(function(require, exports, module) {
             });
 
             // preload next two image
-            var _tmpImg1 = document.createElement('img');
-            var _tmpImg2 = document.createElement('img');
-            _tmpImg1.src = $currImg.next().attr('src').replace(/small/ , 'big');
-            _tmpImg2.src = $currImg.next().next().attr('src').replace(/small/ , 'big');
-
+            preload( $currImg );
 
             $curr.html( index + 1 );
             // TODO... change prev and next status
@@ -332,6 +370,9 @@ define(function(require, exports, module) {
             goToIndex( index );
         } );
 
+        // first preload next two photos
+        // preload next two image
+        preload( $lists.eq(0) );
      });
 
 
