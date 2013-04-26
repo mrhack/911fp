@@ -69,7 +69,7 @@ a {
 /* app css */
 
 html{
-  overflow-x: hidden;
+  _overflow-x: hidden;
 }
 /* css for header */
 header{position:relative;height:140px;border-bottom: 1px solid #ed1b23;}
