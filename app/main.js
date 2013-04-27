@@ -250,6 +250,14 @@ define(function(require, exports, module) {
             .click(function(){
                 goToIndex( $listWrap.find('.selected').index() + 1 );
             });
+        var $prev_b = $('.photo-prev-b')
+            .click(function(){
+                $prev.click();
+            });
+		var $next_b = $('.photo-next-b')
+            .click(function(){
+                $next.click();
+            });
         var $curr = $btnWrap.find('.photo-curr');
         var marginLeft = 0;
         var wrapWidth = $listWrap.width();
