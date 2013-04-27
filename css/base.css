@@ -37,7 +37,7 @@ textarea {
 }
 body {
     color : #000;
-    font: 14px/20px 黑体,arial,sans-serif;
+    font: 14px/20px arial,STHeiti,simsun,sans-serif;
     overflow-x: hidden;
 }
 
@@ -69,7 +69,7 @@ a {
 /* app css */
 
 html{
-  _overflow-x: hidden;
+  overflow-x: hidden;
 }
 /* css for header */
 header{position:relative;height:140px;border-bottom: 1px solid #ed1b23;}
@@ -77,17 +77,21 @@ header .logo{bottom:10px;position:absolute;}
 header nav{_overflow:hidden;bottom:10px;right:0;position:absolute;background:url('../images/menu-bg.png') no-repeat;color:#909090;
 height:31px;width:427px;float:right;line-height: 31px;}
 header nav .menu{float:left; padding: 0 16px; cursor: pointer;}
+header nav .menu.disable {color:#ccc;}
 header nav .menu-home{padding-left:27px;}
-header nav .menu-sel{
+header nav .menu-sel,header nav a.menu:hover {
   color: white;
   background: url('../images/menu-sel.png') repeat-x 0 ;
 }
-
-header nav a.menu-home-sel{
+header nav a.disable:hover{
+	color:#ccc;
+	background:none;
+}
+header nav a.menu-home-sel,header nav a.menu-home:hover {
   color: white;
   background: url('../images/menu-sel1.png') no-repeat 0px;
 }
-header nav a.menu-sign-sel{
+header nav a.menu-sign:hover {
   color: white;
   background: url('../images/menu-sel1.png') no-repeat right;
 }
@@ -254,21 +258,21 @@ margin-top: 8px;}
 .car{
   position: absolute;
   top : 0;
-  right : 12%;
+  right : 7%;
   height : 88px;
   width : 313px;
   background: url('../images/cars.png') no-repeat right -44px;
 }
 .car2{
   top:20px;
-  right : 24%;
+  right : 19%;
   height : 106px;
   width : 350px;
   background-position: right -172px;
 }
 .car3{
-  top:30px;
-  right : 36%;
+  top:36px;
+  right : 34%;
   height : 125px;
   width : 449px;
   background-position: right -296px;
@@ -281,20 +285,20 @@ margin-top: 8px;}
   background-position: right -444px;
 }
 
-.nav{position:absolute;top:54px;left:88%;height: 24px;border-bottom: 10px solid #777;border-left: 15px solid transparent; _border-left-color:white; width: 2000px;}
+.nav{position:absolute;top:54px;left:91%;height: 24px;border-bottom: 10px solid #777;border-left: 15px solid transparent; _border-left-color:white; width: 2000px;}
 .nav .tit{cursor:pointer; height: 100%;margin-left: 30px; line-height: 24px;float:left; color:#aaa; padding: 0 10px;}
 .nav .tit span{display:none;}
 .nav .tit:hover{color: white;background:#777;}
 .nav .tit:hover span{display:inline;}
 .nav2{
-  top:89px;left:75%;
+  top:89px;left:79%;
   border-bottom-color: #face0d;
 }
 .nav2 .tit:hover{
   background:#face0d;
 }
 .nav3{
-  top:118px;left:64%;
+  top:126px;left:65%;
   border-bottom-color: #abb538;
 }
 .nav3 .tit:hover{
@@ -319,13 +323,14 @@ margin-top: 8px;}
 
 .logo-c h2{
   font-size: 28px;
-  line-height: 1.5em;
   border-bottom: 1px solid #bbb;
+  background:url(../images/home_title.gif) no-repeat;
+  text-indent:-999em;
+  height:36px;
 }
 .logo-c .summery{
-  font-size: 16px;
-  padding: 15px 0 10px;
-  font-weight: bold;
+  font-size: 14px;
+  padding: 10px 0 6px 3px;
 }
 .logo-c .desc{
   padding-bottom: 15px;
@@ -544,7 +549,10 @@ margin-top: 8px;}
 .photo-section{
   padding-top: 50px;
   color:#575757;
+  position:relative;
 }
+.photo-prev-b { position:absolute;width:50%;height:573px; left:0;bottom:96px;z-index:9999; cursor:pointer;}
+.photo-next-b { position:absolute;width:50%;height:573px; right:0;bottom:96px;z-index:9999; cursor:pointer;}
 .photo-wrap{
   margin-top: 15px;
   height: 692px;
@@ -646,8 +654,8 @@ margin-top: 8px;}
 /* footer css */
 footer{height:50px;background:#e8e8e8;}
 footer .copyright{color:#a3a3a3;float:left;margin-top:5px;}
-footer .copyright a{margin-right:10px;}
-footer .angle{vertical-align:super;margin-left:10px;
+footer .copyright a{margin-right:10px;font-size:12px;}
+footer .angle{vertical-align:middle;margin-left:0;
   *zoom: 1;
   *vertical-align:baseline;
 
@@ -667,8 +675,8 @@ footer .share-btns{
 }
 .share_btn{position: relative;float:left;background:url(../images/share.png) no-repeat; width:38px; height:35px; zoom:1;cursor:pointer;}
 .share_btn:hover{background-position:0 -35px;}
-.share_btn:hover .share_li{display:block;}
-.share_li{ width:142px; position:absolute; bottom: 30px;left:0; padding:0; display:none; color:#333333}
+.share_btn:hover .share_li{display:block;z-index:9999999;}
+.share_li{ width:142px; position:absolute; bottom: 38px;left:0; padding:0; display:none; color:#333333}
 
 .share_li h3{ padding-left:10px;height:40px; line-height:40px; background:url(../images/share_bg.png); }
 .share_li a { padding-left: 50px;line-height: 34px; height:35px; display:block; }
