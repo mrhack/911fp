@@ -60,14 +60,14 @@ define(function(require, exports, module) {
         $('[jq-effect]').effect( function(){
             $(this).css({'left' :'' , 'right' : ''});
             // hide wheel
-            $(this).find('.wheel').fadeOut( 100 );
+            $(this).find('.wheel').fadeOut( 3000 );
         } );
 
         var aniTime = 800;
         var $cars = $('#cars .car');
         var $navs = $('#navs .nav');
         if( !$cars.length ) return;
-        var $tits = $('#navs .nav').click(function(){
+        var $tits = $('#navs .nav1,#navs .nav2').click(function(){
             var index = $(this).closest('.nav').index();
             _goIndex( index );
         });
@@ -87,7 +87,7 @@ define(function(require, exports, module) {
                     .animate( i == index ? rightCfg : {right: ( i * 5 + 60 ) + '%' } ,
                         i == index ? aniTime + 400 : aniTime , function(){
                             // hide wheel
-                            $(this).find('.wheel').fadeOut(100);
+                            $(this).find('.wheel').fadeOut(3000);
                         });
 
                 setTimeout( function(){
@@ -100,7 +100,7 @@ define(function(require, exports, module) {
                 // fade out nav
                 $navs.eq( i )
                     .delay( delay + 300 )
-                    .animate( {left : '150%'} ,  aniTime );
+                    .animate( {left : '180%'} ,  aniTime );
             });
             setTimeout( function(){
                 window.location.href = $('nav a').eq( 4 - index ).attr('href')
@@ -127,8 +127,11 @@ define(function(require, exports, module) {
       $('#t_wrap').show();
       $('footer').show();
       setTimeout(function(){
-         $('#lpn_mask').fadeOut( 400 , initCars );
-      } , 100);
+         $('#lpn_mask').animate( {top:-$(window).height()} , function(){
+			 initCars();
+			 $(this).hide();
+			});
+      } , 600);
     });
 
 

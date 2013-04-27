@@ -156,7 +156,7 @@ span.lpn_ghost {
 .car .wheel{
   position: absolute;
   top: 73px;
-  left: 257px;
+  left: 244px;
   width: 65px;
   height: 64px;
 
@@ -164,48 +164,48 @@ span.lpn_ghost {
 }
 .car .front-wheel{
   top: 77px;
-  left: 526px;
+  left: 527px;
   width: 64px;
   height: 63px;
   background-position: -68px 0;
 }
 .car1 .front-wheel{
-  left: 230px;
+  left: 233px;
   top: 49px;
   width: 33px;
   height: 33px;
   background-position: -70px -210px;
 }
 .car1 .end-wheel{
-  left: 68px;
+  left: 72px;
   top: 50px;
   width: 33px;
   height: 33px;
   background-position: 0 -210px;
 }
 .car2 .front-wheel{
-  left: 256px;
+  left: 261px;
   top: 53px;
   width: 46px;
   height: 47px;
   background-position: -70px -140px;
 }
 .car2 .end-wheel{
-  left: 59px;
+  left: 64px;
   top: 54px;
   width: 46px;
   height: 47px;
   background-position: 0 -140px;
 }
 .car3 .front-wheel{
-  left: 333px;
+  left: 337px;
   top: 56px;
   width: 60px;
   height: 60px;
   background-position: -70px -70px;
 }
 .car3 .end-wheel{
-  left: 46px;
+  left: 50px;
   top: 53px;
   width: 60px;
   height: 60px;
@@ -300,21 +300,22 @@ span.lpn_ghost {
   top : 0;
   right : 7%;
   height : 88px;
-  width : 313px;
+  width : 330px;
+  z-index:100;
   background: url('../images/cars.png') no-repeat right -44px;
 }
 .car2{
   top:20px;
   right : 19%;
   height : 106px;
-  width : 350px;
+  width : 368px;
   background-position: right -172px;
 }
 .car3{
   top:36px;
   right : 34%;
   height : 125px;
-  width : 449px;
+  width : 466px;
   background-position: right -296px;
 }
 .car4{
