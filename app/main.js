@@ -73,7 +73,7 @@ define(function(require, exports, module) {
         });
         // click text
         var rightCfg = {
-            right : '-100%'
+            right : '-150%'
         };
         var leftCfg = {
             right : 0
