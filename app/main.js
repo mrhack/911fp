@@ -108,8 +108,11 @@ define(function(require, exports, module) {
                 $navs.delay( delay+250 )
                     .animate( {left : '-180%'} ,  aniTime );
             });
-			$('.logo-c').delay(600).animate({opacity:0});
-			$('header').delay(800).animate({opacity:0});
+			$('.logo-wrap').delay(600).animate({'margin-left':'-200%'},800);
+			$('header').delay(600).animate({'border':'0'},800);
+			$('#t_logo').delay(600).animate({'margin-left':'-200%'},800);
+			$('nav').delay(600).animate({'opacity':0},800);
+			$('#navs').delay(1000).animate({'opacity':0},800);
             setTimeout( function(){
                 window.location.href = $('nav a').eq( 4 - index ).attr('href')
             } , 2000 );
