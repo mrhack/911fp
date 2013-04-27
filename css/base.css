@@ -326,7 +326,7 @@ span.lpn_ghost {
   background-position: right -444px;
 }
 
-.nav{cursor:pointer;position:absolute;top:54px;left:91%;height: 24px;border-bottom: 10px solid #777;border-left: 15px solid transparent; _border-left-color:white; width: 2000px;}
+.nav{cursor:pointer;position:absolute;top:54px;left:91%;height: 24px;border-bottom: 10px solid #777;border-left: 15px solid transparent; _border-left-color:white; width: 4000px;}
 .nav .tit{display:none;cursor:pointer; height: 100%;margin-left: 30px; line-height: 24px;float:left; color:#aaa; padding: 0 10px;}
 .nav .tit span{display:none;}
 .nav .tit:hover{color: white;background:#777;}

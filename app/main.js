@@ -88,27 +88,28 @@ define(function(require, exports, module) {
         var _goIndex = function( index ){
             // click event
             $cars.each( function( i , dom ){
-                var delay = i == index ? 100 : 300 + Math.random() * 300;
+                var delay = i == index ? 100 : 600 - i * 300;
                 // fade out car
-                $(dom).delay( delay-1000 )
-                    .animate( i == index ? rightCfg : {right: ( i * 5 + 60 ) + '%' } ,
+                $(dom).delay( delay-1000 ).stop()
+                    .animate( i == index ? rightCfg : {right: ( i * 5 + 190 ) + '%' } ,
                         i == index ? aniTime + 400 : aniTime ,'easeInQuint', function(){
                             // hide wheel
                             $(this).find('.wheel').fadeOut(200);
                         });
 
                 setTimeout( function(){
-                    $(dom).find('.wheel').show();
+                    if(i == index) $(dom).find('.wheel').show();
                     setTimeout(function(){
                         $(dom).addClass( i == index ? 'car-run-right' : 'car-run-left' );
                     } , 1);
                 } , delay );
 
                 // fade out nav
-                $navs.eq( i )
-                    .delay( delay + 300 )
-                    .animate( {left : '180%'} ,  aniTime );
+                $navs.delay( delay+250 )
+                    .animate( {left : '-180%'} ,  aniTime );
             });
+			$('.logo-c').delay(600).animate({opacity:0});
+			$('header').delay(800).animate({opacity:0});
             setTimeout( function(){
                 window.location.href = $('nav a').eq( 4 - index ).attr('href')
             } , 2000 );
