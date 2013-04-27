@@ -12,11 +12,11 @@ define(function(require, exports, module) {
         });
     };
     // require jquery ani plugin
-    require('jquery.ani');
+    require('jquery.ani');4
 
     // dom ready
     $(function(){
-        // init first load effect event;
+        // init first load effect event;q   s
         /*
         $('[jq-effect]').effect( function(){
             $(this).css({'left' :'' , 'right' : ''});
@@ -149,7 +149,7 @@ define(function(require, exports, module) {
                 map.setMapTypeId('map_style');
             }
 
-
+            var lnglats = lnglat.split(',');
             var point = new google.maps.LatLng(parseFloat(lnglats[0]),parseFloat(lnglats[1]));
             if( !marker ) {
                 marker = new google.maps.Marker({
@@ -261,7 +261,6 @@ define(function(require, exports, module) {
         var $curr = $btnWrap.find('.photo-curr');
         var marginLeft = 0;
         var wrapWidth = $listWrap.width();
-        var animate = false;
         var slideAnimate = false;
         var $newImg = null;
         var wrapLength = $imgWrap.width();
@@ -282,15 +281,30 @@ define(function(require, exports, module) {
                     height   : $wrap.height()
                 });
         }
+        var lastSlideConfig = null;
+        var loadingFromServer = false;
         var sildeImage = function( src , turnLeft , cb){
 
+            if( loadingFromServer ){
+                $newImg.unbind('load');
+                loadingFromServer = false;
+                arguments.callee.apply('' , [].slice.call( arguments ));
+                return;
+            }
+            if( slideAnimate ){
+                lastSlideConfig = [ src , turnLeft ];
+                return;
+            }
+            loadingFromServer = true;
             var time = new Date();
             var $loading = null;
             var loaded = false;
             src = src.replace(/small/ , 'big');
-            $newImg = $('<img />')[ turnLeft ? 'appendTo' : 'prependTo' ]( $imgInner )
+            $newImg = $('<img />')
                 .load( function(){
-                    if( !$newImg || $newImg.attr('src') != $(this).attr('src') ) return;
+                    $newImg[ turnLeft ? 'appendTo' : 'prependTo' ]( $imgInner );
+                    loadingFromServer   = false;
+                    slideAnimate        = true;
                     $imgInner.css('marginLeft' , turnLeft ? 0 : - wrapLength )
                         .animate( {
                             marginLeft: turnLeft ? - wrapLength : 0
@@ -300,10 +314,15 @@ define(function(require, exports, module) {
                             $currImg = $newImg;
                             $newImg = null;
                             cb && cb();
+                            slideAnimate = false;
+                            if( lastSlideConfig ){
+                                sildeImage.apply( '' , lastSlideConfig );
+                                lastSlideConfig = null;
+                            }
                         });
 
                     loaded = true;
-                    $loading && $loading.remove();
+                    $imgWrap.find('.loading').remove();
                 });
 
             // 200 ms to wait for image load
@@ -314,20 +333,24 @@ define(function(require, exports, module) {
                     $loading = $loading.length ? $loading
                         : createLoading( $imgWrap );
                 }
-            } , 100 );
+            } , 200 );
 
             $newImg.attr( 'src' , src );
         }
+
         var preload = function( $t ){
+            var _src1 = $t.next().attr('src');
+            var _src2 = $t.next().next().attr('src');
             // preload next two image
-            var _tmpImg1 = document.createElement('img');
-            var _tmpImg2 = document.createElement('img');
-            _tmpImg1.src = $t.next().attr('src').replace(/small/ , 'big');
-            _tmpImg2.src = $t.next().next().attr('src').replace(/small/ , 'big');
+
+            if( _src1 )
+                document.createElement('img').src = _src1.replace(/small/ , 'big');
+            if( _src2 )
+                document.createElement('img').src = _src2.replace(/small/ , 'big');
         }
         // TODO delete var animate
         var goToIndex    = function ( index ) {
-            if( slideAnimate ) return;
+            //if( slideAnimate ) return;
             index = ( index + $lists.length ) % $lists.length;
             var currIndex = $lists.filter('.selected').index();
             var $currImg = $lists
@@ -336,9 +359,9 @@ define(function(require, exports, module) {
                 .addClass('selected');
 
             // slide image left
-            slideAnimate = true;
+            //slideAnimate = true;
             sildeImage( $currImg.attr('src') , currIndex < index  , function(){
-                slideAnimate = false;
+                //slideAnimate = false;
             });
 
             // preload next two image
@@ -351,19 +374,13 @@ define(function(require, exports, module) {
             // scroll to right ===>
 
             if( ( index + 1 ) * 64 <= Math.abs( marginLeft ) ){
-                animate = true;
                 marginLeft = Math.max ( ( index + 1 ) * 64 - wrapWidth , 0 );
-                $listInner.stop(true , false).animate( { marginLeft: -marginLeft } , '' , function(){
-                    animate = false;
-                });
+                $listInner.stop(true , false).animate( { marginLeft: -marginLeft } );
             } else
             // scroll to left <===
             if( ( index + 1 ) * 64 > Math.abs( marginLeft ) + wrapWidth ){
-                animate = true;
                 marginLeft = index * 64;
-                $listInner.stop(true , false).animate( { marginLeft: -marginLeft } , '' , function(){
-                    animate = false;
-                });
+                $listInner.stop(true , false).animate( { marginLeft: -marginLeft } );
             }
         }
         $listWrap.delegate('img' , 'click' , function(){
