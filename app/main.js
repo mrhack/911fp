@@ -60,7 +60,7 @@ define(function(require, exports, module) {
         $('[jq-effect]').effect( function(){
             $(this).css({'left' :'' , 'right' : ''});
             // hide wheel
-            $(this).find('.wheel').fadeOut( 3000 );
+            $(this).find('.wheel').fadeOut( 100 );
         } );
 
         var aniTime = 800;
@@ -71,6 +71,13 @@ define(function(require, exports, module) {
             var index = $(this).closest('.nav').index();
             _goIndex( index );
         });
+		
+		// hover effect
+		$navs.hover(function(){
+			$(this).animate({'opacity':0.6});	
+		},function(){
+			$(this).animate({'opacity':1});	
+		});
         // click text
         var rightCfg = {
             right : '-150%'
@@ -83,11 +90,11 @@ define(function(require, exports, module) {
             $cars.each( function( i , dom ){
                 var delay = i == index ? 100 : 300 + Math.random() * 300;
                 // fade out car
-                $(dom).delay( delay )
+                $(dom).delay( delay-1000 )
                     .animate( i == index ? rightCfg : {right: ( i * 5 + 60 ) + '%' } ,
-                        i == index ? aniTime + 400 : aniTime , function(){
+                        i == index ? aniTime + 400 : aniTime ,'easeInQuint', function(){
                             // hide wheel
-                            $(this).find('.wheel').fadeOut(3000);
+                            $(this).find('.wheel').fadeOut(200);
                         });
 
                 setTimeout( function(){
@@ -117,6 +124,8 @@ define(function(require, exports, module) {
                 return false;
             }
         });
+		
+		
     };
     var pro = processBar( $('#process-bar') , $('#process-num') )
                 .start();
