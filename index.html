@@ -35,7 +35,15 @@
 </script>
  </head>
  <body>
-    <div class="wrap">
+    <div id="lpn_mask" class="lpn_mask">
+      <span class="lpn_ghost"></span>
+       <div class="lpn_panel">
+         <img src="./images/loading-bg.png" />
+         <div id="process-bar"></div>
+         <div id="process-num">0%</div>
+       </div>
+    </div>
+    <div class="wrap" id="t_wrap">
       <header>
         <nav>
           <a id="t_nav1" class="menu menu-home menu-home-sel" href="./index.html"><span>首页</span></a>
@@ -65,19 +73,19 @@
           <!-- cars -->
           <div class="car-wrap">
             <div class="cars" id="cars">
-              <div class="car car1" jq-effect="delay:500;duration:800;from:120%r;easing:easeOutBack" >
+              <div class="car car1" jq-effect="delay:500;duration:800;from:150%r;easing:easeOutCirc" >
                 <div class="wheel end-wheel"></div>
                 <div class="wheel front-wheel"></div>
               </div>
-              <div class="car car2" jq-effect="delay:1000;duration:600;from:120%r;easing:easeOutBack" >
+              <div class="car car2" jq-effect="delay:1000;duration:600;from:150%r;easing:easeOutCirc" >
                 <div class="wheel end-wheel"></div>
                 <div class="wheel front-wheel"></div>
               </div>
-              <div class="car car3" jq-effect="delay:700;duration:700;from:120%r;easing:easeOutBack">
+              <div class="car car3" jq-effect="delay:700;duration:700;from:150%r;easing:easeOutCirc">
                 <div class="wheel end-wheel"></div>
                 <div class="wheel front-wheel"></div>
               </div>
-              <div class="car car4" jq-effect="delay:1200;duration:800;from:120%r;easing:easeOutBack">
+              <div class="car car4" jq-effect="delay:1200;duration:800;from:150%r;easing:easeOutCirc">
                 <div class="wheel end-wheel"></div>
                 <div class="wheel front-wheel"></div>
               </div>

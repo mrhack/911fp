@@ -73,12 +73,13 @@
             } );
         }
         // run animate
-        $dom.css( cfg.from || { opacity: 0 } );
+        $dom.css( $.extend( cfg.from , { opacity: 0 } ) );
+
         var tar = { };
         $.each( cfg.from || [] , function( k , v ){
             tar[ k ] = pos [ k ];
         });
-        $.extend( tar , {opacity:1} )
+        $.extend( tar , {opacity:1} );
         $dom.delay( cfg.delay || 0 )
             .animate( tar
                 , parseInt( cfg.duration ) || 500
@@ -92,6 +93,7 @@
 
         // add animate class name
         setTimeout(function(){
+            // add class name
             $dom.addClass( animateClassName );
         } , cfg.delay || 0 );
     }

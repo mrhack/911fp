@@ -13,19 +13,61 @@ define(function(require, exports, module) {
     };
     // require jquery ani plugin
     require('jquery.ani');
+    require('jquery.easing');
 
-    // ----------------------- dom ready index.html
-    $(function(){
+
+     // ----------------------- dom ready index.html
+    // process bar
+    var processBar = function ($proBar , $proMsg){
+        var prog = 0,
+            step = 0,
+            stepAdd = 15,
+            _timer = function(){
+                if (prog >= 99) return false;
+                stepAdd--;
+                if (stepAdd < 2)stepAdd = 2;
+                prog += stepAdd;
+                step ++;
+                $proMsg && $proMsg.html(prog+"%");
+                $proBar.animate({width : prog + '%'}, step*30, null, _timer);
+            };
+        return {
+            stop: function(){
+                $proBar.stop(true);
+                return this;
+            },
+            end: function(){
+                $proMsg && $proMsg.html('100%');
+                $proBar.stop(false , false).css('width' , '100%');
+                return this;
+            },
+            start: function(){
+                _timer();
+                return this;
+            },
+            reset: function(){
+                prog = 0;
+                step = 0;
+                stepAdd = 12;
+                $proMsg && $proMsg.html('0%');
+                $proBar.stop(true).css('width' , '0%');
+                return this;
+            }
+        }
+    };
+    var initCars = function(){
         // init first load effect event;
         $('[jq-effect]').effect( function(){
             $(this).css({'left' :'' , 'right' : ''});
+            // hide wheel
+            $(this).find('.wheel').fadeOut( 100 );
         } );
 
         var aniTime = 800;
         var $cars = $('#cars .car');
         var $navs = $('#navs .nav');
         if( !$cars.length ) return;
-        var $tits = $('#navs .tit').click(function(){
+        var $tits = $('#navs .nav').click(function(){
             var index = $(this).closest('.nav').index();
             _goIndex( index );
         });
@@ -39,14 +81,20 @@ define(function(require, exports, module) {
         var _goIndex = function( index ){
             // click event
             $cars.each( function( i , dom ){
-                var delay = i == index ? 100 : 100 + Math.random() * 800;
+                var delay = i == index ? 100 : 300 + Math.random() * 300;
                 // fade out car
                 $(dom).delay( delay )
                     .animate( i == index ? rightCfg : {right: ( i * 5 + 60 ) + '%' } ,
-                        i == index ? aniTime + 400 : aniTime );
+                        i == index ? aniTime + 400 : aniTime , function(){
+                            // hide wheel
+                            $(this).find('.wheel').fadeOut(100);
+                        });
 
                 setTimeout( function(){
-                    $(dom).addClass( i == index ? 'car-run-right' : 'car-run-left' );
+                    $(dom).find('.wheel').show();
+                    setTimeout(function(){
+                        $(dom).addClass( i == index ? 'car-run-right' : 'car-run-left' );
+                    } , 1);
                 } , delay );
 
                 // fade out nav
@@ -56,20 +104,34 @@ define(function(require, exports, module) {
             });
             setTimeout( function(){
                 window.location.href = $('nav a').eq( 4 - index ).attr('href')
-            } , 1800 );
+            } , 2000 );
         }
 
         // click nav bar
         var $nav = $('nav').delegate('.menu' , 'click' , function(){
             // start animation
+            if( $( this ).hasClass('disable') ) return false;
             var index = $nav.find('.menu').index( this );
             if( index > 0 ) {
                 _goIndex( 4 - index );
                 return false;
             }
         });
-
+    };
+    var pro = processBar( $('#process-bar') , $('#process-num') )
+                .start();
+    $(window).load(function(){
+      // end process
+      pro.end();
+      // hide loading,  show wrap
+      $('#t_wrap').show();
+      $('footer').show();
+      setTimeout(function(){
+         $('#lpn_mask').fadeOut( 400 , initCars );
+      } , 100);
     });
+
+
     // fix footer ,if space is enough , set footer position fixed to bottom
     // ugly ie6, real ugly
     if( !$.browser.msie || $.browser.version > 6 ){

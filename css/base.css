@@ -113,6 +113,46 @@ margin-top: 8px;}
     /*position: absolute;*/
     display:none;
 }
+.lpn_mask{
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+  bottom: 0;
+  z-index: 3000000;
+}
+.lpn_mask {
+    text-align : center;
+    white-space: nowrap;
+    background : rgba(256,256,256,1);
+    filter     : progid:DXImageTransform.Microsoft.gradient(startColorstr=#22000000,endColorstr=#22000000);
+
+    _position : absolute;
+    _top  : expression( ( ignoreMe  = document.documentElement.scrollTop  ) + 'px' );
+    _left : expression( ( ignoreMe2 = document.documentElement.scrollLeft ) + 'px' );
+}
+span.lpn_ghost {
+  display: inline-block;
+  height: 100%;
+  vertical-align: middle;
+  margin-right: -0.25em;
+}
+.lpn_panel {
+  display: inline-block;
+  vertical-align: middle;
+  padding: 4px;
+  border-radius: 4px;
+  white-space: normal;
+}
+#process-bar{
+  height:1px;font-size:0px;line-height:0px;background:red;
+  width:0;
+}
+#process-num{
+  color: red;
+  text-align: center;
+}
 .car .wheel{
   position: absolute;
   top: 73px;
@@ -124,7 +164,7 @@ margin-top: 8px;}
 }
 .car .front-wheel{
   top: 77px;
-  left: 540px;
+  left: 526px;
   width: 64px;
   height: 63px;
   background-position: -68px 0;
@@ -285,8 +325,8 @@ margin-top: 8px;}
   background-position: right -444px;
 }
 
-.nav{position:absolute;top:54px;left:91%;height: 24px;border-bottom: 10px solid #777;border-left: 15px solid transparent; _border-left-color:white; width: 2000px;}
-.nav .tit{cursor:pointer; height: 100%;margin-left: 30px; line-height: 24px;float:left; color:#aaa; padding: 0 10px;}
+.nav{cursor:pointer;position:absolute;top:54px;left:91%;height: 24px;border-bottom: 10px solid #777;border-left: 15px solid transparent; _border-left-color:white; width: 2000px;}
+.nav .tit{display:none;cursor:pointer; height: 100%;margin-left: 30px; line-height: 24px;float:left; color:#aaa; padding: 0 10px;}
 .nav .tit span{display:none;}
 .nav .tit:hover{color: white;background:#777;}
 .nav .tit:hover span{display:inline;}
