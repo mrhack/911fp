@@ -16,8 +16,7 @@ define(function(require, exports, module) {
 
     // dom ready
     $(function(){
-        // init first load effect event;q   s
-        /*
+        // init first load effect event;
         $('[jq-effect]').effect( function(){
             $(this).css({'left' :'' , 'right' : ''});
         } );
@@ -27,39 +26,32 @@ define(function(require, exports, module) {
             right : '-100%'
         };
         var leftCfg = {
-            right : '200%'
+            right : 0
         }
-        var $cars = $('#car-wrap .car');
-        var aniTime = 2000;
-        var $navs =$('#car-nav .nav');
-        var $tits = $('#car-nav .tit').click(function(){
-            var index = $(this).closest('.nav').index();
-
+        var _goIndex = function( index ){
             // click event
             $cars.each( function( i , dom ){
                 var delay = i == index ? 100 : 300 + Math.random() * 500;
                 // fade out car
                 $(dom).delay( delay )
-                    .animate( i == index ? rightCfg : leftCfg ,  aniTime );
+                    .animate( i == index ? rightCfg : {right: ( i * 5 + 60 ) + '%' } ,  aniTime );
 
                 // fade out nav
                 $navs.eq( i )
                     .delay( delay + 300 )
                     .animate( {left : '150%'} ,  aniTime );
             });
+            setTimeout( function(){
+                window.location.href = $('nav a').eq( 4 - index ).attr('href')
+            } , 1500 );
+        }
 
-            // fade out logo
-            $('#logo-wrap').fadeOut();
+        var aniTime = 1000;
+        var $navs =$('#navs .nav');
+        var $tits = $('#navs .tit').click(function(){
+            var index = $(this).closest('.nav').index();
+            _goIndex( index );
         });
-
-        $(window).resize(function(){
-            var w = $(this).width();
-        });
-        */
-        // render for footer
-
-
-
     });
     // fix footer ,if space is enough , set footer position fixed to bottom
     // ugly ie6, real ugly
