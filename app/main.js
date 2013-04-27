@@ -12,15 +12,23 @@ define(function(require, exports, module) {
         });
     };
     // require jquery ani plugin
-    require('jquery.ani');4
+    require('jquery.ani');
 
-    // dom ready
+    // ----------------------- dom ready index.html
     $(function(){
         // init first load effect event;
         $('[jq-effect]').effect( function(){
             $(this).css({'left' :'' , 'right' : ''});
         } );
 
+        var aniTime = 800;
+        var $cars = $('#cars .car');
+        var $navs = $('#navs .nav');
+        if( !$cars.length ) return;
+        var $tits = $('#navs .tit').click(function(){
+            var index = $(this).closest('.nav').index();
+            _goIndex( index );
+        });
         // click text
         var rightCfg = {
             right : '-100%'
@@ -31,10 +39,15 @@ define(function(require, exports, module) {
         var _goIndex = function( index ){
             // click event
             $cars.each( function( i , dom ){
-                var delay = i == index ? 100 : 300 + Math.random() * 500;
+                var delay = i == index ? 100 : 100 + Math.random() * 800;
                 // fade out car
                 $(dom).delay( delay )
-                    .animate( i == index ? rightCfg : {right: ( i * 5 + 60 ) + '%' } ,  aniTime );
+                    .animate( i == index ? rightCfg : {right: ( i * 5 + 60 ) + '%' } ,
+                        i == index ? aniTime + 400 : aniTime );
+
+                setTimeout( function(){
+                    $(dom).addClass( i == index ? 'car-run-right' : 'car-run-left' );
+                } , delay );
 
                 // fade out nav
                 $navs.eq( i )
@@ -43,15 +56,19 @@ define(function(require, exports, module) {
             });
             setTimeout( function(){
                 window.location.href = $('nav a').eq( 4 - index ).attr('href')
-            } , 1500 );
+            } , 1800 );
         }
 
-        var aniTime = 1000;
-        var $navs =$('#navs .nav');
-        var $tits = $('#navs .tit').click(function(){
-            var index = $(this).closest('.nav').index();
-            _goIndex( index );
+        // click nav bar
+        var $nav = $('nav').delegate('.menu' , 'click' , function(){
+            // start animation
+            var index = $nav.find('.menu').index( this );
+            if( index > 0 ) {
+                _goIndex( 4 - index );
+                return false;
+            }
         });
+
     });
     // fix footer ,if space is enough , set footer position fixed to bottom
     // ugly ie6, real ugly

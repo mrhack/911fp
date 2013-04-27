@@ -4,6 +4,7 @@
  */
 !(function( $ ){
     var attrName = 'jq-effect';
+    var animateClassName = 'jq-effect-running';
     var toJson = function(s){
             if(!s) return {};
             var arr = s.split(';') , result = {} , temp;
@@ -44,7 +45,12 @@
     var initEffect = function( $dom , cb ) {
         var cfg = toJson( $dom.attr( attrName ) );
 
-        var pos = $dom.show().offset();
+        var off = $dom.show().offset();
+        var poff = $dom.offsetParent().offset();
+        var pos = {
+            left : off.left - poff.left,
+            top : off.top - poff.top
+        }
         $.extend( pos , {
             width : $dom.width(),
             height : $dom.height(),
@@ -68,13 +74,26 @@
         }
         // run animate
         $dom.css( cfg.from || { opacity: 0 } );
-        $.extend( pos , { opacity:1 } , true );
-        var tar = {};
-        $.each( cfg.from , function( k , v ){
+        var tar = { };
+        $.each( cfg.from || [] , function( k , v ){
             tar[ k ] = pos [ k ];
         });
+        $.extend( tar , {opacity:1} )
         $dom.delay( cfg.delay || 0 )
-            .animate( tar , parseInt( cfg.duration ) || 500 , cfg.easing , cb);
+            .animate( tar
+                , parseInt( cfg.duration ) || 500
+                , cfg.easing
+                , function(){
+                    // remove added class name
+                    $dom.removeClass( animateClassName );
+                    // run callback
+                    cb && cb.call(this);
+                });
+
+        // add animate class name
+        setTimeout(function(){
+            $dom.addClass( animateClassName );
+        } , cfg.delay || 0 );
     }
     $.fn.effect = function( cb ){
 
