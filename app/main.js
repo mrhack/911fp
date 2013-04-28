@@ -146,13 +146,17 @@ define(function(require, exports, module) {
 			});
       } , 600);
     });
-	if( $.browser.msie ){
+	if( $.browser.version < 9 && $.browser.version > 6 ){
 		setTimeout(function(){
          $('#lpn_mask').animate( {top:-$(window).height()} , function(){
 			 initCars();
 			 $(this).hide();
 			});
-      } , 3000);
+      } , 3600);
+	}
+	if( $.browser.version = 6){
+		$('#lpn_mask').hide();
+		initCars();
 	}
 
     // fix footer ,if space is enough , set footer position fixed to bottom
