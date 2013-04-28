@@ -59,9 +59,9 @@ define(function(require, exports, module) {
         // init first load effect event;
         $('[jq-effect]').effect( function(){
             $(this).css({'left' :'' , 'right' : ''});
-            // hide wheel
-            $(this).find('.wheel').fadeOut( 100 );
         } );
+		// hide wheel
+		$('#cars .wheel').delay(1000).fadeOut( 1500 );
 
         var aniTime = 800;
         var $cars = $('#cars .car');
@@ -146,7 +146,18 @@ define(function(require, exports, module) {
 			});
       } , 600);
     });
-
+	if( $.browser.version < 9 && $.browser.version > 6 ){
+		setTimeout(function(){
+         $('#lpn_mask').animate( {top:-$(window).height()} , function(){
+			 initCars();
+			 $(this).hide();
+			});
+      } , 3600);
+	}
+	if( $.browser.version = 6){
+		$('#lpn_mask').hide();
+		initCars();
+	}
 
     // fix footer ,if space is enough , set footer position fixed to bottom
     // ugly ie6, real ugly
