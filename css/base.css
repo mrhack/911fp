@@ -211,6 +211,65 @@ span.lpn_ghost {
   background-position: 0 -70px;
 }
 
+.car .wheel2{
+  position: absolute;
+  top: 73px;
+  left: 244px;
+  width: 65px;
+  height: 64px;
+  display:none;
+  background: url('../images/wheel_bak.png') no-repeat;
+}
+.car .front-wheel2{
+  top: 77px;
+  left: 527px;
+  width: 64px;
+  height: 63px;
+  background-position: -68px 0;
+}
+.car1 .front-wheel2{
+  left: 233px;
+  top: 49px;
+  width: 33px;
+  height: 33px;
+  background-position: -70px -210px;
+}
+.car1 .end-wheel2{
+  left: 72px;
+  top: 50px;
+  width: 33px;
+  height: 33px;
+  background-position: 0 -210px;
+}
+.car2 .front-wheel2{
+  left: 261px;
+  top: 53px;
+  width: 46px;
+  height: 47px;
+  background-position: -70px -140px;
+}
+.car2 .end-wheel2{
+  left: 64px;
+  top: 54px;
+  width: 46px;
+  height: 47px;
+  background-position: 0 -140px;
+}
+.car3 .front-wheel2{
+  left: 337px;
+  top: 56px;
+  width: 60px;
+  height: 60px;
+  background-position: -70px -70px;
+}
+.car3 .end-wheel2{
+  left: 50px;
+  top: 53px;
+  width: 60px;
+  height: 60px;
+  background-position: 0 -70px;
+}
+
 .jq-effect-running .wheel{
   -webkit-transform: rotate(1080deg);  /* Chrome, Safari 3.1+ */
      -moz-transform: rotate(1080deg);  /* Firefox 3.5-15 */
@@ -224,6 +283,21 @@ span.lpn_ghost {
        -o-transition: all 500ms cubic-bezier(0.230, 1.000, 0.320, 1.000);
           transition: all 500ms cubic-bezier(0.230, 1.000, 0.320, 1.000); /* easeOutBack */
 }
+
+.jq-effect-running .wheel2{
+  -webkit-transform: rotate(360deg);  /* Chrome, Safari 3.1+ */
+     -moz-transform: rotate(360deg);  /* Firefox 3.5-15 */
+      -ms-transform: rotate(360deg);  /* IE 9 */
+       -o-transform: rotate(360deg);  /* Opera 10.50-12.00 */
+          transform: rotate(360deg);  /* Firefox 16+, IE 10+, Opera 12.10+ */
+  -webkit-transition: all 1900ms ease-out; /* older webkit */
+  -webkit-transition: all 1900ms ease-out;
+     -moz-transition: all 1900ms ease-out;
+      -ms-transition: all 1900ms ease-out;
+       -o-transition: all 1900ms ease-out;
+          transition: all 1900ms ease-out; /* easeOutBack */
+}
+
 .car1.jq-effect-running .wheel{
   -webkit-transition-duration: 5000ms;
   -webkit-transition-duration: 5000ms;
@@ -250,6 +324,7 @@ span.lpn_ghost {
        -o-transition-duration: 5000ms;
           transition-duration: 5000ms;
 }
+
 /* running wheel */
 .car4.jq-effect-running .wheel{
   -webkit-transition-duration: 5000ms;

@@ -58,10 +58,11 @@ define(function(require, exports, module) {
     var initCars = function(){
         // init first load effect event;
         $('[jq-effect]').effect( function(){
-            $(this).css({'left' :'' , 'right' : ''});
+            //$(this).css({'left' :'' , 'right' : ''});
         } );
 		// hide wheel
 		$('#cars .wheel').delay(1000).fadeOut( 1500 );
+		$('#cars .wheel2').delay(600).fadeIn( 100 );
 
         var aniTime = 800;
         var $cars = $('#cars .car');
@@ -146,17 +147,13 @@ define(function(require, exports, module) {
 			});
       } , 600);
     });
-	if( $.browser.version < 9 && $.browser.version > 6 ){
+	if( $.browser.msie ){
 		setTimeout(function(){
          $('#lpn_mask').animate( {top:-$(window).height()} , function(){
 			 initCars();
 			 $(this).hide();
 			});
-      } , 3600);
-	}
-	if( $.browser.version = 6){
-		$('#lpn_mask').hide();
-		initCars();
+      } , 3000);
 	}
 
     // fix footer ,if space is enough , set footer position fixed to bottom
