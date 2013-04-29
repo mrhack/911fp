@@ -59,10 +59,11 @@ define(function(require, exports, module) {
         // init first load effect event;
         $('[jq-effect]').effect( function(){
             //$(this).css({'left' :'' , 'right' : ''});
+			$('#cars .wheel2').delay(2000).fadeOut();
         } );
 		// hide wheel
 		$('#cars .wheel').delay(1000).fadeOut( 1500 );
-		$('#cars .wheel2').delay(600).fadeIn( 100 );
+		$('#cars .wheel2').delay(300).fadeIn( 100 );
 
         var aniTime = 800;
         var $cars = $('#cars .car');
@@ -147,6 +148,11 @@ define(function(require, exports, module) {
 			});
       } , 600);
     });
+	$(window).bind("pageshow", function(event) {
+		if (event.originalEvent.persisted) {
+			window.location.reload();
+		}
+	});
 	if( $.browser.msie ){
 		setTimeout(function(){
          $('#lpn_mask').animate( {top:-$(window).height()} , function(){
