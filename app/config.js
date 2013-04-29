@@ -25,6 +25,10 @@ seajs.config({
         deps: ['jquery.easing']
     }
 
+    ,'jquery.mobile': {
+        src: '../../m/src/jquery.mobile-1.3.0',
+        deps: ['jquery']
+    }
     // for ie6 fix png
     ,'uglyFuckIe6' : {
         src: '../../src/DD_belatedPNG_0.0.8a-min',
