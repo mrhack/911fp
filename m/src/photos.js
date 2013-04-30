@@ -19,12 +19,22 @@ define(function( require , exports , model ){
             setTimeout( function() {
                 $imageWrap.hide();
                 // remove all swipe images
-                $bigImgWrap.children().remove();
+                $bigImgWrap.children()
+                    .remove()
+                    .end()
+                    .css('left',0);
                 // reset index
                 imgIndex = -1;
                 // remove selected style
                 $photoList.find('.selected')
                     .removeClass('selected');
+
+                // show image in middle of viewport
+                // disable scroll
+                $imageWrap.parent().css({
+                    overflow: 'auto',
+                    height: ''
+                });
             } , 300 );
             return false;
         } )
@@ -56,6 +66,28 @@ define(function( require , exports , model ){
             .replace(/small/ , 'big');
         var $bigImg = $bigImgWrap.find('[index="' + index + '"]');
 
+
+        // preload next images
+        var next1 = $imgs.eq( index + 1 ).attr('src');
+        if( next1 )
+            $('<img />').attr('src' ,  next1 );
+        var next2= $imgs.eq( index + 2 ).attr('src');
+        if( next2 )
+            $('<img />').attr('src' ,  next2 );
+
+        // show image in middle of viewport
+        // disable scroll
+
+        var scrollTop = $('body').scrollTop();
+        $imageWrap.parent()
+            .css({
+                overflow: 'hidden',
+                height: '100%'
+            })
+            .scrollTop( scrollTop );
+        $imageWrap.css('top' , scrollTop );
+
+
         // if already exist
         if( $bigImg.length ){
             // scroll to right position
@@ -71,7 +103,6 @@ define(function( require , exports , model ){
                     $loading.show();
                 }
             } , 200 );
-
             // add new image to wrap
             isLoading = true;
             $bigImgWrap.css( {
@@ -83,6 +114,7 @@ define(function( require , exports , model ){
 
                 .css('width' , windowWidth)
                 .load( function(){
+
                     isLoading = false;
                     var $img = $(this)
                         [ index > lastIndex ? 'appendTo' : 'prependTo' ]( $bigImgWrap )
