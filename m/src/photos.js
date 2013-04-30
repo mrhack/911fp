@@ -39,10 +39,15 @@ define(function( require , exports , model ){
             return false;
         } )
         .swipeleft( function(){
-            $next = $photoList.find('.selected')
+            var $curr = $photoList.find('.selected');
+            var $next = $curr
                 .next()
                 .trigger('tap');
             if( !$next.length ){
+                if( $curr.index() == 11 ){
+                    $('#more-photos').trigger('tap');
+                    $curr.next().trigger('tap');
+                }
                 // TODO.. show last page panel
             }
         } )
@@ -58,7 +63,7 @@ define(function( require , exports , model ){
     var $bigImgWrap = $('#nl-wrap');
     var $loading = $imageWrap.find('.loading');
 
-    var isLoading = false;
+    var isSlideing = false;
     var $newImage = null;
     var showImage = function( index , lastIndex ) {
         var $imgs = $photoList.find('img');
@@ -70,10 +75,10 @@ define(function( require , exports , model ){
         // preload next images
         var next1 = $imgs.eq( index + 1 ).attr('src');
         if( next1 )
-            $('<img />').attr('src' ,  next1 );
+            $('<img />').attr('src' ,  next1.replace(/small/ , 'big'));
         var next2= $imgs.eq( index + 2 ).attr('src');
         if( next2 )
-            $('<img />').attr('src' ,  next2 );
+            $('<img />').attr('src' ,  next2.replace(/small/ , 'big') );
 
         // show image in middle of viewport
         // disable scroll
@@ -84,60 +89,47 @@ define(function( require , exports , model ){
                 overflow: 'hidden',
                 height: '100%'
             })
-            .scrollTop( scrollTop );
-        $imageWrap.css('top' , scrollTop );
+            .scrollTop( scrollTop )
+            .end()
+            .show()
+            .css('top' , scrollTop );
 
+        $loading.show();
+        // remove wrap background
+        $imageWrap.css('background' , 'none');
+        // add new image to wrap
+        $bigImgWrap.css( {
+            'left' : index > lastIndex ? '+=0' : '-=' + windowWidth  ,
+            'width': ($bigImgWrap.children().length + 2) * windowWidth
+        });
+        $newImage = $('<img />')
+            .attr( 'index' , index )
+            .css('width' , windowWidth)
+            .load( function(){
 
-        // if already exist
-        if( $bigImg.length ){
-            // scroll to right position
-            $bigImgWrap.animate({
-                left : - $bigImg.index() * windowWidth
-            } , 500 );
-        } else {
-            $imageWrap.show();
-            var time = new Date();
-            setTimeout( function(){
-                if( isLoading ){
-                    // show loading
-                    $loading.show();
-                }
-            } , 200 );
-            // add new image to wrap
-            isLoading = true;
-            $bigImgWrap.css( {
-                'left' : index > lastIndex ? '+=0' : '-=' + windowWidth  ,
-                'width': ($bigImgWrap.children().length + 1) * windowWidth
-            });
-            $newImage = $('<img />')
-                .attr( 'index' , index )
-
-                .css('width' , windowWidth)
-                .load( function(){
-
-                    isLoading = false;
-                    var $img = $(this)
-                        [ index > lastIndex ? 'appendTo' : 'prependTo' ]( $bigImgWrap )
-                        .fadeIn();
-                    $loading.hide();
-                    // scroll to right position
-                    $bigImgWrap
-                        .css( 'margin-top' , - $bigImgWrap.height() / 2 )
-                        .animate({
-                            left : - $(this).index() * windowWidth
-                        } , 500 , '' , function(){
-
-                            $bigImgWrap.css({
-                                'width' : windowWidth,
-                                'left' : 0} );
-                            $img.siblings().remove();
-                        });
-                } )
-                .attr( 'src' , src );
-        }
+                var $img = $(this)
+                    [ index > lastIndex ? 'appendTo' : 'prependTo' ]( $bigImgWrap )
+                    .fadeIn();
+                $loading.hide();
+                $imageWrap.css('background' , '');
+                // scroll to right position
+                isSlideing = true;
+                $bigImgWrap
+                    .css('margin-top' , - $bigImgWrap.height() / 2 )
+                    .animate({
+                        left : - $(this).index() * windowWidth
+                    } , 500 , '' , function(){
+                        isSlideing = false;
+                        $bigImgWrap.css({
+                            'width' : windowWidth,
+                            'left' : 0} );
+                        $img.siblings().remove();
+                    });
+            } )
+            .attr( 'src' , src );
     }
     $('.photos-list').delegate('img' , 'tap' , function(){
-        if( isLoading )return;
+        if( isSlideing ) return;
         var $t = $(this);
         var lastIndex = imgIndex;
         var src = $t.attr('src');

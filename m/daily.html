@@ -3,12 +3,12 @@
  <head>
   <meta charset="utf-8"/>
   <title> 2013保时捷极至体验 </title>
-  <meta conent="viewport" name="widtg=500,minimum-scale=0.5,maximum-scale=2.0" />
+  <meta conent="viewport" name="width=500,minimum-scale=0.5,maximum-scale=2.0" />
   <meta conent="yes" name="apple-mobile-web-app-capable" />
   <script type="text/javascript"
     src="../lib/sea/sea-debug.js"
     data-config="../../app/config"
-    data-main="../../m/src/photos.js"></script>
+    data-main="../../m/src/daily.js"></script>
   <link href="./css/m.base.css" rel="stylesheet" type="text/css" />
   <!--<link rel="stylesheet" type="text/css" href="./css/jquery.mobile-1.3.0.css" />-->
  </head>
@@ -27,15 +27,49 @@
     </nav>
     -->
   </header>
-  <div class="main photos-main">
-    <section class="photos-desc">
-      <h2><em>精彩图库</em></h2>
-      <p>在此您可浏览2012年保时捷"极至体验"的精选照片，以供您了解活动内容。我们期待在今年的活动中与您分享更多精彩难忘的瞬间！</p>
+  <div class="main daily-main">
+    <section class="daily-desc">
+      <h2><em>日程安排</em></h2>
     </section>
-    <section class="photos-list clearfix" id="photos-list"><img src="./photo/small/b-1.jpg"/><img src="./photo/small/b-2.jpg"/><img src="./photo/small/b-3.jpg"/><img src="./photo/small/b-4.jpg"/><img src="./photo/small/b-5.jpg"/><img src="./photo/small/b-6.jpg"/><img src="./photo/small/b-7.jpg"/><img src="./photo/small/b-8.jpg"/><img src="./photo/small/b-9.jpg"/><img src="./photo/small/b-10.jpg"/><img src="./photo/small/b-11.jpg"/><img src="./photo/small/b-12.jpg"/></section>
-    <div class="more-photos" id="more-photos">
-      <i class="icon icon-more"></i>
-    </div>
+    <section class="daily-events">
+      <div class="mod">
+        <div class="mod-h" id="dailys-tap">
+          <a class="selected" href="javascript:;">上海 ( 6 月 16 日 )</a>
+          <a href="javascript:;">北京 ( 6 月 30 日 )</a>
+        </div>
+        <div class="mod-b" id="dailys-detail">
+          <!--daily for sh-->
+          <div id="sh-daily">
+            <ul class="daily-list">
+              <li><em>12:30</em>“保时捷极至体验”活动开放</li>
+              <li><em>13:30</em>古董车和亚洲保时捷卡雷拉杯赛车游行</li>
+              <li><em>14:00</em>亚洲保时捷卡雷拉杯车手签名</li>
+              <li><em>14:30</em> “赛道表演圈”体验</li>
+              <li><em>18:00</em>活动结束</li>
+            </ul>
+
+            <a class="map-title" href="javascript:;">上海新能源主题公园</a>
+            <img class="map-image" src="./images/sh-map.png" width="100%"/>
+          </div>
+          <!--daily for bj-->
+          <div id="bj-daily" style="display:none;">
+            <ul class="daily-list">
+              <li><em>09:30</em>“保时捷极至体验”活动开放</li>
+              <li><em>11:00</em>“赛道表演圈”体验</li>
+              <li><em>13:00</em>“重力体验”环节</li>
+              <li><em>13:30</em>古董车和亚洲保时捷卡雷拉杯赛车游行</li>
+              <li><em>14:00</em>亚洲保时捷卡雷拉杯车手签名</li>
+              <li><em>14:30</em> “赛道表演圈”体验</li>
+              <li><em>15:00</em> “重力体验”环节</li>
+              <li><em>18:00</em>活动结束</li>
+            </ul>
+            <a class="map-title" href="javascript:;">北京金港国际赛车场</a>
+            <img class="map-image" src="./images/bj-map.png" width="100%"/>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="daily-map"></section>
   </div>
 
   <footer class="clearfix">
@@ -66,7 +100,7 @@
   </div>
   <div id="nl-mask" style="display:none;">
     <div class="loading" ></div>
-    <div id="nl-wrap" class="nl-wrap"></div>
+    <div id="nl-wrap"></div>
   </div>
  </body>
 </html>

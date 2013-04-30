@@ -78,6 +78,7 @@ html,body{
     left: 0;
     width: 100px;
 }
+
 header{
     position: relative;
     text-align: center;
@@ -102,6 +103,10 @@ header nav{
     color: #c3c3c3;
     background: #171717;
     bottom: 100%;
+ -webkit-backface-visibility: hidden;
+     -webkit-transform-style: preserve-3d;
+          -webkit-transition: all 400ms ease-in;
+                  transition: all 400ms ease-in;
 }
 header nav a{
     display: block;
@@ -114,6 +119,8 @@ header nav div .icon{
 }
 header nav div{
     background: #e7e7e7;
+    position: relative;
+    z-index: 1000;
     height: 88px;
 }
 header nav a:nth-child(3),
@@ -349,9 +356,108 @@ header nav a:last-child::after{
     background: rgba(0 , 0 , 0 , 0.5) url("../images/loading.gif") no-repeat center center;
 }
 
-#nl-wrap{
+.nl-wrap{
     position:absolute;
     top: 50%;
+    text-align: left;
+}
+
+
+
+/* for daily.html */
+.daily-main{
+    margin-top: -40px;
+}
+.daily-desc{
+    margin: 0 5%;
+    padding: 7px 0;
+}
+.daily-desc h2{
+    font-size: 18px;
+    line-height: 1.5em;
+    margin-bottom: 20px;
+}
+.daily-desc h2 em{
+    color: white;
+    background: #ED1B23;
+    padding: 10px 20px;
+}
+.daily-list{
+    font-size: 18px;
+    color: #323232;
+    padding-bottom: 80px;
+    padding-top: 10px;
+}
+.daily-list li{
+    height: 66px;
+    position: relative;
+    line-height: 60px;
+}
+
+.daily-list li em{
+    display: block;
+    float: left;
+    background: #ed1b23;
+    width: 60px;
+    height: 60px;
+    text-align: center;
+    border-radius: 30px;
+    color: white;
+    margin-right: 10px;
+}
+.daily-list li em::after{
+    display: block;
+    position: absolute;
+    content: ' ';
+    background: #ed1b23;
+    width: 4px;
+    height: 8px;
+    top: 59px;
+    left: 28px;
+}
+.daily-list li:last-child em::after{
+    display: none;
+}
+
+.map-title{
+    display: block;
+    height: 65px;
+    line-height: 65px;
+    background: #ed1b23;
+    color: white;
+    text-align: center;
+    font-size: 20px;
+    margin-bottom: 25px;
+}
+.map-image{
+    margin-bottom: 30px;
+}
+
+
+/* for act.html */
+.act-events .mod-b{
+    padding: 0;
+}
+/* for mod */
+.mod-h{
+    display: -webkit-box;
+    background: #e7e7e7;
+    font-size: 24px;
+    color: #787878;
+    text-align: center;
+}
+.mod-h a{
+    -webkit-box-flex:1;
+    display: block;
+    height: 65px;
+    line-height: 65px;
+}
+.mod-h a.selected{
+    background: #ed1b23;
+    color: white;
+}
+.mod-b{
+    padding: 20px;
 }
 /* footer */
 footer{

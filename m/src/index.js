@@ -7,113 +7,29 @@ define(function( require , exports , model ){
     var wrap = document.getElementById('wraper');
     wrap.style.minHeight = bodyHeight + 'px';
     wrap.style.position = 'relative';
-    /*
-     * Animate Class
-     */
-    var Animate = function(originNumArr,targetNumArr,speed,easing,step,callback){
-        this.queue = [];
-        this.duration = speed;
-        this.easing = easing;
-        this.step = step;
-        this.callback = callback;
-        for (var i = 0; i < originNumArr.length; i++){
-            this.queue.push(new Animate.fx(originNumArr[i],targetNumArr[i]));
-        }
-        // begin animation
-        this.begin();
-    }
-    Animate.prototype = {
-        begin: function(){
-            if(this._t) return ;
-            var that = this;
-            this.startTime = +new Date();
-            // loop
-            this._t = setInterval(function(){
-                that.tempTime = +new Date() - that.startTime;
-                var queue = that.queue;
-                if(that.tempTime > that.duration){
-                    that.end();
-                    // end Animate
-                    return;
-                }
-                var easing = Animate.easing[that.easing] || Animate.easing.linear,
-                    currValues = [];
-                for (var i = 0,len = queue.length; i < len; i++){
-                    currValues.push(queue[i].update(that.tempTime,that.duration,easing));
-                }
-                // run step to update
-                that.step(currValues);
-            },13);
-        },
-        stop: function(){
-            clearInterval(this._t);
-        },
-        // go to end of the animation
-        end: function(){
-            clearInterval(this._t);
-            var queue = this.queue,
-                currValues = [];
-            for (var i = 0,len = queue.length; i < len; i++){
-                currValues.push(queue[i].target);
-            }
-            this.step(currValues);
-            // call callback function
-            this.callback && this.callback();
-        }
-    }
-    //
-    Animate.fx = function(origin,target){
-        this.origin = origin;
-        this.target = target;
-        this.dist = target - origin;
-    }
-    Animate.fx.prototype = {
-        update: function(n,duration,easing){
-            var pos = easing(n/duration, n , 0 ,1 , duration);
-            return this.origin + this.dist * pos;
-        }
-    }
-    // easing
-    Animate.easing = {
-        linear: function( p, n, firstNum, diff ) {
-            return firstNum + diff * p;
-        },
-        swing: function( p, n, firstNum, diff ) {
-            return ((-Math.cos(p*Math.PI)/2) + 0.5) * diff + firstNum;
-        },
-        easeOutExpo: function (x, t, b, c, d) {
-            return (t==d) ? b+c : c * (-Math.pow(2, -10 * t/d) + 1) + b;
-        },
-        easeInExpo: function (x, t, b, c, d) {
-            return (t==0) ? b : c * Math.pow(2, 10 * (t/d - 1)) + b;
-        },
-        easeOutBack: function (x, t, b, c, d, s) {
-            if (s == undefined) s = 1.70158;
-            return c*((t=t/d-1)*t*((s+1)*t + s) + 1) + b;
-        }
-    };
+
 
     // tap header event
     var header = document.getElementsByTagName('header')[0];
     var nav = document.getElementsByTagName('nav')[0];
-    header.addEventListener('touchend' , function( ev ){
-        new Animate( [ 100 ] , [-300] , 500 , 'easeOutExpo' , function( arr ){
-            nav.style.bottom = arr[0] + '%';
-        } );
+    header.addEventListener('click' , function( ev ){
+        nav.style.bottom = '-300%';
+
          ev.stopPropagation();
     } , false);
 
     // prevent propagation
-    nav.addEventListener('touchend' , function(ev){
+    nav.addEventListener('click' , function(ev){
         ev.stopPropagation();
     });
 
     var backBtn = nav.getElementsByClassName('back-nav')[0];
-    backBtn.addEventListener( 'touchend' , function( ev ){
-        new Animate( [ -300 ] , [100] , 500 , 'easeInExpo' , function( arr ){
-            nav.style.bottom = arr[0] + '%';
-        } );
+    backBtn.addEventListener( 'click' , function( ev ){
+
+        nav.style.bottom = '100%';
+
          ev.stopPropagation();
+         ev.preventDefault();
     } );
 
 
