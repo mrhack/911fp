@@ -47,8 +47,11 @@ define(function( require , exports , model ){
                 if( $curr.index() == 11 ){
                     $('#more-photos').trigger('tap');
                     $curr.next().trigger('tap');
+                } else {
+                    // TODO.. show last page panel
+                    $noMoreTip.html('已经是最后一张了')
+                        .fadeIn();
                 }
-                // TODO.. show last page panel
             }
         } )
         .swiperight( function(){
@@ -57,13 +60,16 @@ define(function( require , exports , model ){
                 .trigger('tap');
             if( !$prev.length ){
                 // TODO.. show first page panel
+                $noMoreTip.html('已经是第一张了')
+                    .fadeIn();
             }
         } );;
 
     var $bigImgWrap = $('#nl-wrap');
     var $loading = $imageWrap.find('.loading');
-
+    var $noMoreTip  =  $('#no-more-photos');
     var isSlideing = false;
+    var isLoading = false;
     var $newImage = null;
     var showImage = function( index , lastIndex ) {
         var $imgs = $photoList.find('img');
@@ -80,6 +86,9 @@ define(function( require , exports , model ){
         if( next2 )
             $('<img />').attr('src' ,  next2.replace(/small/ , 'big') );
 
+        // hide $noMoreTip
+        $noMoreTip.hide();
+
         // show image in middle of viewport
         // disable scroll
 
@@ -94,24 +103,26 @@ define(function( require , exports , model ){
             .show()
             .css('top' , scrollTop );
 
-        $loading.show();
-        // remove wrap background
-        $imageWrap.css('background' , 'none');
+        setTimeout( function(){
+            if( isLoading ){
+                $loading.show();
+            }
+        } , 100 );
         // add new image to wrap
-        $bigImgWrap.css( {
-            'left' : index > lastIndex ? '+=0' : '-=' + windowWidth  ,
+        $bigImgWrap.css({
             'width': ($bigImgWrap.children().length + 2) * windowWidth
         });
+
+        isLoading = true;
         $newImage = $('<img />')
             .attr( 'index' , index )
             .css('width' , windowWidth)
             .load( function(){
-
+                isLoading = false;
                 var $img = $(this)
-                    [ index > lastIndex ? 'appendTo' : 'prependTo' ]( $bigImgWrap )
-                    .fadeIn();
+                    [ index > lastIndex ? 'appendTo' : 'prependTo' ]( $bigImgWrap );
+                $bigImgWrap.css('left' , index > lastIndex ? '+=0' : '-=' + windowWidth );
                 $loading.hide();
-                $imageWrap.css('background' , '');
                 // scroll to right position
                 isSlideing = true;
                 $bigImgWrap
