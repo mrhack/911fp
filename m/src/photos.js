@@ -129,10 +129,7 @@ define(function( require , exports , model ){
                 $noMoreTip.html('已经是第一张了')
                     .fadeIn();
             }
-        } )
-        .delegate('img' , 'tap' , function(){
-            return false;
-        });;
+        } );;
 
     var $bigImgWrap = $('#nl-wrap');
     var $loading = $imageWrap.find('.loading');
