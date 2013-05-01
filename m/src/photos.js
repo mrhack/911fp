@@ -31,7 +31,7 @@ define(function( require , exports , model ){
 
     var windowWidth = $(window).width();
     var windowHieght = $(window).height();
-    var closeWidth  =  48;
+    var closeWidth  =  38;
     var topHeight = closeWidth / 2;
     $(window).resize(function(){
         windowWidth = $(window).width();
@@ -47,19 +47,24 @@ define(function( require , exports , model ){
         });
 
         // fix close position
-        $bigImgWrap.find('.close')
-            .css('right' , Math.max( 0 , ( windowWidth - $img.width() ) / 2 -topHeight ));
+        fitCloseSize();
     });
+    var fitCloseSize = function( $close ){
+        var $close = $bigImgWrap.find('.close');
+        var $img = $bigImgWrap.find('img');
+        $close.css('right' , ( windowWidth - $img.width() ) / 2)
+            .css('top' , windowHieght - $img.height() > 2 * closeWidth ? - closeWidth : 0);
+    }
     var fitImgSize = function( $img ){
         var imgWidth = $img.width();
         var imgHeight = $img.height();
         // reset img width and height to fit the window viewport
         // if img height is highter than windowHieght - 48 * 2
         // include close btn height
-        if( imgHeight / imgWidth * windowWidth * 0.9 > windowHieght - topHeight * 2 ){
-            imgWidth = parseInt( (windowHieght - topHeight * 2) * imgWidth / imgHeight );
+        if( imgHeight / imgWidth * windowWidth * 0.9 > windowHieght ){
+            imgWidth = parseInt( windowHieght * imgWidth / imgHeight );
             $img.css({
-                'height': windowHieght - topHeight * 2,
+                'height': windowHieght ,
                 'width' : imgWidth  ,
                 'margin-left': ( windowWidth - imgWidth ) / 2,
                 'margin-right': ( windowWidth - imgWidth ) / 2
@@ -67,6 +72,7 @@ define(function( require , exports , model ){
         } else {
             $img.css({
                 'width': windowWidth * 0.9 ,
+                'height': imgHeight / imgWidth * windowWidth * 0.9,
                 'margin-left': 0.05 * windowWidth,
                 'margin-right': 0.05 * windowWidth
             });
@@ -204,9 +210,9 @@ define(function( require , exports , model ){
                         $bigImgWrap.css({
                             'width' : windowWidth,
                             'left' : 0} )
-                        .append($('<i class="close">×</i>').css({
-                            'right': Math.max( 0 , ( windowWidth - $img.width() ) / 2 -topHeight )
-                        }));
+                        .append('<i class="close">×</i>');
+                        // fix size
+                        fitCloseSize();
                     });
             } )
             .attr( 'src' , src );

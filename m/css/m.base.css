@@ -370,7 +370,7 @@ header nav a:last-child::after{
     font-size: 30px;
     font-weight: bold;
     text-align: center;
-    top: -19px;
+    top: 0px;
     /*border: 5px solid white;
     border-radius: 50px;
     top: -22px;
