@@ -31,11 +31,24 @@ define(function( require , exports , model ){
 
     var windowWidth = $(window).width();
     var windowHieght = $(window).height();
+    var closeWidth  =  48;
+    var topHeight = closeWidth / 2;
     $(window).resize(function(){
         windowWidth = $(window).width();
         windowHieght = $(window).height();
 
-        fitImgSize( $bigImgWrap.find('img') );
+        // resize img
+        var $img = $bigImgWrap.find('img');
+        fitImgSize( $img );
+        // resize imgwraper
+        $bigImgWrap.css({
+            'margin-top': - $img.height() / 2 ,
+            'width' : windowWidth
+        });
+
+        // fix close position
+        $bigImgWrap.find('.close')
+            .css('right' , Math.max( 0 , ( windowWidth - $img.width() ) / 2 -topHeight ));
     });
     var fitImgSize = function( $img ){
         var imgWidth = $img.width();
@@ -43,10 +56,10 @@ define(function( require , exports , model ){
         // reset img width and height to fit the window viewport
         // if img height is highter than windowHieght - 48 * 2
         // include close btn height
-        if( imgHeight / imgWidth * windowWidth * 0.9 > windowHieght - 48 * 2 ){
-            imgWidth = parseInt( (windowHieght - 48 * 2) * imgWidth / imgHeight );
+        if( imgHeight / imgWidth * windowWidth * 0.9 > windowHieght - topHeight * 2 ){
+            imgWidth = parseInt( (windowHieght - topHeight * 2) * imgWidth / imgHeight );
             $img.css({
-                'height': windowHieght - 48 * 2,
+                'height': windowHieght - topHeight * 2,
                 'width' : imgWidth  ,
                 'margin-left': ( windowWidth - imgWidth ) / 2,
                 'margin-right': ( windowWidth - imgWidth ) / 2
@@ -192,7 +205,7 @@ define(function( require , exports , model ){
                             'width' : windowWidth,
                             'left' : 0} )
                         .append($('<i class="close">×</i>').css({
-                            'right': ( windowWidth - $img.width() ) / 2
+                            'right': Math.max( 0 , ( windowWidth - $img.width() ) / 2 -topHeight )
                         }));
                     });
             } )

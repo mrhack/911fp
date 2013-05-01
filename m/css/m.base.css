@@ -361,16 +361,20 @@ header nav a:last-child::after{
 }
 #nl-mask .close{
     position: absolute;
-    height: 48px;
-    width: 48px;
-    background: red;
+    height: 38px;
+    width: 38px;
+    background: rgba(255, 0, 0, 1);
     color: white;
     right: 5%;
-    line-height: 48px;
+    line-height: 38px;
     font-size: 30px;
     font-weight: bold;
     text-align: center;
-    top: -48px;
+    top: -19px;
+    /*border: 5px solid white;
+    border-radius: 50px;
+    top: -22px;
+    */
 }
 #no-more-photos{
     margin-top: -35px;
