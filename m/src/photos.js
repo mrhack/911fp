@@ -70,7 +70,7 @@ define(function( require , exports , model ){
                 .trigger('tap');
             if( !$next.length ){
                 if( $curr.index() == 11 ){
-                    $('#more-photos').trigger('tap');
+                    $('#more-photos').trigger('click');
                     $curr.next().trigger('tap');
                 } else {
                     // TODO.. show last page panel
@@ -88,7 +88,10 @@ define(function( require , exports , model ){
                 $noMoreTip.html('已经是第一张了')
                     .fadeIn();
             }
-        } );;
+        } )
+        .delegate('img' , 'tap' , function(){
+            return false;
+        });;
 
     var $bigImgWrap = $('#nl-wrap');
     var $loading = $imageWrap.find('.loading');
@@ -110,13 +113,16 @@ define(function( require , exports , model ){
         var next2= $imgs.eq( index + 2 ).attr('src');
         if( next2 )
             $('<img />').attr('src' ,  next2.replace(/small/ , 'big') );
-
+        var next3= $imgs.eq( index + 3 ).attr('src');
+        if( next3 )
+            $('<img />').attr('src' ,  next3.replace(/small/ , 'big') );
         // hide $noMoreTip
         $noMoreTip.hide();
+        // hild close btn
+        $bigImgWrap.find('.close').remove();
 
         // show image in middle of viewport
         // disable scroll
-
         var scrollTop = $('body').scrollTop();
         $imageWrap.parent()
             .css({
@@ -141,7 +147,12 @@ define(function( require , exports , model ){
         isLoading = true;
         $newImage = $('<img />')
             .attr( 'index' , index )
-            .css('width' , windowWidth)
+            .css({
+                'width': windowWidth * 0.9 ,
+                'margin-left': 0.05 * windowWidth,
+                'margin-right': 0.05 * windowWidth,
+                'max-height' : '90%'
+            })
             .load( function(){
                 isLoading = false;
                 var $img = $(this)
@@ -155,11 +166,12 @@ define(function( require , exports , model ){
                     .animate({
                         left : - $(this).index() * windowWidth
                     } , 500 , '' , function(){
+                        $img.siblings().remove();
                         isSlideing = false;
                         $bigImgWrap.css({
                             'width' : windowWidth,
-                            'left' : 0} );
-                        $img.siblings().remove();
+                            'left' : 0} )
+                        .append('<i class="close">×</i>');
                     });
             } )
             .attr( 'src' , src );
@@ -189,24 +201,28 @@ define(function( require , exports , model ){
     // for more images
     var maxImageIndex = 35;
     var currImageIndex = 12;
-    $('#more-photos').tap( function(){
+    $('#more-photos').click( function(){
         var currImageIndex = 12;
         var $t = $(this);
+        var $imgs = $photoList.find('img');
+        var imgHeight = $imgs.height();
         // if is expanded
         if( $t.hasClass('silde-up') ){
-            $photoList.find('img')
-                .each(function( index , dom ){
-                    if( index >= currImageIndex ){
-                        dom.style.display = 'none';
-                    }
-                });
+            $photoList.animate({
+                height : 3 * ( imgHeight + 8)
+            }, 400 );
             $t.removeClass('silde-up');
             return;
         }
+
+        $photoList.animate({
+            height : Math.ceil( maxImageIndex / 4 ) * ( imgHeight + 8)
+        } , 400);
         // if is loaded
         if( $t.hasClass('more-showed') ){
             $photoList.find('img')
                 .show();
+
             $t.addClass('silde-up');
             return;
         }

@@ -65,8 +65,8 @@ html,body{
 }
 .icon-back{
     position: absolute;
-    width: 22px;
-    height: 40px;
+    width: 24px;
+    height: 42px;
     background-position: 0 -88px;
     top: 50%;
     margin-top: -20px;
@@ -107,6 +107,9 @@ header nav{
      -webkit-transform-style: preserve-3d;
           -webkit-transition: all 300ms ease-in;
                   transition: all 300ms ease-in;
+}
+header nav a.disabled{
+    opacity: 0.3;
 }
 header nav a{
     display: block;
@@ -308,6 +311,7 @@ header nav a:last-child::after{
 }
 .photos-list{
     text-align: center;
+    overflow: hidden;
 }
 .photos-list img{
     width: 25%;
@@ -336,7 +340,7 @@ header nav a:last-child::after{
     background-position: 0 -28px;
 }
 #nl-mask{
-    background: rgba( 0,0,0 ,0.5 );
+    background: rgba( 0,0,0 ,0.7 );
     position: absolute;
     top:0;
     left:0;
@@ -354,6 +358,19 @@ header nav a:last-child::after{
     left: 0;
     top: 0;
     background: url("../images/loading.gif") no-repeat center center;
+}
+#nl-mask .close{
+    position: absolute;
+    height: 48px;
+    width: 48px;
+    background: red;
+    color: white;
+    right: 5%;
+    line-height: 48px;
+    font-size: 30px;
+    font-weight: bold;
+    text-align: center;
+    top: -48px;
 }
 #no-more-photos{
     margin-top: -35px;

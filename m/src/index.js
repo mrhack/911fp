@@ -42,6 +42,10 @@ define(function( require , exports , model ){
         .addEventListener('touchend' , function(){
             document.getElementById('share_li1').style.display = 'none';
         });
+
+    setTimeout( function(){
+        nav.style.bottom = '100%';
+    } , 5000);
 });
 
 
