@@ -1,8 +1,33 @@
-/* webapp js */
+﻿/* webapp js */
 define(function( require , exports , model ){
 
     var $ = require('jquery');
     require('jquery.mobile');
+
+   // tap header event
+    var header = document.getElementsByTagName('header')[0];
+    var nav = document.getElementsByTagName('nav')[0];
+    header.addEventListener('click' , function( ev ){
+        nav.style.bottom = '-300%';
+
+         ev.stopPropagation();
+    } , false);
+
+    // prevent propagation
+    nav.addEventListener('click' , function(ev){
+        ev.stopPropagation();
+    });
+
+    var backBtn = nav.getElementsByClassName('back-nav')[0];
+    backBtn.addEventListener( 'click' , function( ev ){
+
+        nav.style.bottom = '100%';
+
+         ev.stopPropagation();
+         ev.preventDefault();
+    } );
+
+
 
     var windowWidth = $(window).width();
 
