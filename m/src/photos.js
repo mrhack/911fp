@@ -30,13 +30,35 @@ define(function( require , exports , model ){
 
 
     var windowWidth = $(window).width();
-
+    var windowHieght = $(window).height();
     $(window).resize(function(){
         windowWidth = $(window).width();
+        windowHieght = $(window).height();
 
-        $bigImgWrap.find('img')
-            .css('width' , windowWidth);
+        fitImgSize( $bigImgWrap.find('img') );
     });
+    var fitImgSize = function( $img ){
+        var imgWidth = $img.width();
+        var imgHeight = $img.height();
+        // reset img width and height to fit the window viewport
+        // if img height is highter than windowHieght - 48 * 2
+        // include close btn height
+        if( imgHeight / imgWidth * windowWidth * 0.9 > windowHieght - 48 * 2 ){
+            imgWidth = parseInt( (windowHieght - 48 * 2) * imgWidth / imgHeight );
+            $img.css({
+                'height': windowHieght - 48 * 2,
+                'width' : imgWidth  ,
+                'margin-left': ( windowWidth - imgWidth ) / 2,
+                'margin-right': ( windowWidth - imgWidth ) / 2
+            });
+        } else {
+            $img.css({
+                'width': windowWidth * 0.9 ,
+                'margin-left': 0.05 * windowWidth,
+                'margin-right': 0.05 * windowWidth
+            });
+        }
+    }
     var $photoList = $('#photos-list');
     // save current tap image index
     var imgIndex   = -1;
@@ -147,16 +169,14 @@ define(function( require , exports , model ){
         isLoading = true;
         $newImage = $('<img />')
             .attr( 'index' , index )
-            .css({
-                'width': windowWidth * 0.9 ,
-                'margin-left': 0.05 * windowWidth,
-                'margin-right': 0.05 * windowWidth,
-                'max-height' : '90%'
-            })
             .load( function(){
                 isLoading = false;
                 var $img = $(this)
                     [ index > lastIndex ? 'appendTo' : 'prependTo' ]( $bigImgWrap );
+
+                fitImgSize( $img );
+
+
                 $bigImgWrap.css('left' , index > lastIndex ? '+=0' : '-=' + windowWidth );
                 $loading.hide();
                 // scroll to right position
@@ -171,7 +191,9 @@ define(function( require , exports , model ){
                         $bigImgWrap.css({
                             'width' : windowWidth,
                             'left' : 0} )
-                        .append('<i class="close">×</i>');
+                        .append($('<i class="close">×</i>').css({
+                            'right': ( windowWidth - $img.width() ) / 2
+                        }));
                     });
             } )
             .attr( 'src' , src );

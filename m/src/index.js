@@ -43,8 +43,7 @@ define(function( require , exports , model ){
             document.getElementById('share_li1').style.display = 'none';
         });
 
-    // first animate the nav
-    nav.style.bottom = "-300%";
+    nav.style.bottom = '-300%';
     setTimeout( function(){
         nav.style.bottom = '100%';
     } , 5000);
