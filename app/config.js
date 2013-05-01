@@ -44,6 +44,11 @@ seajs.config({
     ,'bootstrap': {
         src: '../raphael/raphael-min'
     }
+	// for checking browser
+	,'modernizr': {
+        src: '../../src/modernizr-2.5.3.min',
+		exports: 'modernizr'
+    }
   },
   alias : {
     'util' : '../src/util/util'

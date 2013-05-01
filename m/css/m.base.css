@@ -105,8 +105,8 @@ header nav{
     bottom: 100%;
  -webkit-backface-visibility: hidden;
      -webkit-transform-style: preserve-3d;
-          -webkit-transition: all 400ms ease-in;
-                  transition: all 400ms ease-in;
+          -webkit-transition: all 300ms ease-in;
+                  transition: all 300ms ease-in;
 }
 header nav a{
     display: block;

@@ -14,6 +14,7 @@ define(function(require, exports, module) {
     // require jquery ani plugin
     require('jquery.ani');
     require('jquery.easing');
+    require('modernizr');
 
 
      // ----------------------- dom ready index.html
@@ -133,6 +134,9 @@ define(function(require, exports, module) {
 		
 		
     };
+	if($('html').hasClass('touch') && navigator.userAgent.match(/iPad/i) == null){
+		window.location.href="m";
+	}
     var pro = processBar( $('#process-bar') , $('#process-num') )
                 .start();
     $(window).load(function(){
