@@ -109,8 +109,8 @@ define(function( require , exports , model ){
         var viewportmeta = document.querySelector('meta[name="viewport"]');
         if (viewportmeta) {
             viewportmeta.content = disableZoom ?
-                'width=device-width, minimum-scale=1.0, maximum-scale=1.0, initial-scale=1.0':
-                'width=500, minimum-scale=0.5, maximum-scale=2.0';
+                'width=500, minimum-scale=0.5, maximum-scale=2.0,user-scalable=0':
+                'width=500, minimum-scale=0.5, maximum-scale=2.0,user-scalable=1';
         }
     }
     var $photoList = $('#photos-list');
