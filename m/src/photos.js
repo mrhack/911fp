@@ -53,6 +53,7 @@ define(function( require , exports , model ){
 
         // fix close position
         fitCloseSize();
+        fixOriginLink();
     });
     var fitCloseSize = function( $close ){
         var $close = $bigImgWrap.find('.close');
