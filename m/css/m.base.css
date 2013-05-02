@@ -401,7 +401,7 @@ header nav a:last-child::after{
     margin-top: -25px;
 }
 #nl-mask .disable{
-    opacity: 0.4;
+    display: none;
 }
 #nl-mask .next-wrap{
     left: auto;
@@ -409,8 +409,9 @@ header nav a:last-child::after{
 }
 #nl-mask .prev,
 #nl-mask .next{
-    border-left: 1px solid black;
-    border-bottom: 1px solid black;
+    border-left: 1px solid #111;
+    border-bottom: 1px solid #111;
+    box-shadow: -2px 2px 0px 2px white;
     height: 30px;
     width: 30px;
     -webkit-transform: rotate( 45deg );
@@ -418,9 +419,11 @@ header nav a:last-child::after{
     margin-top: 11px;
     margin-left: 9px;
 }
+
 #nl-mask .next{
-    border-right: 1px solid black;
-    border-top: 1px solid black;
+    border-right: 2px solid white;
+    border-top: 2px solid white;
+    box-shadow: 2px -2px 0px 1px #111;
     border-left: none;
     border-bottom: none;
 }
