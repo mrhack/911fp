@@ -129,7 +129,26 @@ define(function( require , exports , model ){
                 $noMoreTip.html('已经是第一张了')
                     .fadeIn();
             }
-        } );;
+        } )
+        .delegate('.next-wrap' , 'tap' , function(){
+            //
+            $(this).trigger('swipeleft')
+                [$photoList.find('.selected').index() > $photoList.find('img').length - 2 ?
+                'addClass' : 'removeClass']('disable');
+
+            $(this).parent().find('.prev-wrap')
+                .removeClass('disable');
+            return false;
+        })
+        .delegate('.prev-wrap' , 'tap' , function(){
+
+            $(this).trigger('swiperight')
+                [$photoList.find('.selected').index() < 1 ?
+                'addClass' : 'removeClass']('disable');
+            $(this).parent().find('.next-wrap')
+                .removeClass('disable');
+            return false;
+        });;
 
     var $bigImgWrap = $('#nl-wrap');
     var $loading = $imageWrap.find('.loading');

@@ -389,6 +389,40 @@ header nav a:last-child::after{
     top: -22px;
     */
 }
+#nl-mask .prev-wrap,
+#nl-mask .next-wrap{
+    position: absolute;
+    width : 50px;
+    height: 50px;
+    left: 7%;
+    z-index: 100;
+    top: 50%;
+    margin-top: -25px;
+}
+#nl-mask .disable{
+    opacity: 0.4;
+}
+#nl-mask .next-wrap{
+    left: auto;
+    right: 7%;
+}
+#nl-mask .prev,
+#nl-mask .next{
+    border-left: 1px solid black;
+    border-bottom: 1px solid black;
+    height: 30px;
+    width: 30px;
+    -webkit-transform: rotate( 45deg );
+    transform: rotate( 45deg );
+    margin-top: 11px;
+    margin-left: 9px;
+}
+#nl-mask .next{
+    border-right: 1px solid black;
+    border-top: 1px solid black;
+    border-left: none;
+    border-bottom: none;
+}
 #no-more-photos{
     margin-top: -35px;
     top: 50%;
