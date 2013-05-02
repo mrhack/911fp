@@ -142,11 +142,15 @@ header nav a:nth-child(5){
     border-left: 1px solid #363636;
     margin-right: -2px;
     box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
 }
 header nav a:nth-child(2),
 header nav a:nth-child(3){
      border-bottom: 1px solid #363636;
     box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
 }
 header nav a:last-child{
     width: 100%;
@@ -333,6 +337,8 @@ header nav a:last-child::after{
     display: block;
     float: left;
     box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
 }
 .photos-list img.selected{
     border: 4px solid #aaa;
@@ -409,9 +415,8 @@ header nav a:last-child::after{
 }
 #nl-mask .prev,
 #nl-mask .next{
-    border-left: 1px solid #111;
-    border-bottom: 1px solid #111;
-    box-shadow: -2px 2px 0px 2px white;
+    border-left: 3px solid white;
+    border-bottom: 3px solid white;
     height: 30px;
     width: 30px;
     -webkit-transform: rotate( 45deg );
@@ -419,11 +424,23 @@ header nav a:last-child::after{
     margin-top: 11px;
     margin-left: 9px;
 }
-
+#nl-mask .prev-inner,
+#nl-mask .next-inner{
+    height: 29px;
+    width: 100%;
+    border-left: 1px solid black;
+    border-bottom: 1px solid black;
+}
+#nl-mask .next-inner{
+    width: 28px;
+    border-right: 3px solid white;
+    border-top: 3px solid white;
+    border-left: none;
+    border-bottom: none;
+}
 #nl-mask .next{
-    border-right: 2px solid white;
-    border-top: 2px solid white;
-    box-shadow: 2px -2px 0px 1px #111;
+    border-right: 1px solid black;
+    border-top: 1px solid black;
     border-left: none;
     border-bottom: none;
 }

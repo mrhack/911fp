@@ -78,6 +78,22 @@ define(function( require , exports , model ){
             });
         }
     }
+    var fixPrevNext = function(){
+        var $img = $photoList.find('.selected');
+        var index = $img.index();
+        var $next = $imageWrap.find('.next-wrap');
+        var $prev = $imageWrap.find('.prev-wrap');
+        if( index < 1 ){
+            // hide prev
+            $prev.hide();
+        } else if ( index > maxImageIndex - 2 ){
+            // hide next
+            $next.hide();
+        } else {
+            $next.show();
+            $prev.show();
+        }
+    }
     var $photoList = $('#photos-list');
     // save current tap image index
     var imgIndex   = -1;
@@ -132,21 +148,11 @@ define(function( require , exports , model ){
         } )
         .delegate('.next-wrap' , 'tap' , function(){
             //
-            $(this).trigger('swipeleft')
-                [$photoList.find('.selected').index() > 33 ?
-                'addClass' : 'removeClass']('disable');
-
-            $(this).parent().find('.prev-wrap')
-                .removeClass('disable');
+            $(this).trigger('swipeleft');
             return false;
         })
         .delegate('.prev-wrap' , 'tap' , function(){
-
-            $(this).trigger('swiperight')
-                [$photoList.find('.selected').index() < 1 ?
-                'addClass' : 'removeClass']('disable');
-            $(this).parent().find('.next-wrap')
-                .removeClass('disable');
+            $(this).trigger('swiperight');
             return false;
         });;
 
@@ -229,6 +235,7 @@ define(function( require , exports , model ){
                         .append('<i class="close">×</i>');
                         // fix size
                         fitCloseSize();
+                        fixPrevNext();
                     });
             } )
             .attr( 'src' , src );
