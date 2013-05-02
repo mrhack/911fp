@@ -140,6 +140,7 @@ header nav div{
 header nav a:nth-child(3),
 header nav a:nth-child(5){
     border-left: 1px solid #363636;
+    margin-right: -2px;
     box-sizing: border-box;
 }
 header nav a:nth-child(2),
