@@ -133,7 +133,7 @@ define(function( require , exports , model ){
         .delegate('.next-wrap' , 'tap' , function(){
             //
             $(this).trigger('swipeleft')
-                [$photoList.find('.selected').index() > $photoList.find('img').length - 2 ?
+                [$photoList.find('.selected').index() > 33 ?
                 'addClass' : 'removeClass']('disable');
 
             $(this).parent().find('.prev-wrap')
