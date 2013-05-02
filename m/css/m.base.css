@@ -117,6 +117,8 @@ header nav{
  -webkit-backface-visibility: hidden;
      -webkit-transform-style: preserve-3d;
           -webkit-transition: all 300ms ease-in;
+             -moz-transition: all 300ms ease-in;
+               -o-transition: all 300ms ease-in;
                   transition: all 300ms ease-in;
 }
 header nav a.disabled{
@@ -141,16 +143,18 @@ header nav a:nth-child(3),
 header nav a:nth-child(5){
     border-left: 1px solid #363636;
     margin-right: -2px;
-    box-sizing: border-box;
+         box-sizing: border-box;
+      -o-box-sizing: border-box;
     -moz-box-sizing: border-box;
-    -webkit-box-sizing: border-box;
+ -webkit-box-sizing: border-box;
 }
 header nav a:nth-child(2),
 header nav a:nth-child(3){
      border-bottom: 1px solid #363636;
-    box-sizing: border-box;
+         box-sizing: border-box;
+      -o-box-sizing: border-box;
     -moz-box-sizing: border-box;
-    -webkit-box-sizing: border-box;
+ -webkit-box-sizing: border-box;
 }
 header nav a:last-child{
     width: 100%;
@@ -180,10 +184,9 @@ header nav a:last-child::after{
 .index-main .logo{
     height: 65px;
     background: url('../images/logo.png') no-repeat 20%;
-     background-size: 264px 65px;
--moz-background-size: 264px 65px;
--webkit-background-size: 264px 65px;
+
 }
+
 
 .index-main .car-wrap{
   position: relative;
@@ -227,33 +230,46 @@ header nav a:last-child::after{
     only screen and (min--moz-device-pixel-ratio: 2),
     only screen and (-o-device-pixel-ratio: 2/1),
     only screen and (min-device-pixel-ratio: 2){
+
+
         .index-main .logo{
+         background-size: 264px 65px;
+      -o-background-size: 264px 65px;
+    -moz-background-size: 264px 65px;
+ -webkit-background-size: 264px 65px;
             background: url('../images/logo@2x.png') no-repeat 20%;
+        }
+        .no-backgroundsize .index-main .logo{
+            background: url('../images/logo.png') no-repeat 20%;
         }
 
         .index-main .car{
-            background-size: 100% 100%;
-            -moz-background-size: 100% 100%;
-            -webkit-background-size: 100% 100%;
+                  background-size: 100% 100%;
+               -o-background-size: 100% 100%;
+             -moz-background-size: 100% 100%;
+          -webkit-background-size: 100% 100%;
             background: url('../images/c1@2x.png') no-repeat;
         }
         .index-main .car2{
-             background-size: 100% 100%;
-            -moz-background-size: 100% 100%;
-            -webkit-background-size: 100% 100%;
             background: url('../images/c2@2x.png') no-repeat;
         }
         .index-main .car3{
-             background-size: 100% 100%;
-            -moz-background-size: 100% 100%;
-            -webkit-background-size: 100% 100%;
             background: url('../images/c3@2x.png') no-repeat;
         }
         .index-main .car4{
-             background-size: 100% 100%;
-            -moz-background-size: 100% 100%;
-            -webkit-background-size: 100% 100%;
             background: url('../images/c4@2x.png') no-repeat;
+        }
+        .no-backgroundsize .index-main .car{
+            background: url('../images/c1.png') no-repeat;
+        }
+        .no-backgroundsize .index-main .car2{
+            background: url('../images/c2.png') no-repeat;
+        }
+        .no-backgroundsize .index-main .car3{
+            background: url('../images/c3.png') no-repeat;
+        }
+        .no-backgroundsize .index-main .car4{
+            background: url('../images/c4.png') no-repeat;
         }
     }
 
@@ -282,10 +298,10 @@ header nav a:last-child::after{
     color: #7c7c7c;
 }
 .index-desc h1{
-	font-family:'PorscheNewsGothic-Bold';
-    font-size: 28px;
-    line-height: 50px;
-    color: #323232;
+	font-family :'PorscheNewsGothic-Bold';
+    font-size   : 28px;
+    line-height : 50px;
+    color       : #323232;
     border-bottom: 1px solid #bbb;
 }
 .index-desc h2{
@@ -346,9 +362,10 @@ header nav a:last-child::after{
     border: 4px solid transparent;
     display: block;
     float: left;
-    box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+     -o-box-sizing: border-box;
+   -moz-box-sizing: border-box;
+-webkit-box-sizing: border-box;
 }
 .photos-list img.selected{
     border: 4px solid #aaa;
@@ -370,7 +387,7 @@ header nav a:last-child::after{
     background-position: 0 -28px;
 }
 #nl-mask{
-    background: rgba( 0,0,0 ,0.7 );
+    background: rgba( 0,0,0,0.7);
     position: absolute;
     top:0;
     left:0;
@@ -429,8 +446,10 @@ header nav a:last-child::after{
     border-bottom: 3px solid white;
     height: 30px;
     width: 30px;
-    -webkit-transform: rotate( 45deg );
-    transform: rotate( 45deg );
+-webkit-transform: rotate( 45deg );
+   -moz-transform: rotate( 45deg );
+     -o-transform: rotate( 45deg );
+        transform: rotate( 45deg );
     margin-top: 11px;
     margin-left: 9px;
 }
@@ -465,7 +484,10 @@ header nav a:last-child::after{
     position: absolute;
     width: 250px;
     height: 70px;
-    border-radius: 8px;
+        border-radius: 8px;
+     -o-border-radius: 8px;
+   -moz-border-radius: 8px;
+-webkit-border-radius: 8px;
     color: white;
     line-height: 70px;
     display: none;
@@ -516,7 +538,10 @@ header nav a:last-child::after{
     width: 60px;
     height: 60px;
     text-align: center;
-    border-radius: 30px;
+        border-radius: 30px;
+     -o-border-radius: 30px;
+   -moz-border-radius: 30px;
+-webkit-border-radius: 30px;
     color: white;
     margin-right: 10px;
 }
@@ -554,13 +579,16 @@ header nav a:last-child::after{
     padding: 0;
 }
 #sh-act img{display:block;}
+.tip-details{
+    position: relative;
+}
 .tip-details h2{
     margin: 30px 5% 15px;
     font-size: 24px;
     color: black;
 }
 .tip-details p{
-    margin: 15px 5%;
+    margin: 15px 5% 60px;
     font-size: 18px;
     color: #717171;
 }
@@ -573,7 +601,10 @@ header nav a:last-child::after{
     text-align: center;
 }
 .mod-h a{
-    -webkit-box-flex:1;
+    -webkit-box-flex: 1;
+       -moz-box-flex: 1;
+         -o-box-flex: 1;
+            box-flex: 1;
     display: block;
     height: 65px;
     line-height: 65px;
@@ -595,9 +626,10 @@ header nav a:last-child::after{
     line-height: 45px;
     padding: 0 34px 0 23px;
     color: white;
-    text-shadow: 1px 1px 0px black;
-    -moz-text-shadow: 1px 1px 0px black;
-    -webkit-text-shadow: 1px 1px 0px black;
+        text-shadow: 1px 1px 0px black;
+     -o-text-shadow: 1px 1px 0px black;
+   -moz-text-shadow: 1px 1px 0px black;
+-webkit-text-shadow: 1px 1px 0px black;
 }
 .tip-angle{
     position: absolute;
@@ -613,17 +645,19 @@ header nav a:last-child::after{
     width: 26px;
     height: 30px;
     border: 1px solid white;
-    -webkit-transform: skew(12deg,46deg) rotate(85deg);
-    -moz-transform: skew(12deg,46deg) rotate(85deg);
-    transform: skew(12deg,46deg) rotate(85deg);
+-webkit-transform: skew(12deg,46deg) rotate(85deg);
+   -moz-transform: skew(12deg,46deg) rotate(85deg);
+     -o-transform: skew(12deg,46deg) rotate(85deg);
+        transform: skew(12deg,46deg) rotate(85deg);
     border-bottom: none;
     border-left: none;
     background: rgba(255,255,255,0.3);
     margin-top: -14px;
     margin-left: 5px;
         box-shadow: -8px -2px 10px 3px #313131;
+     -o-box-shadow: -8px -2px 10px 3px #313131;
 -webkit-box-shadow: -8px -2px 10px 3px #313131;
--moz-box-shadow: -8px -2px 10px 3px #313131;
+   -moz-box-shadow: -8px -2px 10px 3px #313131;
 }
 
 .tip-bg{
@@ -637,9 +671,10 @@ header nav a:last-child::after{
     border: 1px solid white;
     border-right: none;
     background: rgba(255,255,255,0.3);
-    box-shadow: 0px 7px 10px -4px #0C0C0C;
+       box-shadow: 0px 7px 10px -4px #0C0C0C;
+    -o-box-shadow: 0px 7px 10px -4px #0C0C0C;
 -webkit-box-shadow: 0px 7px 10px -4px #0C0C0C;
--moz-box-shadow: 0px 7px 10px -4px #0C0C0C;
+  -moz-box-shadow: 0px 7px 10px -4px #0C0C0C;
 }
 .tip-bg::before{
     content: ' ';

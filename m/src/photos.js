@@ -27,6 +27,11 @@ define(function( require , exports , model ){
          ev.preventDefault();
     } );
 
+    header.getElementsByClassName('icon-back-area')[0]
+        .addEventListener('click' , function(ev){
+            ev.stopPropagation();
+        });
+
 
 
     var windowWidth = $(window).width();
