@@ -396,6 +396,8 @@ header nav a:last-child::after{
     height: 100%;
     overflow: hidden;
     text-align: center;
+    font-size: 0;
+    line-height: 0;
 }
 #nl-mask .loading{
     position: absolute;
@@ -422,6 +424,16 @@ header nav a:last-child::after{
     border-radius: 50px;
     top: -22px;
     */
+}
+#nl-mask .origin-pic{
+    position: absolute;
+    bottom: 0;
+    padding: 10px 16px;
+    background: rgba(0, 0, 0, 0.3);
+    color: white;
+    font-size: 14px;
+    line-height: 1em;
+    border-top-left-radius: 5px;
 }
 #nl-mask .prev-wrap,
 #nl-mask .next-wrap{

@@ -99,6 +99,19 @@ define(function( require , exports , model ){
             $prev.show();
         }
     }
+    var fixOriginLink = function(){
+         $bigImgWrap.find('.origin-pic')
+            .css('right' , (windowWidth - $bigImgWrap.find('img').width() ) / 2);
+    }
+       // for photos notto scale
+    var fixZoom = function( disableZoom ){
+        var viewportmeta = document.querySelector('meta[name="viewport"]');
+        if (viewportmeta) {
+            viewportmeta.content = disableZoom ?
+                'width=device-width, minimum-scale=1.0, maximum-scale=1.0, initial-scale=1.0':
+                'width=500,minimum-scale=0.5,maximum-scale=2.0';
+        }
+    }
     var $photoList = $('#photos-list');
     // save current tap image index
     var imgIndex   = -1;
@@ -122,6 +135,9 @@ define(function( require , exports , model ){
                     overflow: 'auto',
                     height: ''
                 });
+
+                // enable zoom
+                fixZoom( false );
             } , 300 );
             return false;
         } )
@@ -159,6 +175,9 @@ define(function( require , exports , model ){
         .delegate('.prev-wrap' , 'tap' , function(){
             $(this).trigger('swiperight');
             return false;
+        })
+        .delegate('.origin-pic' , 'tap' , function(ev){
+            ev.stopPropagation();
         });;
 
     var $bigImgWrap = $('#nl-wrap');
@@ -187,7 +206,7 @@ define(function( require , exports , model ){
         // hide $noMoreTip
         $noMoreTip.hide();
         // hild close btn
-        $bigImgWrap.find('.close').remove();
+        $bigImgWrap.find(':not(img)').remove();
 
         // show image in middle of viewport
         // disable scroll
@@ -201,7 +220,8 @@ define(function( require , exports , model ){
             .end()
             .show()
             .css('top' , scrollTop );
-
+        // disable zoom
+        fixZoom( true );
         setTimeout( function(){
             if( isLoading ){
                 $loading.show();
@@ -237,9 +257,12 @@ define(function( require , exports , model ){
                         $bigImgWrap.css({
                             'width' : windowWidth,
                             'left' : 0} )
-                        .append('<i class="close">×</i>');
+                        .append('<i class="close">×</i>')
+                        .append('<a class="origin-pic" target="_blank" href="' + $img.attr('src').replace(/big/,'original') +'">查看原图</a>');
                         // fix size
                         fitCloseSize();
+                        // fix origin-pic
+                        fixOriginLink();
                         fixPrevNext();
                     });
             } )
