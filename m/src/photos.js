@@ -54,6 +54,7 @@ define(function( require , exports , model ){
         // fix close position
         fitCloseSize();
         fixOriginLink();
+        fixPrevNext();
     });
     var fitCloseSize = function( $close ){
         var $close = $bigImgWrap.find('.close');
@@ -89,6 +90,7 @@ define(function( require , exports , model ){
         var index = $img.index();
         var $next = $imageWrap.find('.next-wrap');
         var $prev = $imageWrap.find('.prev-wrap');
+        var imgWidth = $bigImgWrap.find('img').width();
         if( index < 1 ){
             // hide prev
             $prev.hide();
@@ -99,10 +101,22 @@ define(function( require , exports , model ){
             $next.show();
             $prev.show();
         }
+        $next.css('right' ,( windowWidth - imgWidth ) / 2 + 20 );
+        $prev.css('left' , ( windowWidth - imgWidth ) / 2 + 20 );
     }
     var fixOriginLink = function(){
-         $bigImgWrap.find('.origin-pic')
-            .css('right' , (windowWidth - $bigImgWrap.find('img').width() ) / 2);
+        var $img = $bigImgWrap.find('img');
+        var $link = $bigImgWrap.find('.origin-pic');
+        var linkHeight = $link.outerHeight();
+        $link.css('right' , (windowWidth - $bigImgWrap.find('img').width() ) / 2)
+            .css(windowHieght - $img.height() > 2 * linkHeight ? {
+                'bottom' : 'auto',
+                'top'   : '100%'
+            } : {
+                'top' : 'auto',
+                'bottom' : 0
+            });;
+
     }
        // for photos notto scale
     var fixZoom = function( disableZoom ){
