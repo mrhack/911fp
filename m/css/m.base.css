@@ -435,8 +435,8 @@ header nav a:last-child::after{
     line-height: 1em;
     border-top-left-radius: 5px;
 }
-#nl-mask .prev-wrap,
-#nl-mask .next-wrap{
+.prev-wrap,
+.next-wrap{
     position: absolute;
     width : 50px;
     height: 50px;
@@ -445,15 +445,13 @@ header nav a:last-child::after{
     top: 50%;
     margin-top: -25px;
 }
-#nl-mask .disable{
-    display: none;
-}
-#nl-mask .next-wrap{
+
+.next-wrap{
     left: auto;
     right: 7%;
 }
-#nl-mask .prev,
-#nl-mask .next{
+.prev,
+.next{
     border-left: 3px solid white;
     border-bottom: 3px solid white;
     height: 30px;
@@ -465,21 +463,21 @@ header nav a:last-child::after{
     margin-top: 11px;
     margin-left: 9px;
 }
-#nl-mask .prev-inner,
-#nl-mask .next-inner{
+.prev-inner,
+.next-inner{
     height: 29px;
     width: 100%;
     border-left: 1px solid black;
     border-bottom: 1px solid black;
 }
-#nl-mask .next-inner{
+.next-inner{
     width: 28px;
     border-right: 3px solid white;
     border-top: 3px solid white;
     border-left: none;
     border-bottom: none;
 }
-#nl-mask .next{
+.next{
     border-right: 1px solid black;
     border-top: 1px solid black;
     border-left: none;
@@ -589,11 +587,13 @@ header nav a:last-child::after{
 /* for act.html */
 .act-events .mod-b{
     padding: 0;
-}
-#sh-act img{display:block;}
-.tip-details{
     position: relative;
 }
+.act-events .img-map img{display:block;}
+.img-map{
+    position: relative;
+}
+
 .tip-details h2{
     margin: 30px 5% 15px;
     font-size: 24px;
@@ -604,6 +604,7 @@ header nav a:last-child::after{
     font-size: 18px;
     color: #717171;
 }
+.tip-detail{float:left;}
 /* for mod */
 .mod-h{
     display: -webkit-box;
@@ -632,7 +633,6 @@ header nav a:last-child::after{
 /* for tip-l */
 .tip{
     position: absolute;
-    top: 300px;
     height: 45px;
     font-size: 24px;
     line-height: 45px;
@@ -648,24 +648,24 @@ header nav a:last-child::after{
     right: 25px;
     width: 46px;
     height: 40px;
-    top: 45.5px;
+    top: 46px;
     overflow: hidden;
 }
 .tip-angle::after{
     content: ' ';
     display: block;
     width: 26px;
-    height: 30px;
+    height: 25px;
     border: 1px solid white;
--webkit-transform: skew(12deg,46deg) rotate(85deg);
-   -moz-transform: skew(12deg,46deg) rotate(85deg);
-     -o-transform: skew(12deg,46deg) rotate(85deg);
-        transform: skew(12deg,46deg) rotate(85deg);
+-webkit-transform: skew(21deg,32deg) rotate(105deg);
+   -moz-transform: skew(21deg,32deg) rotate(105deg);
+     -o-transform: skew(21deg,32deg) rotate(105deg);
+        transform: skew(21deg,32deg) rotate(105deg);
     border-bottom: none;
     border-left: none;
     background: rgba(255,255,255,0.3);
     margin-top: -14px;
-    margin-left: 5px;
+    margin-left: 3px;
         box-shadow: -8px -2px 10px 3px #313131;
      -o-box-shadow: -8px -2px 10px 3px #313131;
 -webkit-box-shadow: -8px -2px 10px 3px #313131;

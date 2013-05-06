@@ -8,7 +8,7 @@
   <script type="text/javascript"
     src="../lib/sea/sea-debug.js"
     data-config="../../app/config"
-    data-main="../../m/src/daily.js"></script>
+    data-main="../../m/src/act.js"></script>
   <link href="./css/m.base.css" rel="stylesheet" type="text/css" />
   <!--<link rel="stylesheet" type="text/css" href="./css/jquery.mobile-1.3.0.css" />-->
  </head>
@@ -16,16 +16,14 @@
   <header>
     <a class="icon-back-area" href="./index.html" data-ajax="false"><i class="icon icon-back"></i></a>
     <i class="icon"></i>
-    <!--
     <nav>
-      <a class="back-nav"><i class="icon"></i></a>
-      <a href="./daily.html">日程安排</a>
-      <a href="./act.html">活动环节</a>
-      <a href="./photos.html">精彩图库</a>
-      <a href="./sign.html">在线报名</a>
-      <a href="./index.html">首页 &gt;</a>
+      <div class="back-nav"><i class="icon"></i></div>
+      <a class="disabled" data-ajax="false" href="#">日程安排</a>
+      <a class="disabled" data-ajax="false" href="#">活动环节</a>
+      <a href="./photos.html" data-ajax="false">精彩图库</a>
+      <a target="_blank" data-ajax="false" href="http://182.255.24.198/porsche/">在线报名</a>
+      <a href="./index.html" data-ajax="false">首页</a>
     </nav>
-    -->
   </header>
   <div class="main daily-main">
     <section class="daily-desc">
@@ -39,28 +37,76 @@
         </div>
         <div class="mod-b">
           <!--daily for sh-->
-          <div id="sh-act">
-            <img src="./images/sh-act.jpg" width='100%'/>
-            <map name="actbg" id="actbg">
-              <area shape="polygon" coords="426,429,514,494,518,545,876,317,880,272,788,236" href="javascript:;" alt="活动环节"/>
-            </map>
-            <div class="tip">
-              <div class="tip-bg">
+          <div class="act-detail-wrap">
+            <section class="img-map">
+              <img src="./images/sh-act.jpg" width='100%' usemap="#sh-actbg"/>
+              <map name="sh-actbg" id="sh-actbg">
+                <area shape="polygon" coords="215,215,253,247,259,274,440,157,438,134,396,115" href="javascript:;" alt="活动环节" />
+              </map>
+              <div class="tip" style="right: 18%;bottom: 59%;">
+                <div class="tip-bg">
+                </div>
+                <div class="tip-angle">
+                </div>
+                保时捷博物馆
               </div>
-              <div class="tip-angle">
+              <div class="tip" style="display:none;right: 28%;bottom: 50%;">
+                <div class="tip-bg">
+                </div>
+                <div class="tip-angle">
+                </div>
+                保时捷XXX
               </div>
-              保时捷博物馆
-            </div>
-            <div class="tip-details">
-              <div>
+            </section>
+            <div class="tip-details" index=0>
+              <div class="tip-detail">
                 <img src="./images/sh-bwg.jpg" width="100%" />
-                <h2>保时捷博物馆</h2>
+                <h2>保时捷博物馆1</h2>
+                <p>2007年建成的新博物馆位于祖文豪森的保时捷广场，旨在展示保时捷的历史和品牌魅力。在过去60年的发展中，每一款保时捷车型都继承传统，延续纯正跑车基因。 “极至体验”活动从斯图加特保时捷博物馆中精挑细选出一系列经典历史车型，并与其后代车型并肩展示。今年我们还将特别推出全系911历史车型，以独特的角度为您呈现这款传奇跑车的历史沿革。现场还将派发保时捷在线博物馆“入场券”，让您随时徜徉于保时捷的历史长河之中。</p>
+              </div>
+              <div class="tip-detail" style="display:none;">
+                <img src="./images/sh-bwg.jpg" width="100%" />
+                <h2>保时捷博物馆2</h2>
                 <p>2007年建成的新博物馆位于祖文豪森的保时捷广场，旨在展示保时捷的历史和品牌魅力。在过去60年的发展中，每一款保时捷车型都继承传统，延续纯正跑车基因。 “极至体验”活动从斯图加特保时捷博物馆中精挑细选出一系列经典历史车型，并与其后代车型并肩展示。今年我们还将特别推出全系911历史车型，以独特的角度为您呈现这款传奇跑车的历史沿革。现场还将派发保时捷在线博物馆“入场券”，让您随时徜徉于保时捷的历史长河之中。</p>
               </div>
             </div>
           </div>
           <!--daily for bj-->
-
+          <div class="act-detail-wrap" style="display:none;">
+            <section class="img-map">
+              <img src="./images/sh-act.jpg" width='100%' usemap="#actbg"/>
+              <map name="actbg" id="actbg">
+                <area shape="polygon" coords="215,215,253,247,259,274,440,157,438,134,396,115" href="javascript:;" alt="活动环节" style="background:red;"/>
+              </map>
+              <div class="tip" style="top: 57px;left: 166px;">
+                <div class="tip-bg">
+                </div>
+                <div class="tip-angle">
+                </div>
+                bjbj保时捷博物馆
+              </div>
+            </section>
+            <div class="tip-details">
+              <div class="tip-detail">
+                <img src="./images/sh-bwg.jpg" width="100%" />
+                <h2>bj1</h2>
+                <p>2007年建成的新博物馆位于祖文豪森的保时捷广场，旨在展示保时捷的历史和品牌魅力。在过去60年的发展中，每一款保时捷车型都继承传统，延续纯正跑车基因。 “极至体验”活动从斯图加特保时捷博物馆中精挑细选出一系列经典历史车型，并与其后代车型并肩展示。今年我们还将特别推出全系911历史车型，以独特的角度为您呈现这款传奇跑车的历史沿革。现场还将派发保时捷在线博物馆“入场券”，让您随时徜徉于保时捷的历史长河之中。</p>
+              </div>
+              <div class="tip-detail" style="display:none;">
+                <img src="./images/sh-bwg.jpg" width="100%" />
+                <h2>bj2</h2>
+                <p>2007年建成的新博物馆位于祖文豪森的保时捷广场，旨在展示保时捷的历史和品牌魅力。在过去60年的发展中，每一款保时捷车型都继承传统，延续纯正跑车基因。 “极至体验”活动从斯图加特保时捷博物馆中精挑细选出一系列经典历史车型，并与其后代车型并肩展示。今年我们还将特别推出全系911历史车型，以独特的角度为您呈现这款传奇跑车的历史沿革。现场还将派发保时捷在线博物馆“入场券”，让您随时徜徉于保时捷的历史长河之中。</p>
+              </div>
+            </div>
+          </div>
+          <div id="slide-btns" style="display:none;">
+            <div class="prev-wrap" style="top:0;">
+              <div class="prev"><div class="prev-inner"></div></div>
+            </div>
+            <div class="next-wrap" style="top:0;">
+              <div class="next"><div class="next-inner"></div></div>
+            </div>
+          </div>
         </div>
       </div>
     </section>

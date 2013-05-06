@@ -1,6 +1,8 @@
 define(function( require , exports , model ){
 
     require( 'jquery.mobile' );
+    require('../../m/src/base');
+
 
     var selectTag = function($list , cb , selectClass , eventType){
         selectClass = selectClass || 'selected';
@@ -19,4 +21,5 @@ define(function( require , exports , model ){
             .eq( index )
             .show();
     } , '' , 'tap' );
+
 });
