@@ -233,22 +233,22 @@ header nav a:last-child::after{
 
 
         .index-main .logo{
+            background: url('../images/logo@2x.png') no-repeat 20%;
          background-size: 264px 65px;
       -o-background-size: 264px 65px;
     -moz-background-size: 264px 65px;
  -webkit-background-size: 264px 65px;
-            background: url('../images/logo@2x.png') no-repeat 20%;
         }
         .no-backgroundsize .index-main .logo{
             background: url('../images/logo.png') no-repeat 20%;
         }
 
-        .index-main .car{
+       /* .index-main .car{
+            background: url('../images/c1@2x.png') no-repeat;
                   background-size: 100% 100%;
                -o-background-size: 100% 100%;
              -moz-background-size: 100% 100%;
           -webkit-background-size: 100% 100%;
-            background: url('../images/c1@2x.png') no-repeat;
         }
         .index-main .car2{
             background: url('../images/c2@2x.png') no-repeat;
@@ -270,7 +270,7 @@ header nav a:last-child::after{
         }
         .no-backgroundsize .index-main .car4{
             background: url('../images/c4.png') no-repeat;
-        }
+        }*/
     }
 
 .index-main .nav{cursor:pointer;position:absolute;
