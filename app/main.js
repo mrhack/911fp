@@ -74,12 +74,12 @@ define(function(require, exports, module) {
             var index = $(this).closest('.nav').index();
             _goIndex( index );
         });
-		
+
 		// hover effect
 		$navs.hover(function(){
-			$(this).animate({'opacity':0.6});	
+			$(this).animate({'opacity':0.6});
 		},function(){
-			$(this).animate({'opacity':1});	
+			$(this).animate({'opacity':1});
 		});
         // click text
         var rightCfg = {
@@ -131,11 +131,11 @@ define(function(require, exports, module) {
                 return false;
             }
         });
-		
-		
+
+
     };
 	if($('html').hasClass('touch') && navigator.userAgent.match(/iPad/i) == null){
-		window.location.href="m";
+		// window.location.href="m";
 	}
     var pro = processBar( $('#process-bar') , $('#process-num') )
                 .start();

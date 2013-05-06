@@ -102,6 +102,7 @@ define(function( require , exports , model ){
     // save current tap image index
     var imgIndex   = -1;
     var $imageWrap = $('#nl-mask').tap( function(){
+        var scrollTop = $imageWrap.parent().scrollTop();
             setTimeout( function() {
                 $imageWrap.hide();
                 // remove all swipe images
@@ -122,6 +123,8 @@ define(function( require , exports , model ){
                     height: ''
                 });
 
+                // reset body scroll top value
+                $(window).scrollTop( scrollTop );
                 // enable zoom
                 fixZoom( false );
             } , 300 );
@@ -197,6 +200,8 @@ define(function( require , exports , model ){
         // show image in middle of viewport
         // disable scroll
         var scrollTop = $('body').scrollTop();
+        // reset last scrollTop value
+        scrollTop = Math.max( scrollTop , $imageWrap.parent().scrollTop() );
         $imageWrap.parent()
             .css({
                 overflow: 'hidden',

@@ -444,6 +444,7 @@ header nav a:last-child::after{
     z-index: 100;
     top: 50%;
     margin-top: -25px;
+    display: none;
 }
 
 .next-wrap{
