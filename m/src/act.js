@@ -27,6 +27,9 @@ define(function( require , exports , model ){
             fixSlideBtn();
             // reset details width
             fixDetailWidth();
+
+            // reset image map
+            //fixImageMap();
         });
 
         var windowWidth = $(window).width();
@@ -52,6 +55,12 @@ define(function( require , exports , model ){
                 slidePrev();
             });
 
+        // for tap area
+        $actDetails.find('area')
+            .tap(function(){
+                var index = $(this).index();
+                slideToIndex( index );
+            });
         selectTag($('.mod-h a') , function(){
             var index = $(this).index();
             $actDetails
@@ -72,21 +81,20 @@ define(function( require , exports , model ){
         var getIndex = function(){
             return is_slide_shanghai ? sh_index : bj_index;
         }
-        // slide to left
-        var slideNext = function(){
-            var index = getIndex();
+        var slideToIndex = function( index ){
+            var currIndex = getIndex();
             var $details = $actDetails.filter(':visible').find('.tip-detail');
             // no more details
-            if( index == $details.length - 1 || is_sliding) return;
+            if( index < 0 || index >= $details.length || is_sliding ) return;
 
             is_sliding = true;
             $actDetails.filter(':visible')
                 .find('.tip-details')
                 .animate({
-                    marginLeft : '-=' + windowWidth
+                    marginLeft : - index * windowWidth
                 } , 300 , '' ,function(){
                     is_sliding = false;
-                    is_slide_shanghai ? sh_index++ : bj_index++;
+                    is_slide_shanghai ? sh_index = index : bj_index = index;
                     // reset btn status
                     fixSlideBtn();
 
@@ -94,26 +102,15 @@ define(function( require , exports , model ){
                     fixMapTip();
                 });
         }
+        // slide to left
+        var slideNext = function(){
+            var index = getIndex();
+            slideToIndex( index + 1 );
+        }
         // slide to right
         var slidePrev = function(){
             var index = getIndex();
-            // first details
-            if( index <= 0 || is_sliding ) return;
-
-            is_sliding = true;
-            $actDetails.filter(':visible')
-                .find('.tip-details')
-                .animate({
-                    marginLeft : '+=' + windowWidth
-                } , 300 , '' ,function(){
-                    is_sliding = false;
-                    is_slide_shanghai ? sh_index-- : bj_index--;
-
-                    // reset btn status
-                    fixSlideBtn();
-                    // show right tip on map
-                    fixMapTip();
-                });
+            slideToIndex( index - 1 );
         }
         // set slide left and slide right button position
         var fixSlideBtn = function(){
@@ -139,6 +136,20 @@ define(function( require , exports , model ){
                 .eq( getIndex() )
                 .show();
         }
+
+        // set right map coords while window is resized
+        var originImgWidth = null;
+        var fixImageMap = function(){
+            // get orginImgWidth
+            var $img = $actDetails.filter(':visible')
+                .find('img[usemap]');
+            if( !originImgWidth ){
+                $('<img />').load(function(){
+                    originImgWidth = this.width;
+                })
+                .attr('src' , $img.attr('src'));
+            }
+        };
 
         // fix detail width, set it's parent's width n * windowWidth
         // set every detail width is windowWidth
