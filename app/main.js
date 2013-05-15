@@ -135,7 +135,7 @@ define(function(require, exports, module) {
 
     };
 	if($('html').hasClass('touch') && navigator.userAgent.match(/iPad/i) == null){
-		// window.location.href="m";
+		 window.location.href="m";
 	}
     var pro = processBar( $('#process-bar') , $('#process-num') )
                 .start();

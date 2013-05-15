@@ -15,6 +15,7 @@ ul, li, ol, dl, dd, dt,
 form, fieldset, legend, img {
     margin  : 0;
     padding : 0;
+	-webkit-text-size-adjust: none;
 }
 section, article, nav, header, footer { display : block; }
 address, caption, cite, code, dfn, th, var,i,em {
@@ -533,11 +534,11 @@ header nav a:last-child::after{
 .daily-list{
     font-size: 18px;
     color: #323232;
-    padding-bottom: 80px;
+    padding-bottom: 0;
     padding-top: 10px;
 }
 .daily-list li{
-    height: 66px;
+    height: 97px;
     position: relative;
     line-height: 60px;
 }
@@ -562,7 +563,7 @@ header nav a:last-child::after{
     content: ' ';
     background: #ed1b23;
     width: 4px;
-    height: 8px;
+    height: 38px;
     top: 59px;
     left: 28px;
 }

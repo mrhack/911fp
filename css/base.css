@@ -529,7 +529,7 @@ span.lpn_ghost {
 .daily-times-b{
   color: #aaa;
   padding: 30px 0;
-  font-size: 18px;
+  font-size: 15px;
   background: #f4f4f4;
 }
 .daily-times-b tr{
@@ -539,10 +539,12 @@ span.lpn_ghost {
   text-align: right;
 }
 .daily-times-b td{
-  padding-bottom: 17px;
+  padding-bottom: 77px;
+  
   _padding-bottom: 0;
 }
 .daily-times-b .mid{
+  padding-top: 17px;
   width: 95px;
   color: white;
   text-align: center;
