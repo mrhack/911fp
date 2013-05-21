@@ -636,7 +636,7 @@ header nav a:last-child::after{
 .tip{
     position: absolute;
     height: 45px;
-    font-size: 24px;
+    font-size: 21px;
     line-height: 45px;
     padding: 0 34px 0 23px;
     color: white;

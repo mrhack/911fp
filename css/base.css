@@ -676,6 +676,7 @@ span.lpn_ghost {
   position: absolute;
   background: url(../images/tip-angle.png) no-repeat;
 }
+.tip-arrow { position:absolute;}
 
 /* ---------------------------------------------------------photo-list */
 .photo-section{
