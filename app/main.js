@@ -135,7 +135,7 @@ define(function(require, exports, module) {
 
     };
 	if($('html').hasClass('touch') && navigator.userAgent.match(/iPad/i) == null){
-		 window.location.href="m";
+		 //window.location.href="m";
 	}
     var pro = processBar( $('#process-bar') , $('#process-num') )
                 .start();
@@ -343,9 +343,22 @@ define(function(require, exports, module) {
         }
         if( !$actOns.length ) return;
         selectTag( $('.daily-tit a') , function( ){
-            $actOns.hide()
-                .eq( $(this).index() )
-                .show();
+            var index = $(this).index();
+            $actOns.eq( index ^ 1 )
+                .stop(true , true)
+                .css('opacity' , 1)
+                .animate({
+                    opacity: 0.5
+                } , 400 , '' , function(){
+                    $(this).hide();
+                    $actOns.eq( index )
+                        .stop(true , true)
+                        .show()
+                        .css('opacity' , 0.5)
+                        .animate({
+                            opacity: 1
+                        } , 400);
+                });
         } );
 
 

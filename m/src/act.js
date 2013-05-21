@@ -61,15 +61,26 @@ define(function( require , exports , model ){
                 var index = $(this).index();
                 slideToIndex( index );
             });
-        selectTag($('.mod-h a') , function(){
-            var index = $(this).index();
-            $actDetails
-                .hide()
-                .eq(index)
-                .show();
-            is_slide_shanghai = !index;
 
-            // reset slide btn status
+        selectTag( $('.mod-h a') , function( ){
+            var index = $(this).index();
+            $actDetails.eq( index ^ 1 )
+                .stop(true , true)
+                .css('opacity' , 1)
+                .animate({
+                    opacity: 0.5
+                } , 400 , '' , function(){
+                    $(this).hide();
+                    $actDetails.eq( index )
+                        .stop(true , true)
+                        .show()
+                        .css('opacity' , 0.5)
+                        .animate({
+                            opacity: 1
+                        } , 400);
+                });
+            is_slide_shanghai = !index;
+             // reset slide btn status
             fixSlideBtn();
         } , '' , 'tap');
 
