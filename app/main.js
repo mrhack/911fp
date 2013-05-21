@@ -312,30 +312,53 @@ define(function(require, exports, module) {
 
     // for act.html
     $(function(){
-        var $tip = $('#G_tip-wrap');
+        var $actOns = $('.js-act-con');
         var timer = null;
-        if( !$tip.length ) return;
-        var show = function(){
-            if( $.browser.msie && $.browser.version == 6){
-                $tip.show();
-                return;
-            }
+        var inAction = $.browser.msie && $.browser.version == 6 ? 'show' : 'fadeIn';
+        var outAction = $.browser.msie && $.browser.version == 6 ? 'hide' : 'fadeOut';
+        var showTip = function( index ){
             clearTimeout( timer );
             timer = setTimeout(function(){
-                $tip.stop( true , false ).fadeIn();
-            } , 100);
+               var $tip =  $actOns.filter(':visible')
+                    .find('.tip-wrap')
+                    .each( function( i ){
+                        if( i == index ){
+                            $(this)[ inAction ]();
+                        } else {
+                            $(this)[ outAction ]();
+                        }
+                    } )
+                    .eq(index)
+                    [ $.browser.msie && $.browser.version == 6 ? 'show' : 'fadeIn']();
+            } , 200);
         }
-        var hide = function(){
-            if( $.browser.msie && $.browser.version == 6){
-                $tip.hide();
-                return;
-            }
+
+        var hideTip = function( index ){
             clearTimeout( timer );
             timer = setTimeout(function(){
-                $tip.stop( true , false ).fadeOut();
-            } , 100);
+                var $tip = $actOns.filter(':visible')
+                    .find('.tip-wrap')
+                    [ outAction ]();
+            } , 200);
         }
-        $('#actbg').add($tip).hover( show , hide);
+        if( !$actOns.length ) return;
+        selectTag( $('.daily-tit a') , function( ){
+            $actOns.hide()
+                .eq( $(this).index() )
+                .show();
+        } );
+
+
+        // hover in and hover out
+        $actOns.find('area')
+            .add( $actOns.find('.tip-wrap') )// hover tip , steal show the tip , when move out , hide the tip also.
+            .hover( function(){
+                var index = parseInt( $(this).attr('index') || $(this).index() );
+                showTip( index );
+            } , function(){
+                var index = parseInt( $(this).attr('index') || $(this).index() );
+                hideTip( index );
+            });
     });
 
      // for photos.html
