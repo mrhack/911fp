@@ -348,13 +348,13 @@ define(function(require, exports, module) {
                 .stop(true , true)
                 .css('opacity' , 1)
                 .animate({
-                    opacity: 0.5
+                    opacity: 0
                 } , 400 , '' , function(){
                     $(this).hide();
                     $actOns.eq( index )
                         .stop(true , true)
                         .show()
-                        .css('opacity' , 0.5)
+                        .css('opacity' , 0)
                         .animate({
                             opacity: 1
                         } , 400);
