@@ -1,0 +1,79 @@
+@font-face {
+	font-family: 'PorscheNewsGothic-Bold';
+	src: url('lt21023.eot');
+	src: url('lt21023.eot?#iefix') format('embedded-opentype'),
+			 url('lt21023.woff') format('woff'),
+			 url('lt21023.ttf') format('truetype'),
+			 url('lt21023.svg#PorscheNewsGothic-Bold') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+/* ---------- Overall Specifications ---------- */
+
+body {margin: 0; padding: 0; border: 0; outline: 0; color: #fff;}
+a:link,a:visited {text-decoration: none;}
+a {color: #000;}
+a:hover,a:focus {color: #000;}
+a:active {color: #000;}
+h1,h2,h3,h4,h5,h6 {margin:0; padding:0; font-weight: inherit;}
+
+
+
+
+
+
+
+/* share_btn begin*/
+.share_btn{display:block;background:url(../images/s.jpg); width:35px; height:35px; zoom:1;position:relative;_float:left;_position:relative; bottom:0px; left:0px; z-index:111;cursor:pointer;}
+
+
+/* .share1_active{ background:url(../images/s.jpg) 0 -42px;} */
+.share_li1{ width:142px; height:365px; position:absolute; top:-365px; padding:0; display:none; }
+.share_li1 h3{ height:40px; width:132px; line-height:40px; background:url(../images/share_bg.png); color:#333333; padding:0 0 0 10px; float:left; }
+.share_li1 .share_li1_bottom{background:url(../images/share_bg.png); height:10px; line-height:10px; width:142px; float:left;}
+.share_li1 a,.share_li2 a{ padding-left: 50px;line-height: 34px;height:35px; display:block; margin:0 0 0 0;  overflow:hidden;}
+.share_li1 a:hover{ }
+.share_li1 a.a1{ background:url(../images/a1.png);}
+.share_li1 a.a1:hover{ background:url(../images/a1.png) #fff;}
+.share_li1 a.a2{ background:url(../images/a2.png);}
+.share_li1 a.a2:hover{ background:url(../images/a2.png) #fff;}
+.share_li1 a.a3{ background:url(../images/a3.png);}
+.share_li1 a.a3:hover{ background:url(../images/a3.png) #fff;}
+.share_li1 a.a4{ background:url(../images/a4.png);}
+.share_li1 a.a4:hover{ background:url(../images/a4.png) #fff;}
+.share_li1 a.a5{ background:url(../images/a5.png);}
+.share_li1 a.a5:hover{ background:url(../images/a5.png) #fff;}
+.share_li1 a.a6{ background:url(../images/a6.png);}
+.share_li1 a.a6:hover{ background:url(../images/a6.png) #fff;}
+.share_li1 a.a7{ background:url(../images/a7.png);}
+.share_li1 a.a7:hover{ background:url(../images/a7.png) #fff;}
+.share_li1 a.a8{ background:url(../images/a8.png);}
+.share_li1 a.a8:hover{ background:url(../images/a8.png) #fff;}
+.share_li1 a.a9{ background:url(../images/a9.png) no-repeat;height:45px;}
+.share_li1 a.a9:hover{ background:url(../images/a9.png) #fff;}
+
+.share2{ background-position:-45px 0; left:80px;}
+
+.share2_active{ background:url(../images/share_button.png) -45px -42px;}
+.share_li2{ width:142px; height:126px; position:absolute; top:-123px; padding:0; display:none;}
+.share_li2 h3{ height:40px; width:132px; line-height:40px; background:url(../images/share_bg.png); color:#333333; padding:0 0 0 10px; float:left; }
+.share_li2 .share_li2_bottom{background:url(../images/share_bg.png); height:10px; line-height:10px; width:142px; float:left;}
+.share_li2 a{ height:38px; display:block; margin:0 0 0 0; overflow:hidden;}
+.share_li2 a.a10{ background:url(../images/a10.png);}
+.share_li2 a.a10:hover{ background:url(../images/a10.png) #fff;}
+.share_li2 a.a11{ background:url(../images/a11.png) no-repeat;height:45px;}
+.share_li2 a.a11:hover{ background:url(../images/a11.png) #fff;}
+
+.share3{background-position:-90px 0; left:0px;}
+.en .share3 {background:url(../images/share_button_en.png) -90px 0;}
+.share3:hover {background-position:-90px -42px; width: 105px;}
+
+.control_button_wrap{ position:fixed; bottom:40px; z-index:11; width:100%;}
+
+#share_friend .forrm_submit {width:190px; height:67px; background:url(../images/share_botton2.png) no-repeat; position:absolute; margin:0 auto;}
+.en #share_friend .forrm_submit { background:url(../images/share_botton2_en.png) no-repeat;}
+#share_friend .form_field { position:relative;}
+#share_friend .form_field label.error { position:absolute;left:90px;top:0;}
+
+
+

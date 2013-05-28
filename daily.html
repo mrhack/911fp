@@ -20,15 +20,15 @@
     <div class="wrap">
       <header>
         <nav>
-          <a class="menu menu-home" href="./index.html">首页</a>
+          <a id="t_nav1" class="menu menu-home" href="./index.html"><span>首页</span></a>
           <span class="sep" style="background:none;"></span>
-          <a class="menu menu-sel" href="./daily.html">日程安排</a>
-          <span class="sep" style="background:none;"></span>
-          <a class="menu" href="./act.html">活动环节</a>
+          <a id="t_nav2" class="menu menu-sel" href="./daily.html"><span>日程安排</span></a>
           <span class="sep"></span>
-          <a class="menu" href="./photos.html">精彩图库</a>
+          <a id="t_nav3" class="menu" href="./act.html"><span>活动环节</span></a>
           <span class="sep"></span>
-          <a class="menu menu-sign" href="http://182.255.24.198/porsche/">在线报名</a>
+          <a id="t_nav4" class="menu" href="./photos.html"><span>精彩图库</span></a>
+          <span class="sep"></span>
+          <a id="t_nav5" class="menu menu-sign" href="./register/"><span>在线报名</span></a>
         </nav>
         <img class="logo" src="./images/logo.png" >
       </header>
@@ -52,7 +52,7 @@
               </table>
             </div>
 
-            <a class="sign-btn" href="http://182.255.24.198/porsche/">在线报名 &raquo;</a>
+            <a class="sign-btn" href="./register/">在线报名 &raquo;</a>
           </div>
           <!-- daily map -->
           <div id="G_daily-map" style="display:none;">
@@ -70,30 +70,46 @@
       </div>
     </div>
     <footer>
-      <div class="footer-inner clearfix">
-        <div class="copyright">
-          <div class="copy-name">保时捷中国<em class="angle"></em></div>
-          <div>&copy;2013 <a target="_blank" href="http://www.porsche.com/china/">保时捷中国</a><a target="_blank" href="http://www.porsche.com/china/zh/legal-notice/">法律公告</a></div>
-        </div>
-        <div class="share-btns share-btns" id="share-btns">
-          <div class="share1 share_btn">
-            <div class="share_li">
-              <h3>推荐  </h3>
-              <a class="a1" id="sharefriend" href="sharefriend.html"><span>电子邮件</span></a>
-              <a class="a2" href="javascript:sharethis('http://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=#URL#&amp;amp;title=#TITLE#','qqspace',1);"><span>QQ 空间</span></a>
-              <a class="a3" href="javascript:sharethis('http://v.t.sina.com.cn/share/share.php?title=%2523#TITLE#%2523&amp;amp;url=#URL#','sina',1);"><span>新浪微博</span></a>
-              <a class="a4" href="javascript:sharethis('http://v.t.qq.com/share/share.php?title=#TITLE#&amp;amp;url=#URL#','tecent',1);"><span>腾讯微博</span></a>
-              <a class="a5" href="javascript:sharethis('http://share.renren.com/share/buttonshare.do?link=#URL#&amp;amp;title=#TITLE#','renren',1);"><span>人人</span></a>
-              <a class="a6" href="javascript:sharethis('http://www.kaixin001.com/repaste/share.php?rtitle=#TITLE#&amp;amp;rurl=#URL#&amp;amp;rcontent=#TITLE#','kaixin',1);"><span>开心网</span></a>
-              <a class="a7" href="javascript:sharethis('http://t.sohu.com/third/post.jsp?&amp;url=#URL#&amp;title=#TITLE#','sohu',1);"><span>搜狐微博</span></a>
-              <a class="a8" href="javascript:sharethis('http://cang.baidu.com/do/add?it=#TITLE#&amp;amp;iu=#URL#&amp;amp;fr=ien#nw=1','baidu',1);"><span>百度</span></a>
-              <a class="a9" href="javascript:sharethis('http://shuqian.qq.com/post?jumpback=1&amp;amp;title=#TITLE#&amp;amp;uri=#URL#','qq',1);"><span>QQ 书签</span></a>
+        <div class="footer-inner clearfix">
+            <div class="copyright">
+                <div class="copy-name"><a target="_blank" href="http://www.porsche.com/china/">保时捷中国</a><em class="angle"></em></div>
+                <div>&copy;2013 <a target="_blank" href="http://www.porsche.com/china/">保时捷中国</a><a target="_blank" href="http://www.porsche.com/china/zh/legal-notice/">法律公告</a></div>
             </div>
-          </div>
-          <a class="share2 share_btn" href="javascript:sharethis('http://v.t.sina.com.cn/share/share.php?title=%2523#TITLE#%2523&amp;amp;url=#URL#','sina',1);"></a>
+            <div class="share-btns share-btns" id="share-btns">
+                <div class="share1 share_btn">
+                    <div class="share_li">
+                        <h3>推荐  </h3>
+                        <a class="a1" id="sharefriend" href="mailto:"><span>电子邮件</span></a>
+                        <a class="a2" href="javascript:sharethis('http://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http%3a%2f%2ffp2013.porsche-event.cn%2f&amp;title=%232013+保时捷极至体验%23','qqspace',1);"><span>QQ 空间</span></a>
+                        <a class="a3" href="javascript:sharethis('http://v.t.sina.com.cn/share/share.php?title=%25232013+保时捷极至体验%2523&amp;url=http%3a%2f%2ffp2013.porsche-event.cn%2f&amp;pic=http%3a%2f%2ffp2013.porsche-event.cn%2fshare.jpg','sina',1);"><span>新浪微博</span></a>
+                        <a class="a4" href="javascript:sharethis('http://v.t.qq.com/share/share.php?title=%232013+保时捷极至体验%23&amp;amp;pic=http%3a%2f%2ffp2013.porsche-event.cn%2fshare.jpg','tecent',1);"><span>腾讯微博</span></a>
+                        <a class="a5" href="javascript:sharethis('http://share.renren.com/share/buttonshare.do?link=http%3a%2f%2ffp2013.porsche-event.cn%2f&amp;amp;title=%232013+保时捷极至体验%23','renren',1);"><span>人人</span></a>
+                        <a class="a6" href="javascript:sharethis('http://www.kaixin001.com/repaste/share.php?rtitle=Fascination+Porsche+2013&amp;rurl=http%3a%2f%2ffp2013.porsche-event.cn%2f&amp;rcontent=%232013+保时捷极至体验%23','kaixin',1);"><span>开心网</span></a>
+                        <a class="a7" href="javascript:sharethis('http://t.sohu.com/third/post.jsp?&amp;url=http%3a%2f%2ffp2013.porsche-event.cn%2f&amp;title=%232013+保时捷极至体验%23','sohu',1);"><span>搜狐微博</span></a>
+                        <a class="a8" href="javascript:sharethis('http://cang.baidu.com/do/add?it=2013+%e4%bf%9d%e6%97%b6%e6%8d%b7%e6%9e%81%e8%87%b3%e4%bd%93%e9%aa%8c&amp;iu=http%3a%2f%2ffp2013.porsche-event.cn%2f&amp;fr=ien#nw=1','baidu',1);"><span>百度</span></a>
+                        <a class="a9" href="javascript:sharethis('http://shuqian.qq.com/post?jumpback=1&amp;title=%232013+保时捷极至体验%23&amp;uri=http%3a%2f%2ffp2013.porsche-event.cn%2f','qq',1);"><span>QQ 书签</span></a>
+                    </div>
+                </div>
+                <a class="share2 share_btn" target="_blank" href="http://e.weibo.com/porschechina"></a>
+            </div>
         </div>
-      </div>
     </footer>
     <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
+    <script type="text/javascript">
+      var axel = Math.random() + "";
+      var a = axel * 10000000000000;
+      document.write('<iframe src="http://2980862.fls.doubleclick.net/activityi;src=2980862;type=2013_909;cat=pvomi743;ord=' + a + '?" width="1" height="1" frameborder="0" style="display:none"></iframe>');
+    </script>
+    <noscript>
+      <iframe src="http://2980862.fls.doubleclick.net/activityi;src=2980862;type=2013_909;cat=pvomi743;ord=1?" width="1" height="1" frameborder="0" style="display:none"></iframe>
+    </noscript>
+    <script type="text/javascript">
+      var axel = Math.random() + "";
+      var a = axel * 10000000000000;
+      document.write('<iframe src="http://2980862.fls.doubleclick.net/activityi;src=2980862;type=2013_909;cat=uvicr579;ord=1;num=' + a + '?" width="1" height="1" frameborder="0" style="display:none"></iframe>');
+    </script>
+    <noscript>
+      <iframe src="http://2980862.fls.doubleclick.net/activityi;src=2980862;type=2013_909;cat=uvicr579;ord=1;num=1?" width="1" height="1" frameborder="0" style="display:none"></iframe>
+    </noscript>
  </body>
 </html>
