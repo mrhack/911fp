@@ -14,7 +14,7 @@ define(function(require, exports, module) {
     // require jquery ani plugin
     require('jquery.ani');
     require('jquery.easing');
-    require('modernizr');
+    //require('modernizr');
 
 
      // ----------------------- dom ready index.html
@@ -204,6 +204,12 @@ define(function(require, exports, module) {
     }
     // for daily.html
     $(function(){
+
+        function getURLParameter(name) {
+            return decodeURI(
+                (RegExp(name + '=' + '(.+?)(&|$)').exec(location.search)||[,null])[1]
+            );
+        }
         var $actWrap = $('#G_daily-acts');
         var $actMap = $('#G_daily-map');
         var selectedClass = 'selected';
@@ -307,6 +313,11 @@ define(function(require, exports, module) {
             $actWrap.show();
             $actMap.hide();
         })
+        var c = getURLParameter('c');
+        if(c=='b')
+        {
+            $('.bj-loc').click();
+        }
 
     });
 
@@ -339,7 +350,7 @@ define(function(require, exports, module) {
                 var $tip = $actOns.filter(':visible')
                     .find('.tip-wrap')
                     [ outAction ]();
-            } , 200);
+            } , 20);
         }
         if( !$actOns.length ) return;
         selectTag( $('.daily-tit a') , function( ){

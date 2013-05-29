@@ -356,5 +356,21 @@ span > input[type='radio']:checked + label {
         </div>
       </div>
     </footer>
+    <script type="text/javascript">
+        var axel = Math.random() + "";
+        var a = axel * 10000000000000;
+        document.write('<iframe src="http://2980862.fls.doubleclick.net/activityi;src=2980862;type=2013_909;cat=regis275;ord=' + a + '?" width="1" height="1" frameborder="0" style="display:none"></iframe>');
+    </script>
+    <noscript>
+        <iframe src="http://2980862.fls.doubleclick.net/activityi;src=2980862;type=2013_909;cat=regis275;ord=1?" width="1" height="1" frameborder="0" style="display:none"></iframe>
+    </noscript>
+    <script type="text/javascript">
+        var axel = Math.random() + "";
+        var a = axel * 10000000000000;
+        document.write('<iframe src="http://2980862.fls.doubleclick.net/activityi;src=2980862;type=2013_909;cat=regis419;ord=1;num=' + a + '?" width="1" height="1" frameborder="0" style="display:none"></iframe>');
+    </script>
+    <noscript>
+        <iframe src="http://2980862.fls.doubleclick.net/activityi;src=2980862;type=2013_909;cat=regis419;ord=1;num=1?" width="1" height="1" frameborder="0" style="display:none"></iframe>
+    </noscript>
  </body>
 </html>

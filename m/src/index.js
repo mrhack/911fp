@@ -1,7 +1,6 @@
 /* webapp js */
 define(function( require , exports , model ){
 
-    require('modernizr');
 
     var bodyStyle = document.defaultView.getComputedStyle(document.body);
     var bodyHeight = parseInt( bodyStyle.height.match(/\d+/)[0] );

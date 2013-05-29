@@ -321,7 +321,7 @@ header nav a:last-child::after{
 .index-desc .acts p{
     margin-bottom: 20px;
 }
-.index-desc .acts a{
+.index-desc .acts a.event{
 	font-family:'PorscheNewsGothic-Bold';
     font-size: 24px;
     background: #ed1b23;

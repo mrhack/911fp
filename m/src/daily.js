@@ -21,5 +21,14 @@ define(function( require , exports , model ){
             .eq( index )
             .show();
     } , '' , 'tap' );
-
+    var c = getURLParameter('c');
+    if(c=='b')
+    {
+        $('#dailys-tap a').eq(1).tap();
+    }
+    function getURLParameter(name) {
+        return decodeURI(
+            (RegExp(name + '=' + '(.+?)(&|$)').exec(location.search)||[,null])[1]
+        );
+    }
 });
